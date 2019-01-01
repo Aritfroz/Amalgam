@@ -119,7 +119,6 @@ public class AmEvents {
 			AmTweaks.Gem.applyWailingStoneTweaks(gem);
 			AmTweaks.Gem.applyRenameTweaks(gem);
 			AmTweaks.Gem.applyFusionTweaks(gem);
-			AmTweaks.Gem.applyGemTweaks(gem);
 		}
 	}
 	@SubscribeEvent

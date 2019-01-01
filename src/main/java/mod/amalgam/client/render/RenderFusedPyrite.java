@@ -12,7 +12,7 @@ import mod.akrivus.kagic.client.render.layers.LayerUniform;
 import mod.akrivus.kagic.client.render.layers.LayerVisor;
 import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
 import mod.akrivus.kagic.init.KAGIC;
-import mod.amalgam.gem.EntityFusedPyrite;
+import mod.amalgam.gem.fusion.EntityFusedPyrite;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;

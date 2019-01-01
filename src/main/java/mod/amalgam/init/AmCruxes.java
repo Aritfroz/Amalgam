@@ -1,19 +1,118 @@
 package mod.amalgam.init;
 
+import java.util.ArrayList;
+
 import mod.akrivus.kagic.init.ModEntities;
 import mod.amalgam.gem.EntityAquaAuraQuartz;
 import mod.amalgam.gem.EntityCitrine;
 import mod.amalgam.gem.EntityEmerald;
 import mod.amalgam.gem.EntityEnderPearl;
-import mod.amalgam.gem.EntityMelanite;
 import mod.amalgam.gem.EntityNacre;
 import mod.amalgam.gem.EntityNephrite;
 import mod.amalgam.gem.EntityPyrite;
 import mod.amalgam.gem.EntityTourmaline;
+import mod.amalgam.gem.fusion.EntityMelanite;
+import mod.amalgam.injection.CruxEntry;
 import net.minecraft.init.Blocks;
 
 public class AmCruxes {
+	public static final ArrayList<CruxEntry> AGATE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> AMETHYST = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> AQUA_AURA_QUARTZ = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> AQUAMARINE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> BISMUTH = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> CARNELIAN = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> CITRINE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> EMERALD = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> ENDER_PEARL = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> HESSONITE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> JASPER = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> LAPIS_LAZULI = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> NACRE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> NEPHRITE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> PEARL = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> PERIDOT = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> PYRITE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> ROSE_QUARTZ = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> RUBY = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> RUTILE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> SAPPHIRE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> TOPAZ = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> WATERMELON_TOURMALINE = new ArrayList<CruxEntry>();
+	public static final ArrayList<CruxEntry> ZIRCON = new ArrayList<CruxEntry>();
 	public static void register() {
+		if (AmConfigs.enableAgate) {
+			
+		}
+		if (AmConfigs.enableAmethyst) {
+			
+		}
+		if (AmConfigs.enableAquaAuraQuartz) {
+			
+		}
+		if (AmConfigs.enableBismuth) {
+			
+		}
+		if (AmConfigs.enableCarnelian) {
+			
+		}
+		if (AmConfigs.enableCitrine) {
+			
+		}
+		if (AmConfigs.enableEmerald) {
+			
+		}
+		if (AmConfigs.enableEnderPearl) {
+			
+		}
+		if (AmConfigs.enableHessonite) {
+			
+		}
+		if (AmConfigs.enableJasper) {
+			
+		}
+		if (AmConfigs.enableLapisLazuli) {
+			
+		}
+		if (AmConfigs.enableMelanite) {
+			
+		}
+		if (AmConfigs.enableNacre) {
+			
+		}
+		if (AmConfigs.enableNephrite) {
+			
+		}
+		if (AmConfigs.enablePearl) {
+			
+		}
+		if (AmConfigs.enablePeridot) {
+			
+		}
+		if (AmConfigs.enablePyrite) {
+			
+		}
+		if (AmConfigs.enableRoseQuartz) {
+			
+		}
+		if (AmConfigs.enableRuby) {
+			
+		}
+		if (AmConfigs.enableRutile) {
+			
+		}
+		if (AmConfigs.enableSapphire) {
+			
+		}
+		if (AmConfigs.enableTopaz) {
+			
+		}
+		if (AmConfigs.enableWatermelonTourmaline) {
+			
+		}
+		if (AmConfigs.enableZircon) {
+			
+		}
 		if (AmConfigs.enableCitrine) {
 			ModEntities.registerOreDictValue(EntityCitrine.CITRINE_YIELDS, 0.10, "stoneDiorite");
 			ModEntities.registerOreDictValue(EntityCitrine.CITRINE_YIELDS, 0.20, "stoneGranite");

@@ -2,6 +2,7 @@ package mod.amalgam.items;
 
 import mod.akrivus.kagic.entity.EntityGem;
 import mod.akrivus.kagic.init.ModCreativeTabs;
+import mod.amalgam.entity.EntityAmalgam;
 import mod.amalgam.init.AmItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -33,6 +34,18 @@ public class ItemDebugStaff extends Item {
 					}
 					else {
 						this.say(p, "%s (%s) is an %s.", gem.getName(), gem.getSpecificName(), gem.getClass().getSimpleName());
+						if (gem instanceof EntityAmalgam) {
+							EntityAmalgam amalgam = (EntityAmalgam)(gem);
+							if (amalgam.isOverwritten()) {
+								this.say(p, "She originated outside of Amalgam but was overwritten.");
+							}
+							else {
+								this.say(p, "She originated from Amalgam and was NOT overwritten.");
+							}
+						}
+						else {
+							this.say(p, "She originated outside of Amalgam and was NOT overwritten.");
+						}
 						this.say(p, "Her persistent ID is \"%s.\"", gem.getGemId().toString().split("-")[0]);
 						this.say(p, "Cut is %s, placement is %s.", gem.getGemCut(), gem.getGemPlacement());
 						this.say(p, "Skin color is #%x, gem color is #%x.", gem.getSkinColor(), gem.getGemColor());

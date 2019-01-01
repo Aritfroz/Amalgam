@@ -1,8 +1,5 @@
 package mod.amalgam.client.render;
 
-import mod.akrivus.kagic.client.render.layers.LayerBirthdayHat;
-import mod.akrivus.kagic.client.render.layers.LayerSantaHat;
-import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
 import mod.amalgam.client.model.ModelNothing;
 import mod.amalgam.client.model.ModelRutile;
 import mod.amalgam.client.model.ModelTwinRutile;

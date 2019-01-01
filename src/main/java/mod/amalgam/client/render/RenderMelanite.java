@@ -14,7 +14,7 @@ import mod.akrivus.kagic.client.render.layers.LayerVisor;
 import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
 import mod.akrivus.kagic.init.KAGIC;
 import mod.amalgam.client.render.layers.LayerMelaniteCape;
-import mod.amalgam.gem.EntityMelanite;
+import mod.amalgam.gem.fusion.EntityMelanite;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;

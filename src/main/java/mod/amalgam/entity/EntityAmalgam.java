@@ -7,4 +7,7 @@ public class EntityAmalgam extends EntityGem {
 	public EntityAmalgam(World world) {
 		super(world);
 	}
+	public boolean isOverwritten() {
+		return false;
+	}
 }

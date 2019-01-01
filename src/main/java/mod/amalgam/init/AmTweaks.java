@@ -34,16 +34,17 @@ import mod.akrivus.kagic.entity.gem.fusion.EntityMalachite;
 import mod.akrivus.kagic.entity.gem.fusion.EntityOpal;
 import mod.akrivus.kagic.entity.gem.fusion.EntityRhodonite;
 import mod.akrivus.kagic.init.ModEntities;
+import mod.amalgam.entity.EntityAmalgam;
 import mod.amalgam.gem.EntityBabyPearl;
-import mod.amalgam.gem.EntityFusedPyrite;
-import mod.amalgam.gem.EntityFusedRuby;
-import mod.amalgam.gem.EntityFusedTopaz;
 import mod.amalgam.gem.EntityPyrite;
 import mod.amalgam.gem.ai.EntityAIBubbleItems;
 import mod.amalgam.gem.ai.EntityAICallForBackup;
 import mod.amalgam.gem.ai.EntityAIFollowLeaderGem;
 import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
 import mod.amalgam.gem.ai.EntityAIStayWithinRadius;
+import mod.amalgam.gem.fusion.EntityFusedPyrite;
+import mod.amalgam.gem.fusion.EntityFusedRuby;
+import mod.amalgam.gem.fusion.EntityFusedTopaz;
 import mod.amalgam.tweaks.ai.EntityAICrossFuse;
 import mod.amalgam.tweaks.ai.EntityAIFixAnvils;
 import mod.amalgam.tweaks.ai.EntityAIFixInjectors;
@@ -58,11 +59,110 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
 
 public class AmTweaks {
+	public static void applyGemTweaks(EntityGem gem) {
+		if (gem instanceof EntityAmalgam) {
+			System.out.println(gem.getName() + " is already overwritten.");
+		}
+		else {
+			EntityAmalgam overwrite = null;
+			if (gem instanceof EntityAquamarine) {
+				mod.amalgam.gem.EntityAquamarine conv = new mod.amalgam.gem.EntityAquamarine(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntityBismuth) {
+				mod.amalgam.gem.EntityBismuth conv = new mod.amalgam.gem.EntityBismuth(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntityHessonite) {
+				mod.amalgam.gem.EntityHessonite conv = new mod.amalgam.gem.EntityHessonite(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntityLapisLazuli) {
+				mod.amalgam.gem.EntityLapisLazuli conv = new mod.amalgam.gem.EntityLapisLazuli(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntityPearl) {
+				mod.amalgam.gem.EntityPearl conv = new mod.amalgam.gem.EntityPearl(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntityPeridot) {
+				mod.amalgam.gem.EntityPeridot conv = new mod.amalgam.gem.EntityPeridot(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntityQuartzSoldier) {
+				if (gem instanceof EntityAgate) {
+					mod.amalgam.gem.EntityAgate conv = new mod.amalgam.gem.EntityAgate(gem.world);
+					conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+					overwrite = conv;
+				}
+				if (gem instanceof EntityAmethyst) {
+					mod.amalgam.gem.EntityAmethyst conv = new mod.amalgam.gem.EntityAmethyst(gem.world);
+					conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+					overwrite = conv;
+				}
+				if (gem instanceof EntityCarnelian) {
+					mod.amalgam.gem.EntityCarnelian conv = new mod.amalgam.gem.EntityCarnelian(gem.world);
+					conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+					overwrite = conv;
+				}
+				if (gem instanceof EntityJasper) {
+					mod.amalgam.gem.EntityJasper conv = new mod.amalgam.gem.EntityJasper(gem.world);
+					conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+					overwrite = conv;
+				}
+				if (gem instanceof EntityRoseQuartz) {
+					mod.amalgam.gem.EntityRoseQuartz conv = new mod.amalgam.gem.EntityRoseQuartz(gem.world);
+					conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+					overwrite = conv;
+				}
+			}
+			if (gem instanceof EntityRuby) {
+				mod.amalgam.gem.EntityRuby conv = new mod.amalgam.gem.EntityRuby(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntityRutile) {
+				mod.amalgam.gem.EntityRutile conv = new mod.amalgam.gem.EntityRutile(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntitySapphire) {
+				mod.amalgam.gem.EntitySapphire conv = new mod.amalgam.gem.EntitySapphire(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntityTopaz) {
+				mod.amalgam.gem.EntityTopaz conv = new mod.amalgam.gem.EntityTopaz(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (gem instanceof EntityZircon) {
+				mod.amalgam.gem.EntityZircon conv = new mod.amalgam.gem.EntityZircon(gem.world);
+				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));
+				overwrite = conv;
+			}
+			if (overwrite != null) {
+				gem.world.spawnEntity(overwrite);
+				gem.setDead();
+			}
+			else {
+				System.out.println(gem.getName() + " can not be overwritten.");
+			}
+		}
+	}
 	public static class Aquamarine extends Gem<EntityAquamarine> {
 		private static final AttributeModifier NERF_HEALTH = new AttributeModifier(UUID.fromString("c61d7b46-3f22-48cc-8838-5c69724f622f"), "amNerfHealth",  -30, 0);
 		protected static void tweak(EntityAquamarine gem) {
+			
 			apply(gem);
 		}
 		protected static void apply(EntityAquamarine gem) {
@@ -530,56 +630,6 @@ public class AmTweaks {
 				else if (gem instanceof EntityTopaz) {
 					gem.tasks.addTask(3, new EntityAICrossFuse<EntityTopaz, EntityFusedTopaz>(gem, EntityTopaz.class, EntityFusedTopaz.class, 16));
 				}
-			}
-		}
-		public static void applyGemTweaks(EntityGem gem) {
-			if (gem instanceof EntityAquamarine) {
-				AmTweaks.Aquamarine.tweak((EntityAquamarine)(gem));
-				return;
-			}
-			if (gem instanceof EntityBismuth) {
-				AmTweaks.Bismuth.tweak((EntityBismuth)(gem));
-				return;
-			}
-			if (gem instanceof EntityHessonite) {
-				AmTweaks.Hessonite.tweak((EntityHessonite)(gem));
-				return;
-			}
-			if (gem instanceof EntityLapisLazuli) {
-				AmTweaks.LapisLazuli.tweak((EntityLapisLazuli)(gem));
-				return;
-			}
-			if (gem instanceof EntityPearl) {
-				AmTweaks.Pearl.tweak((EntityPearl)(gem));
-				return;
-			}
-			if (gem instanceof EntityPeridot) {
-				AmTweaks.Peridot.tweak((EntityPeridot)(gem));
-				return;
-			}
-			if (gem instanceof EntityQuartzSoldier) {
-				AmTweaks.Quartz.tweak((EntityQuartzSoldier)(gem));
-				return;
-			}
-			if (gem instanceof EntityRuby) {
-				AmTweaks.Ruby.tweak((EntityRuby)(gem));
-				return;
-			}
-			if (gem instanceof EntityRutile) {
-				AmTweaks.Rutile.tweak((EntityRutile)(gem));
-				return;
-			}
-			if (gem instanceof EntitySapphire) {
-				AmTweaks.Sapphire.tweak((EntitySapphire)(gem));
-				return;
-			}
-			if (gem instanceof EntityTopaz) {
-				AmTweaks.Topaz.tweak((EntityTopaz)(gem));
-				return;
-			}
-			if (gem instanceof EntityZircon) {
-				AmTweaks.Zircon.tweak((EntityZircon)(gem));
-				return;
 			}
 		}
 	}

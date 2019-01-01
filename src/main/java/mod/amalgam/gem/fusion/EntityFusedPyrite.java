@@ -1,4 +1,4 @@
-package mod.amalgam.gem;
+package mod.amalgam.gem.fusion;
 
 import java.util.ArrayList;
 
@@ -14,6 +14,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.EntityLapisLazuli;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
+import mod.amalgam.gem.EntityPyrite;
 import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
 import mod.amalgam.init.AmSounds;
 import mod.amalgam.tweaks.ai.EntityAICrossFuse;

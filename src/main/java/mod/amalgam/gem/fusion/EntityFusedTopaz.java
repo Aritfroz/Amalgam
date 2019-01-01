@@ -1,4 +1,4 @@
-package mod.amalgam.gem;
+package mod.amalgam.gem.fusion;
 
 import java.util.ArrayList;
 

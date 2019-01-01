@@ -17,6 +17,8 @@ import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
 import mod.amalgam.gem.ai.EntityAIFollowLeaderGem;
 import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
+import mod.amalgam.gem.fusion.EntityFusedPyrite;
+import mod.amalgam.gem.fusion.EntityFusedRuby;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
 import mod.amalgam.tweaks.ai.EntityAICrossFuse;

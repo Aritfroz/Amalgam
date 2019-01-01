@@ -12,7 +12,7 @@ import mod.akrivus.kagic.client.render.layers.LayerUniform;
 import mod.akrivus.kagic.client.render.layers.LayerVisor;
 import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
 import mod.akrivus.kagic.init.KAGIC;
-import mod.amalgam.gem.EntityFusedTopaz;
+import mod.amalgam.gem.fusion.EntityFusedTopaz;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
