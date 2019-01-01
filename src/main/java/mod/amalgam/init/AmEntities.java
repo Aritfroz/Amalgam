@@ -1,7 +1,6 @@
 package mod.amalgam.init;
 
 import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.gem.EntityHessonite;
 import mod.akrivus.kagic.init.ModEntities;
 import mod.amalgam.entity.EntityBubble;
 import mod.amalgam.entity.EntityGemShard;

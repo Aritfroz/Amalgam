@@ -2,7 +2,6 @@ package mod.amalgam.client.render.layers;
 
 import mod.amalgam.client.render.RenderNacre;
 import mod.amalgam.gem.EntityNacre;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;

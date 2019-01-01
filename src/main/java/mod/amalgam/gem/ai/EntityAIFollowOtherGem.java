@@ -12,10 +12,10 @@ public class EntityAIFollowOtherGem extends EntityAIBase {
 	private final Class<? extends EntityGem> filter;
     private final double followSpeed;
     private float oldWaterCost;
-    public EntityAIFollowOtherGem(EntityGem followerIn, double followSpeedIn, Class<? extends EntityGem> filter) {
-        this.follower = followerIn;
+    public EntityAIFollowOtherGem(EntityGem follower, double followSpeed, Class<? extends EntityGem> filter) {
+        this.follower = follower;
         this.filter = filter;
-        this.followSpeed = followSpeedIn;
+        this.followSpeed = followSpeed;
         this.setMutexBits(3);
     }
 	@Override

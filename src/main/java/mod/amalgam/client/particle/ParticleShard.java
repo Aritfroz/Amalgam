@@ -13,17 +13,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ParticleShard extends Particle {
 	private final double shardicleScale;
     private final int particleColor;
-    public ParticleShard(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn) {
-    	this(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn, 0xFFFFFF);
+    public ParticleShard(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed) {
+    	this(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed, 0xFFFFFF);
     }
-    public ParticleShard(World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn, int color) {
-        super(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn);
-        this.motionX = xSpeedIn;
-        this.motionY = ySpeedIn;
-        this.motionZ = zSpeedIn;
-        this.posX = xCoordIn;
-        this.posY = yCoordIn;
-        this.posZ = zCoordIn;
+    public ParticleShard(World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int color) {
+        super(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed);
+        this.motionX = xSpeed;
+        this.motionY = ySpeed;
+        this.motionZ = zSpeed;
+        this.posX = xCoord;
+        this.posY = yCoord;
+        this.posZ = zCoord;
         this.particleScale = this.rand.nextFloat() * 0.2F + 0.5F;
         this.shardicleScale = this.particleScale;
         this.particleColor = color;
@@ -34,11 +34,11 @@ public class ParticleShard extends Particle {
         this.setParticleTextureIndex((int)(Math.random() * 8.0D));
     }
     @Override
-	public void renderParticle(BufferBuilder buffer, Entity entityIn, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
+	public void renderParticle(BufferBuilder buffer, Entity entity, float partialTicks, float rotationX, float rotationZ, float rotationYZ, float rotationXY, float rotationXZ) {
         float f = (this.particleAge + partialTicks) / this.particleMaxAge * 32.0F;
         f = MathHelper.clamp(f, 0.0F, 1.0F);
         this.particleScale = (float)(this.shardicleScale * f);
-        super.renderParticle(buffer, entityIn, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
+        super.renderParticle(buffer, entity, partialTicks, rotationX, rotationZ, rotationYZ, rotationXY, rotationXZ);
     }
     @Override
 	public void onUpdate() {
@@ -66,8 +66,8 @@ public class ParticleShard extends Particle {
     @SideOnly(Side.CLIENT)
     public static class Factory implements IParticleFactory {
     	@Override
-		public Particle createParticle(int particleID, World worldIn, double xCoordIn, double yCoordIn, double zCoordIn, double xSpeedIn, double ySpeedIn, double zSpeedIn, int... p_178902_15_) {
-    		return new ParticleShard(worldIn, xCoordIn, yCoordIn, zCoordIn, xSpeedIn, ySpeedIn, zSpeedIn, p_178902_15_[0]);
+		public Particle createParticle(int particleID, World world, double xCoord, double yCoord, double zCoord, double xSpeed, double ySpeed, double zSpeed, int... p_178902_15_) {
+    		return new ParticleShard(world, xCoord, yCoord, zCoord, xSpeed, ySpeed, zSpeed, p_178902_15_[0]);
         }
     }
 }

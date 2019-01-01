@@ -27,8 +27,8 @@ public class EntityEnderPearl extends EntityPearl implements INpc {
 	public static final HashMap<IBlockState, Double> ENDER_PEARL_YIELDS = new HashMap<IBlockState, Double>();
 	public static final double ENDER_PEARL_DEFECTIVITY_MULTIPLIER = 1;
 	public static final double ENDER_PEARL_DEPTH_THRESHOLD = 0;
-	public EntityEnderPearl(World worldIn) {
-		super(worldIn);
+	public EntityEnderPearl(World world) {
+		super(world);
 		this.droppedGemItem = AmItems.ENDER_PEARL_GEM;
 		this.droppedCrackedGemItem = AmItems.CRACKED_ENDER_PEARL_GEM;
 		this.nativeColor = 2;

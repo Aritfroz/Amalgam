@@ -20,11 +20,11 @@ public class ItemStevenStone extends Item {
 		this.setCreativeTab(ModCreativeTabs.CREATIVE_TAB_OTHER);
 	}
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!worldIn.isRemote) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if (!world.isRemote) {
 			ITextComponent message = new TextComponentTranslation(String.format("command.amalgam.steven_doesnt_spawn"));
 			message.getStyle().setColor(TextFormatting.GRAY);
-			playerIn.sendMessage(message);
+			player.sendMessage(message);
 	       	return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;

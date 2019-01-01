@@ -66,8 +66,8 @@ public class EntityCitrine extends EntityQuartzSoldier implements IAnimals {
 	private int chargeTicks = 0;
 	private int hitCount = 0;
 	
-	public EntityCitrine(World worldIn) {
-		super(worldIn);
+	public EntityCitrine(World world) {
+		super(world);
 		
 		// Define valid cuts and placements.
 		this.setCutPlacement(GemCuts.FACETED, GemPlacements.BACK_OF_HEAD);
@@ -185,7 +185,7 @@ public class EntityCitrine extends EntityQuartzSoldier implements IAnimals {
      * Methods related to entity combat.                     *
      *********************************************************/
 	@Override
-	public boolean attackEntityAsMob(Entity entityIn) {
+	public boolean attackEntityAsMob(Entity entity) {
 		if (!this.world.isRemote) {
 			this.chargeTicks += 20;
 			this.hitCount += 1;
@@ -199,16 +199,16 @@ public class EntityCitrine extends EntityQuartzSoldier implements IAnimals {
 			if (this.isCharged()) {
 				AxisAlignedBB axisalignedbb = (new AxisAlignedBB(this.posX, this.posY, this.posZ, (this.posX + 1), (this.posY + 1), (this.posZ + 1))).grow(12.0, this.world.getHeight(), 12.0);
 	            List<EntityLivingBase> list = this.world.<EntityLivingBase>getEntitiesWithinAABB(EntityLivingBase.class, axisalignedbb);
-	            for (EntityLivingBase entity : list) {
-	            	if (this.isOwner(entity)) {
-	            		entity.addPotionEffect(new PotionEffect(MobEffects.HASTE, 80));
-	    				entity.addPotionEffect(new PotionEffect(MobEffects.SPEED, 80));
-	    				entity.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 80));
+	            for (EntityLivingBase living : list) {
+	            	if (this.isOwner(living)) {
+	            		living.addPotionEffect(new PotionEffect(MobEffects.HASTE, 80));
+	            		living.addPotionEffect(new PotionEffect(MobEffects.SPEED, 80));
+	    				living.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 80));
 	            	}
 	            	else {
 		            	boolean shouldHeal = true;
-		            	if (entity instanceof EntityGem) {
-		            		EntityGem gem = (EntityGem) entity;
+		            	if (living instanceof EntityGem) {
+		            		EntityGem gem = (EntityGem)(living);
 		            		if (this.getServitude() == gem.getServitude()) {
 		            			if (this.getServitude() == EntityGem.SERVE_HUMAN) {
 		            				shouldHeal = this.isOwnerId(gem.getOwnerId());
@@ -219,15 +219,15 @@ public class EntityCitrine extends EntityQuartzSoldier implements IAnimals {
 		            		}
 		            	}
 		            	if (shouldHeal) {
-		            		entity.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 80));
-		    				entity.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80));
-		    				entity.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 80));
+		            		living.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 80));
+		            		living.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80));
+		            		living.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 80));
 		            	}
 		            	else {
 		            		if (smite) {
-			            		EntityLightningBolt lightningBolt = new EntityLightningBolt(this.world, entity.posX, entity.posY, entity.posZ, true);
-			            		this.world.addWeatherEffect(lightningBolt);
-			            		entity.setFire(12);
+			            		EntityLightningBolt lightning = new EntityLightningBolt(this.world, living.posX, living.posY, living.posZ, true);
+			            		this.world.addWeatherEffect(lightning);
+			            		living.setFire(12);
 			            	}
 		            	}
 	            	}
@@ -238,14 +238,14 @@ public class EntityCitrine extends EntityQuartzSoldier implements IAnimals {
 	        }
 			else {
 				if (smite) {
-            		EntityLightningBolt lightningBolt = new EntityLightningBolt(this.world, entityIn.posX, entityIn.posY, entityIn.posZ, true);
+            		EntityLightningBolt lightningBolt = new EntityLightningBolt(this.world, entity.posX, entity.posY, entity.posZ, true);
             		this.world.addWeatherEffect(lightningBolt);
-            		entityIn.setFire(12);
+            		entity.setFire(12);
             	}
 			}
 		}
 		
-		return super.attackEntityAsMob(entityIn);
+		return super.attackEntityAsMob(entity);
 	}
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {

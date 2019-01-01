@@ -47,8 +47,8 @@ public class EntityEmerald extends EntityGem implements IAnimals {
 	public static final int HAIR_COLOR_END = 0x10532F;
 	private static final int NUM_HAIRSTYLES = 1;
 	
-	public EntityEmerald(World worldIn) {
-		super(worldIn);
+	public EntityEmerald(World world) {
+		super(world);
 		this.isSoldier = true;
 		this.nativeColor = 13;
 		this.setSize(0.9F, 2.9F);

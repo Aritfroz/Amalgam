@@ -7,8 +7,6 @@ import mod.akrivus.kagic.init.ModCreativeTabs;
 import mod.akrivus.kagic.util.PoofDamage;
 import mod.amalgam.entity.EntityBubble;
 import mod.amalgam.entity.EntityGemShard;
-import mod.amalgam.init.AmConfigs;
-import mod.amalgam.init.AmSounds;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -18,7 +16,6 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -39,21 +36,19 @@ public class ItemGemDestabilizer extends ItemSword {
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		player.swingArm(hand);
 		if (!world.isRemote) {
-			if (AmConfigs.enableBubblingNoGem) {
-				List<EntityItem> items = world.<EntityItem>getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(1, 1, 1));
-				for (EntityItem item : items) {
-					EntityBubble bubble = new EntityBubble(world);
-					bubble.setColor(EntityGemShard.PARTICLE_COLORS[this.color]);
-					bubble.setItem(item.getItem());
-					bubble.setPosition(item.posX, item.posY, item.posZ);
-					bubble.setHealth(0.5F);
-					bubble.motionY = world.rand.nextDouble() / 2;
-					bubble.playBubbleSound();
-					item.setDead();
-					world.spawnEntity(bubble);
-				}
-				return EnumActionResult.SUCCESS;
+			List<EntityItem> items = world.<EntityItem>getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(pos).grow(1, 1, 1));
+			for (EntityItem item : items) {
+				EntityBubble bubble = new EntityBubble(world);
+				bubble.setColor(EntityGemShard.PARTICLE_COLORS[this.color]);
+				bubble.setItem(item.getItem());
+				bubble.setPosition(item.posX, item.posY, item.posZ);
+				bubble.setHealth(0.5F);
+				bubble.motionY = world.rand.nextDouble() / 2;
+				bubble.playBubbleSound();
+				item.setDead();
+				world.spawnEntity(bubble);
 			}
+			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.PASS;
 	}

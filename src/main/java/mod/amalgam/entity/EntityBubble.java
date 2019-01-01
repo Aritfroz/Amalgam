@@ -4,8 +4,8 @@ import java.util.List;
 
 import mod.akrivus.kagic.entity.EntityGem;
 import mod.akrivus.kagic.items.ItemGem;
-import mod.amalgam.init.AmConfigs;
 import mod.amalgam.init.AmSounds;
+import mod.amalgam.items.ItemGemDestabilizer;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -25,8 +25,8 @@ import net.minecraft.world.World;
 public class EntityBubble extends EntityLiving {
 	private static final DataParameter<NBTTagCompound> ITEM = EntityDataManager.<NBTTagCompound>createKey(EntityBubble.class, DataSerializers.COMPOUND_TAG);
 	private static final DataParameter<Integer> COLOR = EntityDataManager.<Integer>createKey(EntityBubble.class, DataSerializers.VARINT);
-	public EntityBubble(World worldIn) {
-		super(worldIn);
+	public EntityBubble(World world) {
+		super(world);
 		this.setSize(0.8F, 0.8F);
 		this.dataManager.register(ITEM, ItemStack.EMPTY.serializeNBT());
 		this.dataManager.register(COLOR, 0xFFFFFF);
@@ -67,7 +67,7 @@ public class EntityBubble extends EntityLiving {
 				}
 			}
 			if (!player.isSneaking()) {
-				if (AmConfigs.enableBubblingNoGem || gem != null) {
+				if (gem != null || player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemGemDestabilizer) {
 					BlockPos location = player.getBedLocation(player.dimension);
 					if (location == null) {
 						return false;

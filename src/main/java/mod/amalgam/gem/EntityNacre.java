@@ -72,8 +72,8 @@ public class EntityNacre extends EntityPearl implements INpc {
 	public int ticksUntilSneeze;
 	public int totalExpected;
 	
-	public EntityNacre(World worldIn) {
-		super(worldIn);
+	public EntityNacre(World world) {
+		super(world);
 		this.setSize(0.6F, 2.5F);
 		this.nativeColor = 9;
 		Iterator<EntityAITaskEntry> it = this.tasks.taskEntries.iterator();
@@ -267,7 +267,7 @@ public class EntityNacre extends EntityPearl implements INpc {
 		return false;
     }
 	@Override
-	public boolean canPickUpItem(Item itemIn) {
+	public boolean canPickUpItem(Item item) {
 		return false;
 	}
 	@Override

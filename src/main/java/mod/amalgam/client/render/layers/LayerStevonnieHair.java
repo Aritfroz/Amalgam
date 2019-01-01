@@ -1,7 +1,6 @@
 package mod.amalgam.client.render.layers;
 
 import mod.amalgam.human.EntityStevonnie;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;

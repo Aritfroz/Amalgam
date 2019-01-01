@@ -14,11 +14,11 @@ public class EntityAIFollowLeaderGem extends EntityAIBase {
 	private final Class<? extends EntityGem> filter;
     private final double followSpeed;
     private float oldWaterCost;
-    public EntityAIFollowLeaderGem(EntityGem followerIn, double followSpeedIn, GemPlacements placement, Class<? extends EntityGem> filter) {
-        this.follower = followerIn;
+    public EntityAIFollowLeaderGem(EntityGem follower, double followSpeed, GemPlacements placement, Class<? extends EntityGem> filter) {
+        this.follower = follower;
         this.placement = placement;
         this.filter = filter;
-        this.followSpeed = followSpeedIn;
+        this.followSpeed = followSpeed;
         this.setMutexBits(3);
     }
     @Override

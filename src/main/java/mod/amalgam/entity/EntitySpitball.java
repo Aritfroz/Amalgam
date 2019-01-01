@@ -29,8 +29,8 @@ public class EntitySpitball extends Entity {
     public double accelerationX;
     public double accelerationY;
     public double accelerationZ;
-    public EntitySpitball(World worldIn) {
-        super(worldIn);
+    public EntitySpitball(World world) {
+        super(world);
         this.setSize(1.0F, 1.0F);
     }
     @Override
@@ -43,8 +43,8 @@ public class EntitySpitball extends Entity {
         d0 = d0 * 64.0D;
         return distance < d0 * d0;
     }
-    public EntitySpitball(World worldIn, double x, double y, double z, double accelX, double accelY, double accelZ) {
-        super(worldIn);
+    public EntitySpitball(World world, double x, double y, double z, double accelX, double accelY, double accelZ) {
+        super(world);
         this.setSize(1.0F, 1.0F);
         this.setLocationAndAngles(x, y, z, this.rotationYaw, this.rotationPitch);
         this.setPosition(x, y, z);
@@ -52,8 +52,8 @@ public class EntitySpitball extends Entity {
         this.accelerationY = accelY;
         this.accelerationZ = accelZ;
     }
-    public EntitySpitball(World worldIn, EntityLivingBase shooter, double accelX, double accelY, double accelZ) {
-        super(worldIn);
+    public EntitySpitball(World world, EntityLivingBase shooter, double accelX, double accelY, double accelZ) {
+        super(world);
         this.shootingEntity = shooter;
         this.setSize(1.0F, 1.0F);
         this.setLocationAndAngles(shooter.posX, shooter.posY, shooter.posZ, shooter.rotationYaw, shooter.rotationPitch);

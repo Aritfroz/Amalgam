@@ -46,8 +46,8 @@ public class EntityConnie extends EntityHuman {
 	public boolean hasFood = true;
 	private int lastHiltTime;
 	public boolean silent;
-	public EntityConnie(World worldIn) {
-		super(worldIn);
+	public EntityConnie(World world) {
+		super(world);
 		this.setSize(0.5F, 1.6F);
 		this.dataManager.register(SHEATHED, new ItemStack(Items.IRON_SWORD));
 		this.dataManager.register(CLOTHING, this.rand.nextInt(CLOTHING_MAX));

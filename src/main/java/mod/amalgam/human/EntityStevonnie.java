@@ -54,8 +54,8 @@ public class EntityStevonnie extends EntityCreature implements INpc {
 	private NBTTagCompound connie;
 	public boolean changedWeapons;
 	private int lastHiltTime;
-	public EntityStevonnie(World worldIn) {
-		super(worldIn);
+	public EntityStevonnie(World world) {
+		super(world);
 		this.setSize(0.9F, 1.8F);
 		this.dataManager.register(SHEATHED, new ItemStack(Items.IRON_SWORD));
 		this.dataManager.register(CLOTHING, this.rand.nextInt(4));

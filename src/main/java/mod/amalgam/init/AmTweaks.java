@@ -195,7 +195,7 @@ public class AmTweaks {
 		}
 		protected static void alterCruxes() {
 			EntityPearl.PEARL_YIELDS.clear();
-			if (AmConfigs.removePearlCruxes && AmConfigs.enableNacre) {
+			if (AmConfigs.enableNacre) {
 				ModEntities.MINERALS.remove(EntityPearl.class);
 			}
 			else {
@@ -339,15 +339,13 @@ public class AmTweaks {
 	public static class Ruby extends Gem<EntityRuby> {
 		private static final AttributeModifier NERF_HEALTH = new AttributeModifier(UUID.fromString("13c28c04-36d0-48ae-b269-46d008707b31"), "amNerfHealth",  -60, 0);
 		protected static void tweak(EntityRuby gem) {
-			if (AmConfigs.socializeRubies) {
-				gem.tasks.addTask(4, new EntityAIFollowLeaderGem(gem, 0.8D, GemPlacements.NOSE, EntityJasper.class));
-				gem.tasks.addTask(4, new EntityAIFollowLeaderGem(gem, 0.8D, GemPlacements.CHEST, EntityPyrite.class));
-				gem.tasks.addTask(4, new EntityAIFollowLeaderGem(gem, 0.8D, GemPlacements.CHEST, EntityRuby.class));
-				gem.tasks.addTask(4, new EntityAIFollowOtherGem(gem, 0.8D, EntityBabyPearl.class));
-				gem.tasks.addTask(4, new EntityAIFollowOtherGem(gem, 0.8D, EntityFusedRuby.class));
-				gem.tasks.addTask(4, new EntityAIFollowOtherGem(gem, 0.8D, EntityFusedPyrite.class));
-				gem.targetTasks.addTask(2, new EntityAICallForBackup(gem, EntityRuby.class));
-			}
+			gem.tasks.addTask(4, new EntityAIFollowLeaderGem(gem, 0.8D, GemPlacements.NOSE, EntityJasper.class));
+			gem.tasks.addTask(4, new EntityAIFollowLeaderGem(gem, 0.8D, GemPlacements.CHEST, EntityPyrite.class));
+			gem.tasks.addTask(4, new EntityAIFollowLeaderGem(gem, 0.8D, GemPlacements.CHEST, EntityRuby.class));
+			gem.tasks.addTask(4, new EntityAIFollowOtherGem(gem, 0.8D, EntityBabyPearl.class));
+			gem.tasks.addTask(4, new EntityAIFollowOtherGem(gem, 0.8D, EntityFusedRuby.class));
+			gem.tasks.addTask(4, new EntityAIFollowOtherGem(gem, 0.8D, EntityFusedPyrite.class));
+			gem.targetTasks.addTask(2, new EntityAICallForBackup(gem, EntityRuby.class));
 			apply(gem);
 		}
 		protected static void apply(EntityRuby gem) {

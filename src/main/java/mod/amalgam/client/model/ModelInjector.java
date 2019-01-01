@@ -132,7 +132,7 @@ public class ModelInjector extends ModelBase {
         this.leg4.rotateAngleZ = 0;
     }
     @Override
-	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
     	this.resetRotationAngles();
     	this.leg1.rotateAngleY +=  Math.abs(MathHelper.sin(limbSwing * 0.6662F + 3.14F) * 0.8F) * limbSwingAmount;
     	this.leg2.rotateAngleY += -Math.abs(MathHelper.sin(limbSwing * 0.6662F + 3.14F) * 0.8F) * limbSwingAmount;

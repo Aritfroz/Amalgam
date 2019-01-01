@@ -60,8 +60,8 @@ public class EntityAquaAuraQuartz extends EntityQuartzSoldier implements IAnimal
 	private int chargeTicks = 0;
 	private int hitCount = 0;
 	
-	public EntityAquaAuraQuartz(World worldIn) {
-		super(worldIn);
+	public EntityAquaAuraQuartz(World world) {
+		super(world);
 		this.nativeColor = 3;
 		
 		// Define valid cuts and placements.
@@ -167,12 +167,12 @@ public class EntityAquaAuraQuartz extends EntityQuartzSoldier implements IAnimal
      * Methods related to entity combat.                     *
      *********************************************************/
 	@Override
-	public boolean attackEntityAsMob(Entity entityIn) {
+	public boolean attackEntityAsMob(Entity entity) {
 		if (!this.world.isRemote) {
 			this.chargeTicks += 20;
 			this.hitCount += 1;
 		}
-		return super.attackEntityAsMob(entityIn);
+		return super.attackEntityAsMob(entity);
 	}
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {

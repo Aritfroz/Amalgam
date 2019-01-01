@@ -6,9 +6,10 @@ import java.util.Iterator;
 
 import mod.akrivus.kagic.entity.EntityGem;
 import mod.akrivus.kagic.event.DrainBlockEvent;
+import mod.akrivus.kagic.init.ModBlocks;
 import mod.akrivus.kagic.util.injector.ExitHole;
 import mod.amalgam.init.AmBlocks;
-import mod.amalgic.init.AmGems;
+import mod.amalgam.init.AmGems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -106,7 +107,7 @@ public class InjectorResult {
 		EntityGem gem = AmGems.GEM_LIST.get(key);
 		ExitHole exit = null;
 		if (generate) {
-			exit = ExitHole.create(world, pos, gem.height);
+			exit = ExitHole.create(world, pos, gem.height, random > (volume * 0.8));
 			exit.emerge(world);
 			for (int y = -2; y < 2; ++y) {
 				for (int x = -2; x < 2; ++x) {
@@ -116,7 +117,7 @@ public class InjectorResult {
 				}
 			}
 		}
-		return new InjectorResult(gem, pos, random < (volume * 0.1), random > (volume * 0.8), exit);
+		return new InjectorResult(gem, pos, random < (volume * 0.1), random > (volume * 0.8), exit, null);
 	}
 	public static void drain(World world, BlockPos pos) {
 		IBlockState state = world.getBlockState(pos);
@@ -126,17 +127,17 @@ public class InjectorResult {
 		if (state.getBlockHardness(world, pos) >= 0) {
 			if (material == Material.ROCK || state.isFullCube()) {
 				if (pos.getY() % 6 == 0 || pos.getY() % 6 == 1) {
-					world.setBlockState(pos, AmBlocks.DRAINED_BLOCK.getDefaultState().withProperty(BlockDrained.BAND, 0));
+					world.setBlockState(pos, ModBlocks.DRAINED_BLOCK_2.getDefaultState());
 				}
 				else if (pos.getY() % 5 == 0) {
-					world.setBlockState(pos, AmBlocks.DRAINED_BLOCK.getDefaultState().withProperty(BlockDrained.BAND, 1));
+					world.setBlockState(pos, ModBlocks.DRAINED_BANDS.getDefaultState());
 				}
 				else {
-					world.setBlockState(pos, AmBlocks.DRAINED_BLOCK.getDefaultState().withProperty(BlockDrained.BAND, 2));
+					world.setBlockState(pos, ModBlocks.DRAINED_BLOCK.getDefaultState());
 				}
 			}
 			if (material == Material.SAND) {
-				world.setBlockState(pos, AmBlocks.DRAINED_GRAVEL.getDefaultState());
+				world.setBlockState(pos, ModBlocks.DRAINED_GRAVEL.getDefaultState());
 			}
 			if (material == Material.PLANTS) {
 				world.setBlockState(pos, AmBlocks.DRAIN_LILY.getDefaultState());

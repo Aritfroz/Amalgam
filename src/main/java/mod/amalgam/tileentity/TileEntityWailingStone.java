@@ -2,7 +2,6 @@ package mod.amalgam.tileentity;
 
 import java.util.List;
 
-import mod.amalgam.init.AmConfigs;
 import mod.amalgam.init.AmSounds;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
@@ -64,7 +63,7 @@ public class TileEntityWailingStone extends TileEntity implements ITickable {
 		this.wailing = compound.getBoolean("wailing");
 	}
 	public boolean isWailing() {
-		return AmConfigs.enableWailingStones && (this.wailing || this.world.isBlockPowered(this.pos)) && this.world.isAirBlock(this.pos.up());
+		return (this.wailing || this.world.isBlockPowered(this.pos)) && this.world.isAirBlock(this.pos.up());
 	}
 	public void setWailing(boolean wailing) {
 		this.wailing = wailing;

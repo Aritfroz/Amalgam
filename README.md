@@ -60,7 +60,7 @@ Click [here](https://discord.gg/SMjxZQ7) to join us!
 ### Setup
 1. Install the above prerequisites.
 2. Run command: `git clone https://github.com/Akrivus/Amalgam.git`
-3. In repository folder, run: `.\gradlew setupDecompWorkspace`
+3.  repository folder, run: `.\gradlew setupDecompWorkspace`
 4. Run `.\gradlew eclipse` or `.\gradlew idea` depending on your IDE.
 5. Amalgam is now installed.
 

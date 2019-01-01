@@ -14,7 +14,7 @@ public class RenderGemShard extends RenderLiving<EntityGemShard> {
     public RenderGemShard() {
         super(Minecraft.getMinecraft().getRenderManager(), new ModelBiped() {
         	@Override
-			public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+			public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
         		return;
         	}
         }, 0.25F);

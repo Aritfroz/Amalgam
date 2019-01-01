@@ -1,10 +1,10 @@
 package mod.amalgam.client.model;
 
-import mod.akrivus.kagic.client.model.ModelGem;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelEmerald extends ModelGem {
+public class ModelEmerald extends ModelBiped {
 	private ModelRenderer bipedLeftShoulder;
 	private ModelRenderer bipedRightShoulder;
 	private ModelRenderer bipedHair;
@@ -12,7 +12,7 @@ public class ModelEmerald extends ModelGem {
 	private ModelRenderer bipedHips;
 	
     public ModelEmerald() {
-		super(0F, 0F, 64, 64, false, -1F);
+		super(0F, 0F, 64, 64);
         this.bipedHead = new ModelRenderer(this, 28, 14);
         this.bipedHead.setRotationPoint(0.0F, -7.0F, 0.3F);
         this.bipedHead.addBox(-4.0F, -8.0F, -4.7F, 8, 8, 8, 0.0F);
@@ -74,8 +74,8 @@ public class ModelEmerald extends ModelGem {
     	this.bipedWaist.render(scale);
     }
     @Override
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 		super.copyModelAngles(this.bipedHead, this.bipedHeadwear);
     	this.bipedBody.rotateAngleZ = 0.7853981633974483F;
     	this.bipedRightShoulder.rotateAngleZ = -0.5235987755982988F;

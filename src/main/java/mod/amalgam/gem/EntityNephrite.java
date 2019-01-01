@@ -63,8 +63,8 @@ public class EntityNephrite extends EntityGem implements IAnimals {
 	private static final int HAIR_COLOR_BEGIN = 0xFCFEED;
 	private static final int HAIR_COLOR_END = 0xE8FCCF;
 	
-	public EntityNephrite(World worldIn) {
-		super(worldIn);
+	public EntityNephrite(World world) {
+		super(world);
 		this.setSize(0.6F, 1.9F);
 		this.isImmuneToFire = true;
 		this.isSoldier = true;

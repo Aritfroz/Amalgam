@@ -1,16 +1,12 @@
 package mod.amalgam.client.render;
 
 import mod.akrivus.kagic.client.render.RenderGemBase;
-import mod.akrivus.kagic.client.render.layers.LayerBirthdayHat;
 import mod.akrivus.kagic.client.render.layers.LayerGemPlacement;
 import mod.akrivus.kagic.client.render.layers.LayerHair;
 import mod.akrivus.kagic.client.render.layers.LayerInsignia;
-import mod.akrivus.kagic.client.render.layers.LayerSantaHat;
 import mod.akrivus.kagic.client.render.layers.LayerSkin;
 import mod.akrivus.kagic.client.render.layers.LayerUniform;
 import mod.akrivus.kagic.client.render.layers.LayerVisor;
-import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
-import mod.akrivus.kagic.init.KAGIC;
 import mod.amalgam.client.model.ModelEmerald;
 import mod.amalgam.client.render.layers.LayerEmeraldItem;
 import mod.amalgam.gem.EntityEmerald;

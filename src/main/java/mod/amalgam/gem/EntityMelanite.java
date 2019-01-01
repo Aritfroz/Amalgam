@@ -131,15 +131,15 @@ public class EntityMelanite extends EntityGem implements IAnimals {
     }
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
-        if (super.attackEntityAsMob(entityIn)) {
-            if (entityIn instanceof EntityLivingBase) {
+    public boolean attackEntityAsMob(Entity entity) {
+        if (super.attackEntityAsMob(entity)) {
+            if (entity instanceof EntityLivingBase) {
                 if(!this.isDefective()) {
                     if(this.isPrimary()) {
-                        ((EntityLivingBase)entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, 200));
+                        ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 200));
                     }
                     else {
-                        ((EntityLivingBase)entityIn).addPotionEffect(new PotionEffect(MobEffects.WITHER, 100));
+                        ((EntityLivingBase)entity).addPotionEffect(new PotionEffect(MobEffects.WITHER, 100));
                     }
                 }
             }

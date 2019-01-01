@@ -1,22 +1,18 @@
 package mod.amalgam.client.model;
 
-import mod.akrivus.kagic.client.model.ModelGem;
-import mod.akrivus.kagic.init.KAGIC;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelNacre extends ModelGem {
+public class ModelNacre extends ModelBiped {
 	private ModelRenderer bipedShell;
 	private ModelRenderer bipedSkirt;
 	private ModelRenderer bipedNose;
 	public ModelNacre() {
-		super(0.0F, 0.0F, 96, 96, false, -1F);
+		super(0.0F, 0.0F, 96, 96);
 		this.bipedHead = new ModelRenderer(this, 0, 0);
 		this.bipedHead.addBox(-4F, -8F, -4F, 8, 8, 8);
 		this.bipedHead.setRotationPoint(0F, 0F, 0F);
-		if (KAGIC.isHalloween() || KAGIC.isBirthday() || KAGIC.isChristmas()) {
-			this.bipedHead.addChild(this.witchHat);
-		}
 		this.bipedHeadwear = new ModelRenderer(this, 32, 0);
 		this.bipedHeadwear.addBox(-4F, -8F, -4F, 8, 8, 8, 1.1F);
 		this.bipedHeadwear.setRotationPoint(0F, 0F, 0F);

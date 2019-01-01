@@ -12,9 +12,9 @@ public class EntityAIFollowFusedTopaz extends EntityAIBase {
 	private EntityTopaz gem;
     private final double followSpeed;
     private float oldWaterCost;
-    public EntityAIFollowFusedTopaz(EntityLiving follower, double followSpeedIn) {
+    public EntityAIFollowFusedTopaz(EntityLiving follower, double followSpeed) {
         this.follower = follower;
-        this.followSpeed = followSpeedIn;
+        this.followSpeed = followSpeed;
         this.setMutexBits(3);
     }
     @Override

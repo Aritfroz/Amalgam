@@ -55,8 +55,8 @@ public class EntityFusedTopaz extends EntityFusionGem implements IAnimals {
 	private static final DataParameter<Boolean> HOLDING = EntityDataManager.<Boolean>createKey(EntityFusedTopaz.class, DataSerializers.BOOLEAN);
 	private ArrayList<EntityLivingBase> heldEntities = new ArrayList<EntityLivingBase>();
 	
-	public EntityFusedTopaz(World worldIn) {
-		super(worldIn);
+	public EntityFusedTopaz(World world) {
+		super(world);
 		this.setSize(1.8F, 4.6F);
 		// Apply entity AI.
 		this.stayAI = new EntityAIStay(this);
@@ -288,13 +288,13 @@ public class EntityFusedTopaz extends EntityFusionGem implements IAnimals {
 		super.onLivingUpdate();
 	}
 	@Override
-	protected void collideWithEntity(Entity entityIn) {
+	protected void collideWithEntity(Entity entity) {
 		if (this.heldEntities.isEmpty()) {
-			super.collideWithEntity(entityIn);
+			super.collideWithEntity(entity);
 		}
 	}
 	@Override
-	protected void playStepSound(BlockPos pos, Block blockIn) {
+	protected void playStepSound(BlockPos pos, Block block) {
         this.playSound(SoundEvents.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
     }
 	@Override

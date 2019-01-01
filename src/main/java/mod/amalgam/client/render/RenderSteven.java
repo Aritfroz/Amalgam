@@ -1,9 +1,5 @@
 package mod.amalgam.client.render;
 
-import mod.akrivus.kagic.client.render.layers.LayerBirthdayHat;
-import mod.akrivus.kagic.client.render.layers.LayerSantaHat;
-import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
-import mod.akrivus.kagic.init.KAGIC;
 import mod.amalgam.client.model.ModelSteven;
 import mod.amalgam.client.render.layers.LayerCheeseburgerBackpack;
 import mod.amalgam.client.render.layers.LayerStevenItem;

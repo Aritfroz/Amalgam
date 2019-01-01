@@ -76,8 +76,8 @@ public class EntityGemShard extends EntityMob {
 		0xFD4813,
 		0x2E2941
 	};
-	public EntityGemShard(World worldIn) {
-		super(worldIn);
+	public EntityGemShard(World world) {
+		super(world);
 		this.setSize(0.8F, 1.6F);
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIAttackMelee(this, 0.8F, false));

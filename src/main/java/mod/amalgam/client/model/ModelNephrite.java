@@ -1,20 +1,16 @@
 package mod.amalgam.client.model;
 
-import mod.akrivus.kagic.client.model.ModelGem;
-import mod.akrivus.kagic.init.KAGIC;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelNephrite extends ModelGem {
+public class ModelNephrite extends ModelBiped {
 	public ModelNephrite() {
-		super(0.0F, 0.0F, 64, 64, false, -1F);
+		super(0.0F, 0.0F, 64, 64);
 		// Head.
 		this.bipedHead = new ModelRenderer(this, 0, 0);
 		this.bipedHead.addBox(-4F, -8F, -4F, 8, 8, 8);
 		this.bipedHead.setRotationPoint(0F, 0F, 0F);
-		if (KAGIC.isHalloween() || KAGIC.isBirthday() || KAGIC.isChristmas()) {
-			this.bipedHead.addChild(this.witchHat);
-		}
 		
 		// Hair.
 		this.bipedHeadwear = new ModelRenderer(this, 32, 0);
@@ -43,8 +39,8 @@ public class ModelNephrite extends ModelGem {
 		this.bipedLeftLeg.setRotationPoint(0F, 12F, 0F);
 	}
 	@Override
-	public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 		this.bipedHead.render(scale);
 		this.bipedHeadwear.render(scale);
 		this.bipedBody.render(scale);

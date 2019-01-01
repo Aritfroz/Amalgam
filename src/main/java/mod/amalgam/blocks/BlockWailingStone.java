@@ -57,7 +57,7 @@ public class BlockWailingStone extends BlockFalling implements ITileEntityProvid
 		world.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
 	}
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		TileEntity container = world.getTileEntity(pos);
 		if (container != null && container instanceof TileEntityWailingStone) {
 			TileEntityWailingStone wailingStone = (TileEntityWailingStone) container;
@@ -125,8 +125,8 @@ public class BlockWailingStone extends BlockFalling implements ITileEntityProvid
 		return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
 	}
 	@Override
-	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-		return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
+	public IBlockState withMirror(IBlockState state, Mirror mirror) {
+		return state.withRotation(mirror.toRotation((EnumFacing)state.getValue(FACING)));
 	}
 	@Override
 	protected BlockStateContainer createBlockState() {

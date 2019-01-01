@@ -63,8 +63,8 @@ public class EntityTourmaline extends EntityGem implements IAnimals {
 	public static final int HAIR_COLOR_END = 0x537066; 
 	private static final int NUM_HAIRSTYLES = 1;
 	
-	public EntityTourmaline(World worldIn) {
-		super(worldIn);
+	public EntityTourmaline(World world) {
+		super(world);
 		this.setSize(0.9F, 1.6F);
 		this.isSoldier = true;
 		this.nativeColor = 3;

@@ -69,8 +69,8 @@ public class EntitySteven extends EntityCreature implements IInventoryChangedLis
 	public InventoryBasic backpack;
 	public InvWrapper backpackHandler;
 	public boolean silent;
-	public EntitySteven(World worldIn) {
-		super(worldIn);
+	public EntitySteven(World world) {
+		super(world);
 		this.setSize(0.5F, 1.5F);
 		this.dataManager.register(BACKPACKED, false);
 		this.dataManager.register(WRISTBAND, true);

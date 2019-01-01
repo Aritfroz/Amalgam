@@ -3,8 +3,6 @@ package mod.amalgam.client.render.layers;
 import mod.amalgam.client.render.RenderPalanquin;
 import mod.amalgam.entity.EntityPalanquin;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.GlStateManager.DestFactor;
-import net.minecraft.client.renderer.GlStateManager.SourceFactor;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.ResourceLocation;

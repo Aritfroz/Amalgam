@@ -29,12 +29,12 @@ public class ItemConnieBracelet extends ModRecord {
 		this.setCreativeTab(ModCreativeTabs.CREATIVE_TAB_OTHER);
 	}
 	@Override
-	public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		EnumActionResult result = super.onItemUse(playerIn, worldIn, pos, hand, facing, hitX, hitY, hitZ);
-		if (result == EnumActionResult.PASS && !worldIn.isRemote) {
+	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		EnumActionResult result = super.onItemUse(player, world, pos, hand, facing, hitX, hitY, hitZ);
+		if (result == EnumActionResult.PASS && !world.isRemote) {
 			ITextComponent message = new TextComponentTranslation(String.format("command.amalgam.connie_doesnt_spawn"));
 			message.getStyle().setColor(TextFormatting.GRAY);
-			playerIn.sendMessage(message);
+			player.sendMessage(message);
 	       	return EnumActionResult.SUCCESS;
 		}
 		return result;
@@ -48,7 +48,7 @@ public class ItemConnieBracelet extends ModRecord {
     }
 	@Override
 	@SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+    public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
 		
     }
     @Override

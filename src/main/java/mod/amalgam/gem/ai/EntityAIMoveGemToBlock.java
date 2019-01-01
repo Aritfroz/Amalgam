@@ -15,9 +15,9 @@ public abstract class EntityAIMoveGemToBlock extends EntityAIBase {
     protected BlockPos destinationBlock = BlockPos.ORIGIN;
     private boolean isAboveDestination;
     private final int searchLength;
-    public EntityAIMoveGemToBlock(EntityCreature creature, double speedIn, int length) {
+    public EntityAIMoveGemToBlock(EntityCreature creature, double speed, int length) {
         this.creature = creature;
-        this.movementSpeed = speedIn;
+        this.movementSpeed = speed;
         this.searchLength = length;
         this.setMutexBits(5);
     }
@@ -80,5 +80,5 @@ public abstract class EntityAIMoveGemToBlock extends EntityAIBase {
         }
         return this.destinationBlock != null;
     }
-    protected abstract boolean shouldMoveTo(World worldIn, BlockPos pos);
+    protected abstract boolean shouldMoveTo(World world, BlockPos pos);
 }

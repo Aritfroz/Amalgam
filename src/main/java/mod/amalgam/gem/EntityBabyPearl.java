@@ -25,8 +25,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.oredict.DyeUtils;
 
 public class EntityBabyPearl extends EntityPearl implements INpc {
-	public EntityBabyPearl(World worldIn) {
-		super(worldIn);
+	public EntityBabyPearl(World world) {
+		super(world);
 		this.setSize(0.3F, 0.95F);
 		this.stepHeight = 0.5F;
 		this.tasks.addTask(3, new EntityAIFollowOtherGem(this, 0.9D, EntityNacre.class));

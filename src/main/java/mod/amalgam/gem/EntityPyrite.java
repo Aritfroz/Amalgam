@@ -59,8 +59,8 @@ public class EntityPyrite extends EntityGem implements IAnimals {
 	private static final int HAIR_COLOR_BEGIN = 0x94522C;
 	private static final int HAIR_COLOR_END = 0x72522C; 
 	private static final int NUM_HAIRSTYLES = 1;
-	public EntityPyrite(World worldIn) {
-		super(worldIn);
+	public EntityPyrite(World world) {
+		super(world);
 		this.setSize(0.7F, 1.8F);
 		this.isImmuneToFire = true;
 		this.isSoldier = true;

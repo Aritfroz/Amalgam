@@ -1,19 +1,15 @@
 package mod.amalgam.client.model;
 
-import mod.akrivus.kagic.client.model.ModelGem;
-import mod.akrivus.kagic.init.KAGIC;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelTourmaline extends ModelGem {
+public class ModelTourmaline extends ModelBiped {
     public ModelTourmaline() {
-    	super(0.0F, 0.0F, 70, 64, false, -1F);
+    	super(0.0F, 0.0F, 128, 64);
         this.bipedHead = new ModelRenderer(this, 0, 0);
         this.bipedHead.setRotationPoint(0.0F, 4.0F, 0.0F);
         this.bipedHead.addBox(-4.0F, -1.0F, -4.0F, 8, 8, 8, 0.0F);
-		if (KAGIC.isHalloween() || KAGIC.isBirthday() || KAGIC.isChristmas()) {
-			this.bipedHead.addChild(this.witchHat);
-		}
 		
         this.bipedHeadwear = new ModelRenderer(this, 32, 0);
         this.bipedHeadwear.setRotationPoint(0.0F, 4.0F, 0.0F);
@@ -40,8 +36,8 @@ public class ModelTourmaline extends ModelGem {
         this.bipedRightLeg.addBox(-1.0F, 4.0F, -1.0F, 2, 8, 2, 0.0F); 
     }
     @Override
-    public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 		this.bipedHead.render(scale);
 		this.bipedHeadwear.render(scale);
 		this.bipedBody.render(scale);
@@ -51,7 +47,7 @@ public class ModelTourmaline extends ModelGem {
 		this.bipedRightLeg.render(scale);
 	}
     @Override
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 	}
 }

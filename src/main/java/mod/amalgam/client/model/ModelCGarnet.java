@@ -1,10 +1,10 @@
 package mod.amalgam.client.model;
 
-import mod.akrivus.kagic.client.model.ModelGem;
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelCGarnet extends ModelGem {
+public class ModelCGarnet extends ModelBiped {
     public ModelRenderer bipedLeftCalve;
     public ModelRenderer bipedRightCalve;
     public ModelRenderer bipedCape;
@@ -12,7 +12,7 @@ public class ModelCGarnet extends ModelGem {
     public ModelRenderer bipedHips;
     
     public ModelCGarnet() {
-		super(0F, 0F, 64, 64, false, -1F);
+		super(0F, 0F, 64, 64);
         this.bipedHead = new ModelRenderer(this, 0, 0);
         this.bipedHead.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.bipedHead.addBox(-6.0F, -12.0F, -4.0F, 12, 12, 8, 0.0F);
