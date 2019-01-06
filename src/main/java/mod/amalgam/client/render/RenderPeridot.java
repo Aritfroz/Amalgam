@@ -9,12 +9,12 @@ import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.client.render.layers.LayerUniform;
 import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.gem.EntityPeridot;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderPeridot extends RenderGemBase<EntityPeridot> {
-	public RenderPeridot() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelPeridot(), 0.25F);
+	public RenderPeridot(RenderManager manager) {
+        super(manager, new ModelPeridot(), 0.25F);
         this.addLayer(new LayerPeridotItem(this));
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerUniform(this));

@@ -14,6 +14,7 @@ import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
+import mod.amalgam.entity.EntityAmalgam;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
 import mod.heimrarnadalr.kagic.util.Colors;
@@ -34,7 +35,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class EntityEmerald extends EntityGem implements IAnimals {
+public class EntityEmerald extends EntityAmalgam implements IAnimals {
 	public static final HashMap<IBlockState, Double> EMERALD_YIELDS = new HashMap<IBlockState, Double>();
 	public static final double EMERALD_DEFECTIVITY_MULTIPLIER = 2;
 	public static final double EMERALD_DEPTH_THRESHOLD = 64;

@@ -10,13 +10,13 @@ import mod.akrivus.kagic.client.render.layers.LayerVisor;
 import mod.amalgam.client.model.ModelEmerald;
 import mod.amalgam.client.render.layers.LayerEmeraldItem;
 import mod.amalgam.gem.EntityEmerald;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderEmerald extends RenderGemBase<EntityEmerald> {
-	public RenderEmerald() {
-		super(Minecraft.getMinecraft().getRenderManager(), new ModelEmerald(), 0.5F);
+	public RenderEmerald(RenderManager manager) {
+		super(manager, new ModelEmerald(), 0.5F);
 		this.addLayer(new LayerEmeraldItem(this));
 		this.addLayer(new LayerSkin(this));
 		this.addLayer(new LayerHair(this));

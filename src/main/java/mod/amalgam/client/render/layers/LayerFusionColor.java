@@ -36,7 +36,7 @@ public class LayerFusionColor implements LayerRenderer<EntityFusionGem> {
 		float r = (float) ((fusionColor & 16711680) >> 16) / 255f;
 		float g = (float) ((fusionColor & 65280) >> 8) / 255f;
 		float b = (float) ((fusionColor & 255) >> 0) / 255f;
-		//KAGIC.instance.chatInfoMessage("Skin color is " + r + " , " + g + " , " + b);
+		//Amalgic.instance.chatInfoMessage("Skin color is " + r + " , " + g + " , " + b);
 		GlStateManager.color(r+ this.offset, g + this.offset, b + this.offset, 1f);
 		//GlStateManager.enableBlend();
 		//GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);

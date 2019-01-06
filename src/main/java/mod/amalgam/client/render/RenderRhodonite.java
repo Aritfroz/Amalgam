@@ -7,14 +7,14 @@ import mod.amalgam.client.render.layers.LayerNoDyeOverlay;
 import mod.amalgam.client.render.layers.LayerRhodoniteItem;
 import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.gem.fusion.EntityRhodonite;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderRhodonite extends RenderGemBase<EntityRhodonite> {
 
-	public RenderRhodonite() {
-		super(Minecraft.getMinecraft().getRenderManager(), new ModelRhodonite(), 0.5F);
+	public RenderRhodonite(RenderManager manager) {
+		super(manager, new ModelRhodonite(), 0.5F);
 		this.addLayer(new LayerRhodoniteItem(this));
 		this.addLayer(new LayerSkin(this));
 		this.addLayer(new LayerHair(this));

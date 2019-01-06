@@ -7,11 +7,11 @@ import mod.amalgam.gem.EntityAquaAuraQuartz;
 import mod.amalgam.gem.EntityCitrine;
 import mod.amalgam.gem.EntityEmerald;
 import mod.amalgam.gem.EntityEnderPearl;
+import mod.amalgam.gem.EntityMelanite;
 import mod.amalgam.gem.EntityNacre;
 import mod.amalgam.gem.EntityNephrite;
 import mod.amalgam.gem.EntityPyrite;
-import mod.amalgam.gem.EntityTourmaline;
-import mod.amalgam.gem.fusion.EntityMelanite;
+import mod.amalgam.gem.EntityWatermelonTourmaline;
 import mod.amalgam.injection.CruxEntry;
 import net.minecraft.init.Blocks;
 
@@ -136,12 +136,12 @@ public class AmCruxes {
 			ModEntities.registerOreDictValue(EntityAquaAuraQuartz.AQUA_AURA_QUARTZ_YIELDS, 1.00, "endstone");
 		}
 		if (AmConfigs.enableWatermelonTourmaline) {
-			EntityTourmaline.WTOURMALINE_YIELDS.put(Blocks.MELON_BLOCK.getDefaultState(), 9.00);
-			ModEntities.registerOreDictValue(EntityTourmaline.WTOURMALINE_YIELDS, 0.25, "stoneGranite");
-			ModEntities.registerOreDictValue(EntityTourmaline.WTOURMALINE_YIELDS, 0.25, "stoneMarble");
-			ModEntities.registerOreDictValue(EntityTourmaline.WTOURMALINE_YIELDS, 0.50, "oreLithium");
-			ModEntities.registerOreDictValue(EntityTourmaline.WTOURMALINE_YIELDS, 9.00, "blockTourmaline");
-			ModEntities.registerOreDictValue(EntityTourmaline.WTOURMALINE_YIELDS, 4.50, "oreTourmaline");
+			EntityWatermelonTourmaline.WTOURMALINE_YIELDS.put(Blocks.MELON_BLOCK.getDefaultState(), 9.00);
+			ModEntities.registerOreDictValue(EntityWatermelonTourmaline.WTOURMALINE_YIELDS, 0.25, "stoneGranite");
+			ModEntities.registerOreDictValue(EntityWatermelonTourmaline.WTOURMALINE_YIELDS, 0.25, "stoneMarble");
+			ModEntities.registerOreDictValue(EntityWatermelonTourmaline.WTOURMALINE_YIELDS, 0.50, "oreLithium");
+			ModEntities.registerOreDictValue(EntityWatermelonTourmaline.WTOURMALINE_YIELDS, 9.00, "blockTourmaline");
+			ModEntities.registerOreDictValue(EntityWatermelonTourmaline.WTOURMALINE_YIELDS, 4.50, "oreTourmaline");
 		}
 		if (AmConfigs.enableMelanite) {
 			ModEntities.registerOreDictValue(EntityMelanite.MELANITE_YIELDS, 9.00, "blockMelanite");

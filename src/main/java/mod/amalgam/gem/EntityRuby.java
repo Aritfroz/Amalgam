@@ -18,7 +18,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
 import mod.amalgam.gem.fusion.EntityGarnet;
@@ -169,8 +169,8 @@ public class EntityRuby extends EntityAmalgam implements IAnimals {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
-        this.droppedGemItem = ModItems.RUBY_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_RUBY_GEM;
+        this.droppedGemItem = AmItems.RUBY_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_RUBY_GEM;
         
         // Register entity data.
         this.dataManager.register(ANGER, 0);

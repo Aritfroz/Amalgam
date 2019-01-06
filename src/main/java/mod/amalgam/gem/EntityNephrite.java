@@ -17,6 +17,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.EntityHessonite;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
+import mod.amalgam.entity.EntityAmalgam;
 import mod.amalgam.entity.EntitySpitball;
 import mod.amalgam.gem.ai.EntityAICallForBackup;
 import mod.amalgam.gem.ai.EntityAIFollowLeaderGem;
@@ -53,7 +54,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class EntityNephrite extends EntityGem implements IAnimals {
+public class EntityNephrite extends EntityAmalgam implements IAnimals {
 	public static final HashMap<IBlockState, Double> NEPHRITE_YIELDS = new HashMap<IBlockState, Double>();
 	public static final double NEPHRITE_DEFECTIVITY_MULTIPLIER = 1;
 	public static final double NEPHRITE_DEPTH_THRESHOLD = 0;

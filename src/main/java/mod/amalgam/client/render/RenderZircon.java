@@ -10,12 +10,12 @@ import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.client.render.layers.LayerZirconHair;
 import mod.amalgam.client.render.layers.LayerZirconItem;
 import mod.amalgam.gem.EntityZircon;
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderZircon extends RenderGemBase<EntityZircon> {
-	public RenderZircon() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelZircon(), 0.25F);
+	public RenderZircon(RenderManager manager) {
+        super(manager, new ModelZircon(), 0.25F);
         this.addLayer(new LayerZirconItem(this));
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerUniform(this));

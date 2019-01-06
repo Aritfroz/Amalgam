@@ -11,13 +11,12 @@ import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 
 public class RenderGemBase<T extends EntityGem> extends RenderBiped<T> {
-	public RenderGemBase(RenderManager renderManager, ModelBiped modelBiped, float shadowSize) {
-		super(renderManager, modelBiped, shadowSize);
-
-		for (Iterator<LayerRenderer<T>> iter = this.layerRenderers.iterator(); iter.hasNext();) {
-			LayerRenderer layer = iter.next();
+	public RenderGemBase(RenderManager manager, ModelBiped model, float shadowSize) {
+		super(manager, model, shadowSize);
+		for (Iterator<LayerRenderer<T>> it = this.layerRenderers.iterator(); it.hasNext();) {
+			LayerRenderer layer = it.next();
 			if (layer instanceof LayerHeldItem) {
-				iter.remove();
+				it.remove();
 			}
 		}
 	}

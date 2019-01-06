@@ -12,15 +12,15 @@ import mod.amalgam.client.render.layers.LayerQuartzCape;
 import mod.amalgam.client.render.layers.LayerUniform;
 import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.gem.EntityAgate;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderAgate extends RenderGemBase<EntityAgate> {
 	private static final float OFFSET = .0f;
 
-	public RenderAgate() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelAgate(), 0.25F);
+	public RenderAgate(RenderManager manager) {
+        super(manager, new ModelAgate(), 0.25F);
 		this.addLayer(new LayerAgateItem(this));
         this.addLayer(new LayerAgateHair(this));
         this.addLayer(new LayerNoDyeOverlay(this));

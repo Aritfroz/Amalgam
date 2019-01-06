@@ -12,11 +12,11 @@ import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.akrivus.kagic.items.ItemGem;
 import mod.akrivus.kagic.items.ItemGemStaff;
-import mod.akrivus.kagic.util.KAGICEnchantmentUtils;
+import mod.akrivus.kagic.util.AmalgicEnchantmentUtils;
 import mod.amalgam.entity.EntityAmalgam;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
@@ -83,8 +83,8 @@ public class EntityZircon extends EntityAmalgam implements INpc {
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
-		this.droppedGemItem = ModItems.ZIRCON_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_ZIRCON_GEM;
+		this.droppedGemItem = AmItems.ZIRCON_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_ZIRCON_GEM;
 	}
 
 	protected int generateGemColor() {
@@ -153,72 +153,72 @@ public class EntityZircon extends EntityAmalgam implements INpc {
 	public void onDeath(DamageSource cause) {
 		switch (this.getInsigniaColor()) {
 		case 0:
-			this.droppedGemItem = ModItems.WHITE_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_WHITE_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.WHITE_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_WHITE_ZIRCON_GEM;
 			break;
 		case 1:
-			this.droppedGemItem = ModItems.ORANGE_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_ORANGE_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.ORANGE_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_ORANGE_ZIRCON_GEM;
 			break;
 		case 2:
-			this.droppedGemItem = ModItems.MAGENTA_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_MAGENTA_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.MAGENTA_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_MAGENTA_ZIRCON_GEM;
 			break;
 		case 3:
-			this.droppedGemItem = ModItems.LIGHT_BLUE_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_LIGHT_BLUE_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.LIGHT_BLUE_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_LIGHT_BLUE_ZIRCON_GEM;
 			break;
 		case 4:
-			this.droppedGemItem = ModItems.YELLOW_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_YELLOW_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.YELLOW_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_YELLOW_ZIRCON_GEM;
 			break;
 		case 5:
-			this.droppedGemItem = ModItems.LIME_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_LIME_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.LIME_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_LIME_ZIRCON_GEM;
 			break;
 		case 6:
-			this.droppedGemItem = ModItems.PINK_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_PINK_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.PINK_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_PINK_ZIRCON_GEM;
 			break;
 		case 7:
-			this.droppedGemItem = ModItems.GRAY_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_GRAY_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.GRAY_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_GRAY_ZIRCON_GEM;
 			break;
 		case 8:
-			this.droppedGemItem = ModItems.LIGHT_GRAY_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_LIGHT_GRAY_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.LIGHT_GRAY_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_LIGHT_GRAY_ZIRCON_GEM;
 			break;
 		case 9:
-			this.droppedGemItem = ModItems.CYAN_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_CYAN_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.CYAN_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_CYAN_ZIRCON_GEM;
 			break;
 		case 10:
-			this.droppedGemItem = ModItems.PURPLE_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_PURPLE_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.PURPLE_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_PURPLE_ZIRCON_GEM;
 			break;
 		case 11:
-			this.droppedGemItem = ModItems.BLUE_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_BLUE_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.BLUE_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_BLUE_ZIRCON_GEM;
 			break;
 		case 12:
-			this.droppedGemItem = ModItems.BROWN_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_BROWN_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.BROWN_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_BROWN_ZIRCON_GEM;
 			break;
 		case 13:
-			this.droppedGemItem = ModItems.GREEN_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_GREEN_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.GREEN_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_GREEN_ZIRCON_GEM;
 			break;
 		case 14:
-			this.droppedGemItem = ModItems.RED_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_RED_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.RED_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_RED_ZIRCON_GEM;
 			break;
 		case 15:
-			this.droppedGemItem = ModItems.BLACK_ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_BLACK_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.BLACK_ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_BLACK_ZIRCON_GEM;
 			break;
 		default:
-			this.droppedGemItem = ModItems.ZIRCON_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_ZIRCON_GEM;
+			this.droppedGemItem = AmItems.ZIRCON_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_ZIRCON_GEM;
 		}
 		super.onDeath(cause);
 	}
@@ -295,7 +295,7 @@ public class EntityZircon extends EntityAmalgam implements INpc {
 			return playerStack;
 		}
 		Map<Enchantment, Integer> existingEnchantments = EnchantmentHelper.getEnchantments(playerStack);
-		Enchantment enchantment = KAGICEnchantmentUtils.getFirstNonconflicting(enchantments, existingEnchantments);
+		Enchantment enchantment = AmalgicEnchantmentUtils.getFirstNonconflicting(enchantments, existingEnchantments);
 		if (enchantment == null) {
 			return playerStack;
 		}

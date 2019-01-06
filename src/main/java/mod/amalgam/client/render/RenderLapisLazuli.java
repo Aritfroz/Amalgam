@@ -9,13 +9,13 @@ import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.client.render.layers.LayerUniform;
 import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.gem.EntityLapisLazuli;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderLapisLazuli extends RenderGemBase<EntityLapisLazuli> {
-	public RenderLapisLazuli() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelLapisLazuli(), 0.25F);
+	public RenderLapisLazuli(RenderManager manager) {
+        super(manager, new ModelLapisLazuli(), 0.25F);
         this.addLayer(new LayerLapisLazuliItem(this));
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerHair(this));

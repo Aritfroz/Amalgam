@@ -11,9 +11,10 @@ import mod.akrivus.kagic.entity.ai.EntityAIProtectionFuse;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
 import mod.akrivus.kagic.init.ModBlocks;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.akrivus.kagic.items.ItemGem;
+import mod.amalgam.entity.EntityQuartz;
 import mod.amalgam.gem.fusion.EntityRainbowQuartz;
 import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.block.state.IBlockState;
@@ -108,8 +109,8 @@ public class EntityRoseQuartz extends EntityQuartz implements INpc {
 		// Apply entity attributes.
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D);
 
-		this.droppedGemItem = ModItems.ROSE_QUARTZ_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_ROSE_QUARTZ_GEM;
+		this.droppedGemItem = AmItems.ROSE_QUARTZ_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_ROSE_QUARTZ_GEM;
 	}
 
 	protected int generateGemColor() {
@@ -144,7 +145,7 @@ public class EntityRoseQuartz extends EntityQuartz implements INpc {
 				Item item = stack.getItem();
 				if (item instanceof ItemGem) {
 					if (((ItemGem) item).isCracked) {
-						ItemStack result = new ItemStack(ModItems.GEM_TABLE.get(item));
+						ItemStack result = new ItemStack(AmItems.GEM_TABLE.get(item));
 						result.setTagCompound(stack.getTagCompound());
 						this.entityDropItem(result, 1);
 						if (!player.capabilities.isCreativeMode) {
@@ -202,7 +203,7 @@ public class EntityRoseQuartz extends EntityQuartz implements INpc {
 		if (!this.world.isRemote) {
 			if (cause.getTrueSource() != null) {
 				if (!this.isOwner((EntityLivingBase) cause.getTrueSource())) {
-					this.dropItem(ModItems.RECORD_ROSES_FOUNTAIN, 1);
+					this.dropItem(AmItems.RECORD_ROSES_FOUNTAIN, 1);
 				}
 			}
 		}

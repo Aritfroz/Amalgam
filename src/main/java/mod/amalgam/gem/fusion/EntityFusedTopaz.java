@@ -10,7 +10,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtTarget;
 import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
 import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -80,8 +80,8 @@ public class EntityFusedTopaz extends EntityFusionGem implements IAnimals {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
         this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
-        this.droppedGemItem = ModItems.TOPAZ_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_TOPAZ_GEM;
+        this.droppedGemItem = AmItems.TOPAZ_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_TOPAZ_GEM;
 		this.dataManager.register(HOLDING, false);
 	}
 	@Override

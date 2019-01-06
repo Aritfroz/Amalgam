@@ -12,15 +12,15 @@ import mod.amalgam.client.render.layers.LayerRutileSkin;
 import mod.amalgam.client.render.layers.LayerRutileUniform;
 import mod.amalgam.client.render.layers.LayerRutileVisor;
 import mod.amalgam.gem.EntityRutile;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderRutile extends RenderGemBase<EntityRutile> {
 	private ModelBiped normalRutile = new ModelRutile();
 	private ModelBiped twinRutile = new ModelTwinRutile();
-	public RenderRutile() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelNothing(), 0.25F);
+	public RenderRutile(RenderManager manager) {
+        super(manager, new ModelNothing(), 0.25F);
         this.addLayer(new LayerRutileModel(this));
         this.addLayer(new LayerRutileItem(this));
         this.addLayer(new LayerRutileSkin(this));

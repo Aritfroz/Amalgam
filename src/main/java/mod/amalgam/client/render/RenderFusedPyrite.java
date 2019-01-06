@@ -11,26 +11,26 @@ import mod.akrivus.kagic.client.render.layers.LayerSkin;
 import mod.akrivus.kagic.client.render.layers.LayerUniform;
 import mod.akrivus.kagic.client.render.layers.LayerVisor;
 import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
-import mod.akrivus.kagic.init.KAGIC;
+import mod.akrivus.kagic.init.Amalgic;
 import mod.amalgam.gem.fusion.EntityFusedPyrite;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderFusedPyrite extends RenderGemBase<EntityFusedPyrite> {
-	public RenderFusedPyrite() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelRuby(), 0.25F);
+	public RenderFusedPyrite(RenderManager manager) {
+        super(manager, new ModelRuby(), 0.25F);
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerUniform(this));
         this.addLayer(new LayerInsignia(this));
         this.addLayer(new LayerVisor(this));
         this.addLayer(new LayerHair(this));
 		this.addLayer(new LayerCrossFusionGemPlacement(this));
-		if (KAGIC.isBirthday()) {
+		if (Amalgic.isBirthday()) {
 			this.addLayer(new LayerBirthdayHat(this));
-		} else if (KAGIC.isHalloween()) {
+		} else if (Amalgic.isHalloween()) {
 			this.addLayer(new LayerWitchHat(this));
-		} else if (KAGIC.isChristmas()) {
+		} else if (Amalgic.isChristmas()) {
 			this.addLayer(new LayerSantaHat(this));
 		}
     }

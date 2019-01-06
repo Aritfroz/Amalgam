@@ -104,7 +104,13 @@ public class InjectorResult {
 				break;
 			}
 		}
-		EntityGem gem = AmGems.GEM_LIST.get(key);
+		EntityGem gem = null;
+		try {
+			gem = (EntityGem)(AmGems.GEM_LIST.get(key).getConstructors()[0].newInstance(world));
+		} catch (Exception e) {
+			System.out.println("Gem called '" + key + "' failed to load!");
+			return null;
+		}
 		ExitHole exit = null;
 		if (generate) {
 			exit = ExitHole.create(world, pos, gem.height, random > (volume * 0.8));

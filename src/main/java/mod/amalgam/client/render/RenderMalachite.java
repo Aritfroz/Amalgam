@@ -8,15 +8,15 @@ import mod.amalgam.client.render.layers.LayerMalachiteItem;
 import mod.amalgam.client.render.layers.LayerMalachiteMark;
 import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.client.render.layers.LayerUniform;
-import mod.amalgam.gem.EntityMalachite;
-import net.minecraft.client.Minecraft;
+import mod.amalgam.gem.fusion.EntityMalachite;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderMalachite extends RenderGemBase<EntityMalachite> {
 
-	public RenderMalachite() {
-		super(Minecraft.getMinecraft().getRenderManager(), new ModelMalachite(), 3F);
+	public RenderMalachite(RenderManager manager) {
+		super(manager, new ModelMalachite(), 3F);
 		
 		this.addLayer(new LayerMalachiteItem(this));
 		this.addLayer(new LayerSkin(this));

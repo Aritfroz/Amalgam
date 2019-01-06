@@ -9,13 +9,13 @@ import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.client.render.layers.LayerUniform;
 import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.gem.EntityAquamarine;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderAquamarine extends RenderGemBase<EntityAquamarine> {
-	public RenderAquamarine() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelAquamarine(), 0.25F);
+	public RenderAquamarine(RenderManager manager) {
+        super(manager, new ModelAquamarine(), 0.25F);
         this.addLayer(new LayerAquamarineItem(this));
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerUniform(this));

@@ -7,14 +7,14 @@ import mod.amalgam.client.render.layers.LayerRainbowQuartzItem;
 import mod.amalgam.client.render.layers.LayerRainbowQuartzShawl;
 import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.gem.fusion.EntityRainbowQuartz;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderRainbowQuartz extends RenderGemBase<EntityRainbowQuartz> {
 
-	public RenderRainbowQuartz() {
-		super(Minecraft.getMinecraft().getRenderManager(), new ModelRainbowQuartz(), 0.75F);
+	public RenderRainbowQuartz(RenderManager manager) {
+		super(manager, new ModelRainbowQuartz(), 0.75F);
 		this.addLayer(new LayerRainbowQuartzItem(this));
 		this.addLayer(new LayerSkin(this));
 		this.addLayer(new LayerNoDyeOverlay(this));

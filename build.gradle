@@ -24,7 +24,6 @@ dependencies {
 
 minecraft {
     replace "@version", project.version
-    replace "Amalgam.java"
     version = "1.12.2-14.23.5.2796"
     runDir = "run"
     mappings = "snapshot_20171003"

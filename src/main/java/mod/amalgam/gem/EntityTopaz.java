@@ -12,7 +12,7 @@ import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
 import net.minecraft.block.Block;
@@ -105,8 +105,8 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
         this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
-        this.droppedGemItem = ModItems.TOPAZ_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_TOPAZ_GEM;
+        this.droppedGemItem = AmItems.TOPAZ_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_TOPAZ_GEM;
 		this.dataManager.register(HOLDING, false);
 	}
 
@@ -486,12 +486,12 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
 	}
 	public void onDeath(DamageSource cause) {
 		if (this.getSpecial() == 1) {
-			this.droppedGemItem = ModItems.BLUE_TOPAZ_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_BLUE_TOPAZ_GEM;
+			this.droppedGemItem = AmItems.BLUE_TOPAZ_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_BLUE_TOPAZ_GEM;
 		}
 		else {
-			this.droppedGemItem = ModItems.TOPAZ_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_TOPAZ_GEM;
+			this.droppedGemItem = AmItems.TOPAZ_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_TOPAZ_GEM;
 		}
 		super.onDeath(cause);
 	}

@@ -11,7 +11,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
 import mod.akrivus.kagic.init.ModEnchantments;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
 import mod.heimrarnadalr.kagic.util.Colors;
@@ -93,8 +93,8 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(200.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
-        this.droppedGemItem = ModItems.BISMUTH_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_BISMUTH_GEM;
+        this.droppedGemItem = AmItems.BISMUTH_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_BISMUTH_GEM;
 	}
 
 
@@ -188,7 +188,7 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
 								else {
 									this.entityDropItem(result, 0.0F);
 								}
-								/*if (result.getItem() == ModItems.ACTIVATED_GEM_BASE) {
+								/*if (result.getItem() == AmItems.ACTIVATED_GEM_BASE) {
 									this.getOwner().addStat(ModAchievements.GEM_FORGER);
 								}*/
 								if (!player.capabilities.isCreativeMode) {
@@ -273,7 +273,7 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
 					NBTTagList enchantments = heldItem.getEnchantmentTagList();
 					for (int i = 0; i < enchantments.tagCount(); i++) {
 						if (enchantments.getCompoundTagAt(i).getInteger("id") == Enchantment.getEnchantmentID(ModEnchantments.BREAKING_POINT)) {
-							this.dropItem(ModItems.RECORD_THE_BREAKING_POINT, 1);
+							this.dropItem(AmItems.RECORD_THE_BREAKING_POINT, 1);
 						}
 					}
 				}

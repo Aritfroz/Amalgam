@@ -1,10 +1,10 @@
 # Amalgam
-Amalgam is KAGIC if it took a fully fan-focused direction. Many of the new content straddles the lines of headcanon and falls into fanon for the sake of idealogical experimentation, surrealism, and gameplay benefit.
+Amalgam is Amalgic if it took a fully fan-focused direction. Many of the new content straddles the lines of headcanon and falls into fanon for the sake of idealogical experimentation, surrealism, and gameplay benefit.
 
-Because of its experimental and head-forward nature, Amalgam _may_ cause issues with pre-existing gameplay mechanics in vanilla KAGIC, and if done with an unsupported version, can lead to catastrophic consequences.
+Because of its experimental and head-forward nature, Amalgam _may_ cause issues with pre-existing gameplay mechanics in vanilla Amalgic, and if done with an unsupported version, can lead to catastrophic consequences.
 
 ## Dependencies
-Amalgam requires KAGIC 1.10.1, also called **X11p12** or **X11p13**, and Java SE 8, to operate.
+Amalgam requires Amalgic 1.10.1, also called **X11p12** or **X11p13**, and Java SE 8, to operate.
 
 ## Additions
 * Drain Lilies, spawned when bushes are drained.
@@ -53,7 +53,7 @@ Click [here](https://discord.gg/SMjxZQ7) to join us!
 
 ## Development
 ### Prerequisites
-1. KAGIC 1.10.1 should already be installed and loaded by the buildscript.
+1. Amalgic 1.10.1 should already be installed and loaded by the buildscript.
 2. JDK 8 - [Download.](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 3. Git - [Download.](https://git-scm.com/downloads)
 

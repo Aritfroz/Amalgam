@@ -11,7 +11,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
 import mod.heimrarnadalr.kagic.util.Colors;
@@ -88,8 +88,8 @@ public class EntityAquamarine extends EntityAmalgam implements IAnimals {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(1.0D);
-        this.droppedGemItem = ModItems.AQUAMARINE_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_AQUAMARINE_GEM;
+        this.droppedGemItem = AmItems.AQUAMARINE_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_AQUAMARINE_GEM;
 	}
 	protected PathNavigate createNavigator(World world) {
         return new PathNavigateFlying(this, world);

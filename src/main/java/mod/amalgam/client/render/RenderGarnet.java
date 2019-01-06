@@ -8,14 +8,14 @@ import mod.amalgam.client.render.layers.LayerHair;
 import mod.amalgam.client.render.layers.LayerNoDyeOverlay;
 import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.gem.fusion.EntityGarnet;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderGarnet extends RenderGemBase<EntityGarnet> {
 
-	public RenderGarnet() {
-		super(Minecraft.getMinecraft().getRenderManager(), new ModelGarnet(), 0.5F);
+	public RenderGarnet(RenderManager manager) {
+		super(manager, new ModelGarnet(), 0.5F);
 		
 		this.addLayer(new LayerGarnetItem(this));
 		this.addLayer(new LayerSkin(this));

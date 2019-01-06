@@ -10,13 +10,13 @@ import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.client.render.layers.LayerUniform;
 import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.gem.EntityRuby;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderRuby extends RenderGemBase<EntityRuby> {
-	public RenderRuby() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelRuby(), 0.3F);
+	public RenderRuby(RenderManager manager) {
+        super(manager, new ModelRuby(), 0.3F);
         this.addLayer(new LayerRubyItem(this));
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerUniform(this));

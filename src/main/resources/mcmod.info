@@ -2,7 +2,7 @@
 	{
 		"modid": "amalgam",
 		"name": "Amalgam",
-		"description": "The spiritual re-incarnation of KAGIC X, adding headcanon and experimental features.",
+		"description": "The spiritual re-incarnation of Amalgic X, adding headcanon and experimental features.",
 		"version": "${version}",
 		"mcversion": "1.12.2",
 		"authorList": ["Akrivus"],

@@ -1,23 +1,18 @@
 package mod.amalgam.client.render;
 
+import mod.amalgam.client.model.ModelNothing;
 import mod.amalgam.entity.EntityGemShard;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderGemShard extends RenderLiving<EntityGemShard> {
-    public RenderGemShard() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelBiped() {
-        	@Override
-			public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-        		return;
-        	}
-        }, 0.25F);
+    public RenderGemShard(RenderManager manager) {
+        super(manager, new ModelNothing(), 0.25F);
     }
     @Override
 	public void doRender(EntityGemShard entity, double x, double y, double z, float entityYaw, float partialTicks) {

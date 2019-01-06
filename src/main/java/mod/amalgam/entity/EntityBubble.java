@@ -5,7 +5,7 @@ import java.util.List;
 import mod.akrivus.kagic.entity.EntityGem;
 import mod.akrivus.kagic.items.ItemGem;
 import mod.amalgam.init.AmSounds;
-import mod.amalgam.items.ItemGemDestabilizer;
+import mod.amalgam.items.ItemDestabilizer;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -67,7 +67,7 @@ public class EntityBubble extends EntityLiving {
 				}
 			}
 			if (!player.isSneaking()) {
-				if (gem != null || player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemGemDestabilizer) {
+				if (gem != null || player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemDestabilizer) {
 					BlockPos location = player.getBedLocation(player.dimension);
 					if (location == null) {
 						return false;

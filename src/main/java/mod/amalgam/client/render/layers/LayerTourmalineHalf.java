@@ -1,18 +1,18 @@
 package mod.amalgam.client.render.layers;
 
-import mod.amalgam.client.render.RenderTourmaline;
-import mod.amalgam.gem.EntityTourmaline;
+import mod.amalgam.client.render.RenderWatermelonTourmaline;
+import mod.amalgam.gem.EntityWatermelonTourmaline;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
 
-public class LayerTourmalineHalf implements LayerRenderer<EntityTourmaline> {
-	private final RenderTourmaline renderer;
-	public LayerTourmalineHalf(RenderTourmaline renderer) {
+public class LayerTourmalineHalf implements LayerRenderer<EntityWatermelonTourmaline> {
+	private final RenderWatermelonTourmaline renderer;
+	public LayerTourmalineHalf(RenderWatermelonTourmaline renderer) {
 		this.renderer = renderer;
 	}
 	@Override
-	public void doRenderLayer(EntityTourmaline gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+	public void doRenderLayer(EntityWatermelonTourmaline gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.renderer.bindTexture(this.getTexture(gem));
 		int skin = gem.getLowerColor();
 		float red = ((skin & 16711680) >> 16) / 255f;
@@ -22,7 +22,7 @@ public class LayerTourmalineHalf implements LayerRenderer<EntityTourmaline> {
         this.renderer.getMainModel().render(gem, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 		GlStateManager.disableBlend();
 	}
-	public ResourceLocation getTexture(EntityTourmaline gem) {
+	public ResourceLocation getTexture(EntityWatermelonTourmaline gem) {
 		return new ResourceLocation("amalgam:textures/entities/wtourmaline/half.png");
 	}
 	@Override

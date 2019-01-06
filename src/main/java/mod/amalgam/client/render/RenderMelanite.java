@@ -2,26 +2,22 @@ package mod.amalgam.client.render;
 
 import mod.akrivus.kagic.client.model.ModelHessonite;
 import mod.akrivus.kagic.client.render.RenderGemBase;
-import mod.akrivus.kagic.client.render.layers.LayerBirthdayHat;
 import mod.akrivus.kagic.client.render.layers.LayerGemPlacement;
 import mod.akrivus.kagic.client.render.layers.LayerHair;
 import mod.akrivus.kagic.client.render.layers.LayerInsignia;
 import mod.akrivus.kagic.client.render.layers.LayerQuartzItem;
-import mod.akrivus.kagic.client.render.layers.LayerSantaHat;
 import mod.akrivus.kagic.client.render.layers.LayerSkin;
 import mod.akrivus.kagic.client.render.layers.LayerUniform;
 import mod.akrivus.kagic.client.render.layers.LayerVisor;
-import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
-import mod.akrivus.kagic.init.KAGIC;
 import mod.amalgam.client.render.layers.LayerMelaniteCape;
-import mod.amalgam.gem.fusion.EntityMelanite;
-import net.minecraft.client.Minecraft;
+import mod.amalgam.gem.EntityMelanite;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderMelanite extends RenderGemBase<EntityMelanite> {
-    public RenderMelanite() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelHessonite(), 0.5F);
+    public RenderMelanite(RenderManager manager) {
+        super(manager, new ModelHessonite(), 0.5F);
         this.addLayer(new LayerQuartzItem(this));
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerHair(this));
@@ -30,13 +26,6 @@ public class RenderMelanite extends RenderGemBase<EntityMelanite> {
         this.addLayer(new LayerMelaniteCape(this, true, true));
         this.addLayer(new LayerVisor(this));
         this.addLayer(new LayerGemPlacement(this));
-        if (KAGIC.isBirthday()) {
-            this.addLayer(new LayerBirthdayHat(this));
-        } else if (KAGIC.isHalloween()) {
-            this.addLayer(new LayerWitchHat(this));
-        } else if (KAGIC.isChristmas()) {
-            this.addLayer(new LayerSantaHat(this));
-        }
     }
     @Override
     protected void preRenderCallback(EntityMelanite gem, float partialTickTime) {

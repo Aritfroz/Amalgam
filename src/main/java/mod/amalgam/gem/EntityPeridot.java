@@ -14,7 +14,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIPickUpItems;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
 import mod.amalgam.injection.InjectorResult;
@@ -129,8 +129,8 @@ public class EntityPeridot extends EntityAmalgam implements IInventoryChangedLis
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(200.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
-		this.droppedGemItem = ModItems.PERIDOT_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_PERIDOT_GEM;
+		this.droppedGemItem = AmItems.PERIDOT_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_PERIDOT_GEM;
 	}
 	
 	@Override
@@ -440,7 +440,7 @@ public class EntityPeridot extends EntityAmalgam implements IInventoryChangedLis
 	@Override
 	public void onStruckByLightning(EntityLightningBolt lightningBolt) {
 		if (!this.world.isRemote && !this.isDead) {
-			this.dropItem(ModItems.RECORD_LITTLE_PERIDOT, 1);
+			this.dropItem(AmItems.RECORD_LITTLE_PERIDOT, 1);
 		}
 	}
 	public boolean attackEntityFrom(DamageSource source, float amount) {

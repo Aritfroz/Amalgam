@@ -6,13 +6,14 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderSpitball extends Render<EntitySpitball> {
-	public RenderSpitball() {
-        super(Minecraft.getMinecraft().getRenderManager());
+	public RenderSpitball(RenderManager manager) {
+        super(manager);
     }
     @Override
 	public void doRender(EntitySpitball entity, double x, double y, double z, float entityYaw, float partialTicks) {

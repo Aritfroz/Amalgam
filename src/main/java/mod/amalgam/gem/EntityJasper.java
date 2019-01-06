@@ -13,9 +13,11 @@ import mod.akrivus.kagic.entity.ai.EntityAIProtectionFuse;
 import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.KAGIC;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.Amalgic;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
+import mod.amalgam.entity.EntityQuartz;
+import mod.amalgam.gem.fusion.EntityMalachite;
 import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -304,8 +306,8 @@ public class EntityJasper extends EntityQuartz implements IAnimals {
 		// Apply entity attributes.
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(16.0D);
 		
-		this.droppedGemItem = ModItems.JASPER_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_JASPER_GEM;
+		this.droppedGemItem = AmItems.JASPER_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_JASPER_GEM;
 		
 		// Register entity data.
 		this.dataManager.register(CHARGED, false);
@@ -431,7 +433,7 @@ public class EntityJasper extends EntityQuartz implements IAnimals {
 			biomeSpecial = 7;
 		}
 		special = this.rand.nextFloat() < 0.9 ? biomeSpecial : special;
-		if (KAGIC.isChristmas()) {
+		if (Amalgic.isChristmas()) {
 			special = this.rand.nextFloat() > 0.5 ? 8 : special;
 		}
 		this.itemDataToGemData(special);
@@ -621,54 +623,54 @@ public class EntityJasper extends EntityQuartz implements IAnimals {
 	public void onDeath(DamageSource cause) {
 		if (!this.world.isRemote) {
 			if (cause.getTrueSource() instanceof EntityAmethyst) {
-				this.dropItem(ModItems.RECORD_DUEL_OF_THE_QUARTZ, 1);
+				this.dropItem(AmItems.RECORD_DUEL_OF_THE_QUARTZ, 1);
 			}
 		}
 		switch (this.getSpecial()) {
 		case 0:
 			if (this.isPrimary()) {
-				this.droppedGemItem = ModItems.JASPER_GEM;
-				this.droppedCrackedGemItem = ModItems.CRACKED_JASPER_GEM;
+				this.droppedGemItem = AmItems.JASPER_GEM;
+				this.droppedCrackedGemItem = AmItems.CRACKED_JASPER_GEM;
 			} else {
-				this.droppedGemItem = ModItems.NOREENA_JASPER_GEM;
-				this.droppedCrackedGemItem = ModItems.CRACKED_NOREENA_JASPER_GEM;
+				this.droppedGemItem = AmItems.NOREENA_JASPER_GEM;
+				this.droppedCrackedGemItem = AmItems.CRACKED_NOREENA_JASPER_GEM;
 			}
 			break;
 		case 1:
-			this.droppedGemItem = ModItems.OCEAN_JASPER_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_OCEAN_JASPER_GEM;
+			this.droppedGemItem = AmItems.OCEAN_JASPER_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_OCEAN_JASPER_GEM;
 			break;
 		case 2:
-			this.droppedGemItem = ModItems.BIGGS_JASPER_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_BIGGS_JASPER_GEM;
+			this.droppedGemItem = AmItems.BIGGS_JASPER_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_BIGGS_JASPER_GEM;
 			break;
 		case 3:
-			this.droppedGemItem = ModItems.GREEN_JASPER_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_GREEN_JASPER_GEM;
+			this.droppedGemItem = AmItems.GREEN_JASPER_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_GREEN_JASPER_GEM;
 			break;
 		case 4:
-			this.droppedGemItem = ModItems.BRUNEAU_JASPER_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_BRUNEAU_JASPER_GEM;
+			this.droppedGemItem = AmItems.BRUNEAU_JASPER_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_BRUNEAU_JASPER_GEM;
 			break;
 		case 5:
-			this.droppedGemItem = ModItems.PURPLE_JASPER_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_PURPLE_JASPER_GEM;
+			this.droppedGemItem = AmItems.PURPLE_JASPER_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_PURPLE_JASPER_GEM;
 			break;
 		case 6:
-			this.droppedGemItem = ModItems.FLAME_JASPER_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_FLAME_JASPER_GEM;
+			this.droppedGemItem = AmItems.FLAME_JASPER_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_FLAME_JASPER_GEM;
 			break;
 		case 7:
-			this.droppedGemItem = ModItems.PICTURE_JASPER_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_PICTURE_JASPER_GEM;
+			this.droppedGemItem = AmItems.PICTURE_JASPER_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_PICTURE_JASPER_GEM;
 			break;
 		case 8:
-			this.droppedGemItem = ModItems.CANDY_CANE_JASPER_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_CANDY_CANE_JASPER_GEM;
+			this.droppedGemItem = AmItems.CANDY_CANE_JASPER_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_CANDY_CANE_JASPER_GEM;
 			break;
 		default:
-			this.droppedGemItem = ModItems.JASPER_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_JASPER_GEM;
+			this.droppedGemItem = AmItems.JASPER_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_JASPER_GEM;
 			break;
 		}
 		super.onDeath(cause);

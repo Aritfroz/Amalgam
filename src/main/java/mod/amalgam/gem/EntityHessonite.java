@@ -14,7 +14,7 @@ import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
 import mod.heimrarnadalr.kagic.util.Colors;
@@ -98,8 +98,8 @@ public class EntityHessonite extends EntityAmalgam implements IAnimals {
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
 		this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
-		this.droppedGemItem = ModItems.HESSONITE_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_HESSONITE_GEM;
+		this.droppedGemItem = AmItems.HESSONITE_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_HESSONITE_GEM;
 	}
 
 	@Override

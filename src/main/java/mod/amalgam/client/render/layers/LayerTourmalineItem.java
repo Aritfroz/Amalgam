@@ -1,7 +1,7 @@
 package mod.amalgam.client.render.layers;
 
 import mod.akrivus.kagic.client.render.RenderGemBase;
-import mod.amalgam.gem.EntityTourmaline;
+import mod.amalgam.gem.EntityWatermelonTourmaline;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,13 +14,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class LayerTourmalineItem implements LayerRenderer<EntityTourmaline> {
-	protected final RenderGemBase<EntityTourmaline> renderer;
-	public LayerTourmalineItem(RenderGemBase<EntityTourmaline> renderer) {
+public class LayerTourmalineItem implements LayerRenderer<EntityWatermelonTourmaline> {
+	protected final RenderGemBase<EntityWatermelonTourmaline> renderer;
+	public LayerTourmalineItem(RenderGemBase<EntityWatermelonTourmaline> renderer) {
 		this.renderer = renderer;
 	}
 	@Override
-	public void doRenderLayer(EntityTourmaline tourmaline, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+	public void doRenderLayer(EntityWatermelonTourmaline tourmaline, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		boolean flag = tourmaline.getPrimaryHand() == EnumHandSide.RIGHT;
 		ItemStack mainhand = flag ? tourmaline.getHeldItemOffhand() : tourmaline.getHeldItemMainhand();
 		ItemStack offhand = flag ? tourmaline.getHeldItemMainhand() : tourmaline.getHeldItemOffhand();

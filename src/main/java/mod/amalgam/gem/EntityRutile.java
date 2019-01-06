@@ -12,7 +12,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
 import mod.akrivus.kagic.init.ModBlocks;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
 import mod.heimrarnadalr.kagic.util.Colors;
@@ -109,12 +109,12 @@ public class EntityRutile extends EntityAmalgam implements INpc {
 	}
 	public void onDeath(DamageSource cause) {
 		if (this.isDefective()) {
-			this.droppedGemItem = ModItems.TWIN_RUTILE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_TWIN_RUTILE_GEM;
+			this.droppedGemItem = AmItems.TWIN_RUTILE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_TWIN_RUTILE_GEM;
 		}
 		else {
-			this.droppedGemItem = ModItems.RUTILE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_RUTILE_GEM;
+			this.droppedGemItem = AmItems.RUTILE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_RUTILE_GEM;
 		}
 		super.onDeath(cause); 
 	}

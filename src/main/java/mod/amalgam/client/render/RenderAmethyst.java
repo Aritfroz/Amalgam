@@ -10,13 +10,13 @@ import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.client.render.layers.LayerUniform;
 import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.gem.EntityAmethyst;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderAmethyst extends RenderGemBase<EntityAmethyst> {
-	public RenderAmethyst() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelQuartz(), 0.5F);
+	public RenderAmethyst(RenderManager manager) {
+        super(manager, new ModelQuartz(), 0.5F);
 		this.addLayer(new LayerQuartzItem(this));
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerUniform(this));

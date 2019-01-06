@@ -20,7 +20,7 @@ public class LayerRutileSkin implements LayerRenderer<EntityRutile> {
 		float r = (float) ((skin & 16711680) >> 16) / 255f;
 		float g = (float) ((skin & 65280) >> 8) / 255f;
 		float b = (float) ((skin & 255) >> 0) / 255f;
-		//KAGIC.instance.chatInfoMessage("Skin color is " + r + " , " + g + " , " + b);
+		//Amalgic.instance.chatInfoMessage("Skin color is " + r + " , " + g + " , " + b);
 		GlStateManager.color(r, g, b, 1f);
 		//GlStateManager.enableBlend();
 		//GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);

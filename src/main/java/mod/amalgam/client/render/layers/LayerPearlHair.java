@@ -23,7 +23,7 @@ public class LayerPearlHair implements LayerRenderer<EntityPearl> {
 			float r = (float) ((hair & 16711680) >> 16) / 255f;
 			float g = (float) ((hair & 65280) >> 8) / 255f;
 			float b = (float) ((hair & 255) >> 0) / 255f;
-			//KAGIC.instance.chatInfoMessage("Skin color is " + r + " , " + g + " , " + b);
+			//Amalgic.instance.chatInfoMessage("Skin color is " + r + " , " + g + " , " + b);
 			GlStateManager.color(r + this.OFFSET, g + this.OFFSET, b + this.OFFSET, 1f);
 			this.pearlModel.setModelAttributes(this.pearlRenderer.getMainModel());
 			this.pearlModel.render(gem, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);

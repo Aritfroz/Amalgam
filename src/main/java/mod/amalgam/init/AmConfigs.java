@@ -78,9 +78,12 @@ public class AmConfigs {
 	public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent e) {
 		if (e.getModID().equals(Amalgam.MODID)) {
 			ConfigManager.sync(Amalgam.MODID, Config.Type.INSTANCE);
-	    	ModConfigs.displayNames = AmConfigs.showDescriptors;
-	    	ModConfigs.spawnMeteorRubies = false;
-	    	ModConfigs.canRebel = false;
+			AmConfigs.register();
 		}
+	}
+	public static void register() {
+    	ModConfigs.displayNames = AmConfigs.showDescriptors;
+    	ModConfigs.spawnMeteorRubies = false;
+    	ModConfigs.canRebel = false;
 	}
 }

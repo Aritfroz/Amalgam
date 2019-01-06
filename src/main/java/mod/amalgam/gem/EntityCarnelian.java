@@ -10,8 +10,9 @@ import mod.akrivus.kagic.entity.EntityGem;
 import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
+import mod.amalgam.entity.EntityQuartz;
 import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -116,8 +117,8 @@ public class EntityCarnelian extends EntityQuartz implements IAnimals {
         // Apply entity attributes.
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(12.0D);
         
-        this.droppedGemItem = ModItems.CARNELIAN_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_CARNELIAN_GEM;
+        this.droppedGemItem = AmItems.CARNELIAN_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_CARNELIAN_GEM;
         
         // Register entity data.
         this.dataManager.register(CHARGED, false);

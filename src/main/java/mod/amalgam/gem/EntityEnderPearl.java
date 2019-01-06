@@ -2,7 +2,6 @@ package mod.amalgam.gem;
 
 import java.util.HashMap;
 
-import mod.akrivus.kagic.entity.gem.EntityPearl;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
 import net.minecraft.block.state.IBlockState;

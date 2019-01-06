@@ -1,7 +1,6 @@
 package mod.amalgam.client.render.layers;
 
 import mod.amalgam.client.render.RenderGemBase;
-import mod.amalgam.client.render.RenderHoloPearl;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,15 +15,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class LayerPearlItem implements LayerRenderer<EntityLivingBase> {
 	protected final RenderGemBase livingEntityRenderer;
-	
 	public LayerPearlItem(RenderGemBase renderPearl) {
 		this.livingEntityRenderer = renderPearl;
 	}
-	
-	public LayerPearlItem(RenderHoloPearl renderPearl) {
-		this.livingEntityRenderer = renderPearl;
-	}
-
 	@Override
 	public void doRenderLayer(EntityLivingBase entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		boolean flag = entity.getPrimaryHand() == EnumHandSide.RIGHT;
@@ -53,11 +46,9 @@ public class LayerPearlItem implements LayerRenderer<EntityLivingBase> {
 			GlStateManager.popMatrix();
 		}
 	}
-	
 	protected void setSide(EnumHandSide side) {
 		((ModelBiped) this.livingEntityRenderer.getMainModel()).postRenderArm(0.04F, side);
 	}
-	
 	@Override
 	public boolean shouldCombineTextures() {
 		return false;

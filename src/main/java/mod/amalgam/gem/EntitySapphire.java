@@ -16,9 +16,9 @@ import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.EntityPadparadscha;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.init.AmItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
@@ -111,8 +111,8 @@ public class EntitySapphire extends EntityAmalgam implements INpc {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
-        this.droppedGemItem = ModItems.SAPPHIRE_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_SAPPHIRE_GEM;
+        this.droppedGemItem = AmItems.SAPPHIRE_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_SAPPHIRE_GEM;
 	}
 
 	@Override
@@ -327,44 +327,44 @@ public class EntitySapphire extends EntityAmalgam implements INpc {
 	public void onDeath(DamageSource cause) {
 		switch (this.getSpecial()) {
 		case 0:
-			this.droppedGemItem = ModItems.WHITE_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_WHITE_SAPPHIRE_GEM;
+			this.droppedGemItem = AmItems.WHITE_SAPPHIRE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_WHITE_SAPPHIRE_GEM;
 			break;
 		case 1:
-			this.droppedGemItem = ModItems.ORANGE_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_ORANGE_SAPPHIRE_GEM;
+			this.droppedGemItem = AmItems.ORANGE_SAPPHIRE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_ORANGE_SAPPHIRE_GEM;
 			break;
 		case 4:
-			this.droppedGemItem = ModItems.YELLOW_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_YELLOW_SAPPHIRE_GEM;
+			this.droppedGemItem = AmItems.YELLOW_SAPPHIRE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_YELLOW_SAPPHIRE_GEM;
 			break;
 		case 6:
-			this.droppedGemItem = ModItems.PINK_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_PINK_SAPPHIRE_GEM;
+			this.droppedGemItem = AmItems.PINK_SAPPHIRE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_PINK_SAPPHIRE_GEM;
 			break;
 		case 10:
-			this.droppedGemItem = ModItems.PURPLE_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_PURPLE_SAPPHIRE_GEM;
+			this.droppedGemItem = AmItems.PURPLE_SAPPHIRE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_PURPLE_SAPPHIRE_GEM;
 			break;
 		case 11:
-			this.droppedGemItem = ModItems.BLUE_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_BLUE_SAPPHIRE_GEM;
+			this.droppedGemItem = AmItems.BLUE_SAPPHIRE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_BLUE_SAPPHIRE_GEM;
 			break;
 		case 13:
-			this.droppedGemItem = ModItems.GREEN_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_GREEN_SAPPHIRE_GEM;
+			this.droppedGemItem = AmItems.GREEN_SAPPHIRE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_GREEN_SAPPHIRE_GEM;
 			break;
 		case 15:
-			this.droppedGemItem = ModItems.BLACK_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_BLACK_SAPPHIRE_GEM;
+			this.droppedGemItem = AmItems.BLACK_SAPPHIRE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_BLACK_SAPPHIRE_GEM;
 			break;
 		case 16:
-			this.droppedGemItem = ModItems.PADPARADSCHA_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_PADPARADSCHA_GEM;
+			this.droppedGemItem = AmItems.PADPARADSCHA_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_PADPARADSCHA_GEM;
 			break;
 		default:
-			this.droppedGemItem = ModItems.SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = ModItems.CRACKED_SAPPHIRE_GEM;
+			this.droppedGemItem = AmItems.SAPPHIRE_GEM;
+			this.droppedCrackedGemItem = AmItems.CRACKED_SAPPHIRE_GEM;
 		}
 		super.onDeath(cause);
 	}

@@ -6,9 +6,9 @@ import java.util.HashMap;
 import com.google.common.base.Predicate;
 
 import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
-import mod.akrivus.kagic.entity.gem.EntityQuartzSoldier;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
+import mod.amalgam.entity.EntityQuartz;
 import mod.amalgam.gem.ai.EntityAIFollowLeaderGem;
 import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
 import mod.amalgam.init.AmItems;
@@ -38,16 +38,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityAquaAuraQuartz extends EntityQuartzSoldier implements IAnimals {
-	/* Gem descriptors used by KAGIC to facilitate requisites. */
-	public static final HashMap<Integer, ResourceLocation> AQUA_AURA_QUARTZ_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
-	public static final HashMap<IBlockState, Double> AQUA_AURA_QUARTZ_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double AQUA_AURA_QUARTZ_DEFECTIVITY_MULTIPLIER = 2;
-	public static final double AQUA_AURA_QUARTZ_DEPTH_THRESHOLD = 72;
-	
-	/* Data parameters used to track information between the client and server. */
-	private static final DataParameter<Boolean> CHARGED = EntityDataManager.<Boolean>createKey(EntityAquaAuraQuartz.class, DataSerializers.BOOLEAN);
-	
+public class EntityAquaAuraQuartz extends EntityQuartz implements IAnimals {
 	/* Stylization indexes and gradients. */
 	public static final int SKIN_COLOR_BEGIN = 0x00AADF; 
 	public static final int SKIN_COLOR_END = 0x9796C0; 
@@ -57,8 +48,6 @@ public class EntityAquaAuraQuartz extends EntityQuartzSoldier implements IAnimal
 	private static final int NUM_HAIRSTYLES = 5;
 	
 	/* Quartz specialty fields. */
-	private int chargeTicks = 0;
-	private int hitCount = 0;
 	
 	public EntityAquaAuraQuartz(World world) {
 		super(world);

@@ -12,7 +12,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
 import mod.heimrarnadalr.kagic.util.Colors;
@@ -123,8 +123,8 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
-        this.droppedGemItem = ModItems.LAPIS_LAZULI_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_LAPIS_LAZULI_GEM;
+        this.droppedGemItem = AmItems.LAPIS_LAZULI_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_LAPIS_LAZULI_GEM;
 	}
 
 	@Override
@@ -500,7 +500,7 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
 	public void onDeath(DamageSource cause) {
 		if (!this.world.isRemote) {
 			if (cause.getTrueSource() instanceof EntitySkeleton) {
-				this.dropItem(ModItems.RECORD_LAPIS_FLIGHT, 1);
+				this.dropItem(AmItems.RECORD_LAPIS_FLIGHT, 1);
 			}
 		}
 		super.onDeath(cause);

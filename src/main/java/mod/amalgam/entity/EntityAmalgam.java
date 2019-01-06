@@ -10,4 +10,7 @@ public class EntityAmalgam extends EntityGem {
 	public boolean isOverwritten() {
 		return false;
 	}
+	public float[] getGemPosition() {
+		return new float[] {0, 0, 0};
+	}
 }

@@ -8,9 +8,7 @@ import com.google.common.base.Predicate;
 
 import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.EntityPearl;
 import mod.akrivus.kagic.init.ModBlocks;
-import mod.akrivus.kagic.init.ModItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.akrivus.kagic.util.ShatterDamage;
 import mod.amalgam.gem.ai.EntityAIMoveGemToBlock;
@@ -323,7 +321,7 @@ public class EntityNacre extends EntityPearl implements INpc {
 					}
 					else {
 						if (this.rand.nextInt(9) == 0) {
-							this.dropItem(ModItems.ACTIVATED_GEM_SHARD, 1);
+							this.dropItem(AmItems.ACTIVATED_GEM_SHARD, 1);
 						}
 					}
 					this.setFoodLevel(0);

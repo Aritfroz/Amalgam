@@ -1,16 +1,12 @@
 package mod.amalgam.client.render;
 
 import mod.akrivus.kagic.client.render.RenderGemBase;
-import mod.akrivus.kagic.client.render.layers.LayerBirthdayHat;
 import mod.akrivus.kagic.client.render.layers.LayerGemPlacement;
 import mod.akrivus.kagic.client.render.layers.LayerHair;
 import mod.akrivus.kagic.client.render.layers.LayerInsignia;
 import mod.akrivus.kagic.client.render.layers.LayerNoDyeOverlay;
-import mod.akrivus.kagic.client.render.layers.LayerSantaHat;
 import mod.akrivus.kagic.client.render.layers.LayerSkin;
 import mod.akrivus.kagic.client.render.layers.LayerUniform;
-import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
-import mod.akrivus.kagic.init.KAGIC;
 import mod.amalgam.client.model.ModelNacre;
 import mod.amalgam.client.render.layers.LayerNacreColor1;
 import mod.amalgam.client.render.layers.LayerNacreColor2;
@@ -19,13 +15,13 @@ import mod.amalgam.client.render.layers.LayerNacreColor4;
 import mod.amalgam.client.render.layers.LayerNacreItem;
 import mod.amalgam.client.render.layers.LayerNacreShell;
 import mod.amalgam.gem.EntityNacre;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderNacre extends RenderGemBase<EntityNacre> {
-	public RenderNacre() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelNacre(), 0.5F);
+	public RenderNacre(RenderManager manager) {
+        super(manager, new ModelNacre(), 0.5F);
         this.addLayer(new LayerNacreItem(this));
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerNacreColor1(this));
@@ -38,13 +34,6 @@ public class RenderNacre extends RenderGemBase<EntityNacre> {
         this.addLayer(new LayerInsignia(this));
         this.addLayer(new LayerHair(this));
         this.addLayer(new LayerGemPlacement(this));
-		if (KAGIC.isBirthday()) {
-			this.addLayer(new LayerBirthdayHat(this));
-		} else if (KAGIC.isHalloween()) {
-			this.addLayer(new LayerWitchHat(this));
-		} else if (KAGIC.isChristmas()) {
-			this.addLayer(new LayerSantaHat(this));
-		}
     }
 	@Override
 	protected void preRenderCallback(EntityNacre gem, float partialTickTime) {

@@ -9,9 +9,9 @@ import com.google.common.base.Predicate;
 import mod.akrivus.kagic.entity.EntityGem;
 import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
 import mod.akrivus.kagic.entity.gem.EntityAmethyst;
-import mod.akrivus.kagic.entity.gem.EntityQuartzSoldier;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
+import mod.amalgam.entity.EntityQuartz;
 import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
@@ -44,8 +44,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityCitrine extends EntityQuartzSoldier implements IAnimals {
-	/* Gem descriptors used by KAGIC to facilitate requisites. */
+public class EntityCitrine extends EntityQuartz implements IAnimals {
+	/* Gem descriptors used by Amalgic to facilitate requisites. */
 	public static final HashMap<Integer, ResourceLocation> CITRINE_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
 	public static final HashMap<IBlockState, Double> CITRINE_YIELDS = new HashMap<IBlockState, Double>();
 	public static final double CITRINE_DEFECTIVITY_MULTIPLIER = 2;

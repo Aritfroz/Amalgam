@@ -15,6 +15,7 @@ import mod.akrivus.kagic.entity.gem.EntityLapisLazuli;
 import mod.akrivus.kagic.entity.gem.EntityRuby;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
+import mod.amalgam.entity.EntityAmalgam;
 import mod.amalgam.gem.ai.EntityAIFollowLeaderGem;
 import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
 import mod.amalgam.gem.fusion.EntityFusedPyrite;
@@ -51,7 +52,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityPyrite extends EntityGem implements IAnimals {
+public class EntityPyrite extends EntityAmalgam implements IAnimals {
 	public static final HashMap<IBlockState, Double> PYRITE_YIELDS = new HashMap<IBlockState, Double>();
 	public static final double PYRITE_DEFECTIVITY_MULTIPLIER = 1;
 	public static final double PYRITE_DEPTH_THRESHOLD = 0;

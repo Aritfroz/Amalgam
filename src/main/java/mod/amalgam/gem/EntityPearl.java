@@ -15,7 +15,7 @@ import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
+import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityAmalgam;
 import net.minecraft.block.state.IBlockState;
@@ -104,8 +104,8 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
-        this.droppedGemItem = ModItems.PEARL_GEM;
-		this.droppedCrackedGemItem = ModItems.CRACKED_PEARL_GEM;
+        this.droppedGemItem = AmItems.PEARL_GEM;
+		this.droppedCrackedGemItem = AmItems.CRACKED_PEARL_GEM;
         
         // Register entity data.
         this.dataManager.register(COLOR, this.rand.nextInt(16));
@@ -575,68 +575,68 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
     	this.setCanPickUpLoot(false);
     	switch (this.getColor()) {
     	case 0:
-    		this.droppedGemItem = ModItems.WHITE_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_WHITE_PEARL_GEM;
+    		this.droppedGemItem = AmItems.WHITE_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_WHITE_PEARL_GEM;
     		break;
     	case 1:
-    		this.droppedGemItem = ModItems.ORANGE_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_ORANGE_PEARL_GEM;
+    		this.droppedGemItem = AmItems.ORANGE_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_ORANGE_PEARL_GEM;
     		break;
     	case 2:
-    		this.droppedGemItem = ModItems.MAGENTA_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_MAGENTA_PEARL_GEM;
+    		this.droppedGemItem = AmItems.MAGENTA_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_MAGENTA_PEARL_GEM;
     		break;
     	case 3:
-    		this.droppedGemItem = ModItems.LIGHT_BLUE_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_LIGHT_BLUE_PEARL_GEM;
+    		this.droppedGemItem = AmItems.LIGHT_BLUE_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_LIGHT_BLUE_PEARL_GEM;
     		break;
     	case 4:
-    		this.droppedGemItem = ModItems.YELLOW_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_YELLOW_PEARL_GEM;
+    		this.droppedGemItem = AmItems.YELLOW_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_YELLOW_PEARL_GEM;
     		break;
     	case 5:
-    		this.droppedGemItem = ModItems.LIME_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_LIME_PEARL_GEM;
+    		this.droppedGemItem = AmItems.LIME_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_LIME_PEARL_GEM;
     		break;
     	case 6:
-    		this.droppedGemItem = ModItems.PINK_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_PINK_PEARL_GEM;
+    		this.droppedGemItem = AmItems.PINK_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_PINK_PEARL_GEM;
     		break;
     	case 7:
-    		this.droppedGemItem = ModItems.GRAY_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_GRAY_PEARL_GEM;
+    		this.droppedGemItem = AmItems.GRAY_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_GRAY_PEARL_GEM;
     		break;
     	case 8:
-    		this.droppedGemItem = ModItems.LIGHT_GRAY_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_LIGHT_GRAY_PEARL_GEM;
+    		this.droppedGemItem = AmItems.LIGHT_GRAY_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_LIGHT_GRAY_PEARL_GEM;
     		break;
     	case 9:
-    		this.droppedGemItem = ModItems.CYAN_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_CYAN_PEARL_GEM;
+    		this.droppedGemItem = AmItems.CYAN_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_CYAN_PEARL_GEM;
     		break;
     	case 10:
-    		this.droppedGemItem = ModItems.PURPLE_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_PURPLE_PEARL_GEM;
+    		this.droppedGemItem = AmItems.PURPLE_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_PURPLE_PEARL_GEM;
     		break;
     	case 11:
-    		this.droppedGemItem = ModItems.BLUE_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_BLUE_PEARL_GEM;
+    		this.droppedGemItem = AmItems.BLUE_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_BLUE_PEARL_GEM;
     		break;
     	case 12:
-    		this.droppedGemItem = ModItems.BROWN_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_BROWN_PEARL_GEM;
+    		this.droppedGemItem = AmItems.BROWN_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_BROWN_PEARL_GEM;
     		break;
     	case 13:
-    		this.droppedGemItem = ModItems.GREEN_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_GREEN_PEARL_GEM;
+    		this.droppedGemItem = AmItems.GREEN_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_GREEN_PEARL_GEM;
     		break;
     	case 14:
-    		this.droppedGemItem = ModItems.RED_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_RED_PEARL_GEM;
+    		this.droppedGemItem = AmItems.RED_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_RED_PEARL_GEM;
     		break;
     	case 15:
-    		this.droppedGemItem = ModItems.BLACK_PEARL_GEM;
-    		this.droppedCrackedGemItem = ModItems.CRACKED_BLACK_PEARL_GEM;
+    		this.droppedGemItem = AmItems.BLACK_PEARL_GEM;
+    		this.droppedCrackedGemItem = AmItems.CRACKED_BLACK_PEARL_GEM;
     		break;
     	}
     	super.onDeath(cause);

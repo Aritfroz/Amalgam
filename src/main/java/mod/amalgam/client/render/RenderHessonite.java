@@ -10,14 +10,14 @@ import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.client.render.layers.LayerUniform;
 import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.gem.EntityHessonite;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderHessonite extends RenderGemBase<EntityHessonite> {
 
-	public RenderHessonite() {
-		super(Minecraft.getMinecraft().getRenderManager(), new ModelHessonite(), 0.5F);
+	public RenderHessonite(RenderManager manager) {
+		super(manager, new ModelHessonite(), 0.5F);
 
 		this.addLayer(new LayerQuartzItem(this));
 		this.addLayer(new LayerSkin(this));

@@ -3,8 +3,6 @@ package mod.amalgam.init;
 import java.util.List;
 import java.util.Random;
 
-import com.google.common.base.Predicate;
-
 import mod.akrivus.kagic.entity.EntityGem;
 import mod.akrivus.kagic.entity.ai.EntityAIFollowTopaz;
 import mod.akrivus.kagic.event.TimeGlassEvent;
@@ -15,15 +13,12 @@ import mod.amalgam.entity.EntityBubble;
 import mod.amalgam.entity.EntityGemShard;
 import mod.amalgam.entity.EntityPalanquin;
 import mod.amalgam.human.EntitySteven;
-import mod.amalgam.items.ItemGemShard;
+import mod.amalgam.items.ItemShard;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemPickaxe;
@@ -102,20 +97,12 @@ public class AmEvents {
 			animal.targetTasks.addTask(3, new EntityAIFollowTopaz(animal, 0.9D));
 		}
 		if (e.getEntity() instanceof EntityMob) {
-			if (e.getEntity() instanceof EntityEnderman) {
-				EntityEnderman ender = (EntityEnderman)(e.getEntity());
-				ender.targetTasks.addTask(4, new EntityAINearestAttackableTarget<EntityPlayer>(ender, EntityPlayer.class, 10, true, false, new Predicate<EntityPlayer>() {
-		            @Override
-					public boolean apply(EntityPlayer input) {
-		                return input != null && Amalgam.KILL_LIST.contains(input.getName());
-		            }
-		        }));
-			}
 			EntityMob mob = (EntityMob)(e.getEntity());
 			mob.tasks.addTask(0, new EntityAIAvoidEntity<EntityPalanquin>(mob, EntityPalanquin.class, 16, 0.2D, 0.8D));
 		}
 		if (e.getEntity() instanceof EntityGem) {
 			EntityGem gem = (EntityGem)(e.getEntity());
+			AmTweaks.applyGemTweaks(gem);
 			AmTweaks.Gem.applyWailingStoneTweaks(gem);
 			AmTweaks.Gem.applyRenameTweaks(gem);
 			AmTweaks.Gem.applyFusionTweaks(gem);
@@ -127,7 +114,7 @@ public class AmEvents {
 	}
 	@SubscribeEvent
 	public void onAnvilRepair(AnvilRepairEvent e) {
-		if (e.getIngredientInput().getItem() instanceof ItemGemShard) {
+		if (e.getIngredientInput().getItem() instanceof ItemShard) {
 			ItemStack stack = e.getIngredientInput().copy();
 			stack.shrink(1);
 			boolean added = e.getEntityPlayer().addItemStackToInventory(stack);
@@ -152,9 +139,9 @@ public class AmEvents {
 	@SubscribeEvent
 	public void onAnvilUpdate(AnvilUpdateEvent e) {
 		Random rand = new Random(e.getRight().hashCode());
-		if (e.getRight().getItem() instanceof ItemGemShard) {
-			ItemGemShard gem = (ItemGemShard)(e.getRight().getItem());
-			if (e.getLeft().getItem() instanceof ItemGemShard) {
+		if (e.getRight().getItem() instanceof ItemShard) {
+			ItemShard gem = (ItemShard)(e.getRight().getItem());
+			if (e.getLeft().getItem() instanceof ItemShard) {
 				ItemGem[] SHARDS = new ItemGem[] {
 					ModItems.HANDBODY_GEM,
 					ModItems.FOOTARM_GEM,
@@ -214,7 +201,7 @@ public class AmEvents {
 							dyeColor = i;
 						}
 				    }
-				    e.setOutput(new ItemStack(ItemGemShard.SHARD_COLORS.get(dyeColor), 9));
+				    e.setOutput(new ItemStack(ItemShard.SHARD_COLORS.get(dyeColor), 9));
 				    if (!e.getOutput().isEmpty()) {
 						e.setResult(Result.ALLOW);
 						e.setCost(1);

@@ -1,7 +1,5 @@
 package mod.amalgam.client.render;
 
-import java.util.Iterator;
-
 import mod.amalgam.client.model.ModelQuartz;
 import mod.amalgam.client.render.layers.LayerGemPlacement;
 import mod.amalgam.client.render.layers.LayerHair;
@@ -12,22 +10,13 @@ import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.client.render.layers.LayerUniform;
 import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.gem.EntityCarnelian;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
-import net.minecraft.client.renderer.entity.layers.LayerRenderer;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderCarnelian extends RenderGemBase<EntityCarnelian> {
-	public RenderCarnelian() {
-        super(Minecraft.getMinecraft().getRenderManager(), new ModelQuartz(), 0.5F);
-		for (Iterator<LayerRenderer<EntityCarnelian>> iter = this.layerRenderers.iterator(); iter.hasNext();) {
-			LayerRenderer layer = iter.next();
-			if (layer instanceof LayerHeldItem) {
-				iter.remove();
-			}
-		}
-
+	public RenderCarnelian(RenderManager manager) {
+        super(manager, new ModelQuartz(), 0.5F);
 		this.addLayer(new LayerQuartzItem(this));
         this.addLayer(new LayerSkin(this));
         this.addLayer(new LayerUniform(this));
@@ -37,16 +26,15 @@ public class RenderCarnelian extends RenderGemBase<EntityCarnelian> {
         this.addLayer(new LayerQuartzCape(this));
         this.addLayer(new LayerGemPlacement(this));
     }
-	
 	@Override
 	protected void preRenderCallback(EntityCarnelian carnelian, float partialTickTime) {
 		if (carnelian.isDefective()) {
 			GlStateManager.scale(0.9F, 0.75F, 0.9F);
-		} else if (carnelian.isPrimary()) {
+		}
+		else if (carnelian.isPrimary()) {
 			GlStateManager.scale(1.1F, 1.1F, 1.1F);
 		}
 	}
-	
 	@Override
 	protected ResourceLocation getEntityTexture(EntityCarnelian entity) {
 		return new ResourceLocation("kagic:textures/entities/carnelian/carnelian.png");
