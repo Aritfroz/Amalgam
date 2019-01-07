@@ -1,7 +1,6 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
 import com.google.common.base.Predicate;
@@ -9,6 +8,7 @@ import com.google.common.base.Predicate;
 import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.init.ModBlocks;
+import mod.akrivus.kagic.init.ModItems;
 import mod.akrivus.kagic.init.ModSounds;
 import mod.akrivus.kagic.util.ShatterDamage;
 import mod.amalgam.gem.ai.EntityAIMoveGemToBlock;
@@ -39,6 +39,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -48,6 +49,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.oredict.DyeUtils;
 
 public class EntityNacre extends EntityPearl implements INpc {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
 	private static final DataParameter<Boolean> CRACKED = EntityDataManager.<Boolean>createKey(EntityNacre.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Integer> COLOR_1 = EntityDataManager.<Integer>createKey(EntityNacre.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> COLOR_2 = EntityDataManager.<Integer>createKey(EntityNacre.class, DataSerializers.VARINT);
@@ -55,17 +60,11 @@ public class EntityNacre extends EntityPearl implements INpc {
 	private static final DataParameter<Integer> COLOR_4 = EntityDataManager.<Integer>createKey(EntityNacre.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> STRESS = EntityDataManager.<Integer>createKey(EntityNacre.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> FOOD = EntityDataManager.<Integer>createKey(EntityNacre.class, DataSerializers.VARINT);
-	
-	public static final HashMap<IBlockState, Double> NACRE_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double NACRE_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double NACRE_DEPTH_THRESHOLD = 255;
-	
 	private static final int SKIN_COLOR_BEGIN = 0xEDEFF4; 
 	private static final int SKIN_COLOR_MID = 0xBDCBED; 
 	private static final int SKIN_COLOR_END = 0xE1CBED; 
 	private static final int HAIR_COLOR_BEGIN = 0x97C6EF;
-	private static final int HAIR_COLOR_END = 0xFFC6EF; 
-	private static final int NUM_HAIRSTYLES = 4;
+	private static final int HAIR_COLOR_END = 0xFFC6EF;
 	
 	public int ticksUntilSneeze;
 	public int totalExpected;
@@ -109,7 +108,7 @@ public class EntityNacre extends EntityPearl implements INpc {
 	}
 	@Override
 	public int generateHairStyle() {
-		return this.rand.nextInt(EntityNacre.NUM_HAIRSTYLES);
+		return this.rand.nextInt(EntityNacre.HAIRSTYLES.size());
 	}
 	@Override
 	public int generateHairColor() {
@@ -321,7 +320,7 @@ public class EntityNacre extends EntityPearl implements INpc {
 					}
 					else {
 						if (this.rand.nextInt(9) == 0) {
-							this.dropItem(AmItems.ACTIVATED_GEM_SHARD, 1);
+							this.dropItem(ModItems.ACTIVATED_GEM_SHARD, 1);
 						}
 					}
 					this.setFoodLevel(0);

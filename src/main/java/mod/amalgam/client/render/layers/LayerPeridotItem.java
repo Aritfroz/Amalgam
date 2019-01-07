@@ -42,7 +42,7 @@ public class LayerPeridotItem implements LayerRenderer<EntityPeridot> {
             GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
             GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
             boolean isLefty = handSide == EnumHandSide.LEFT;
-            GlStateManager.translate((float)(isLefty ? -1 : 1) / 10.0F, 0.125F, peridot.isDefective() ? -0.9F : -.75F);
+            GlStateManager.translate((isLefty ? -1 : 1) / 10.0F, 0.125F, peridot.isDefective() ? -0.9F : -.75F);
             Minecraft.getMinecraft().getItemRenderer().renderItemSide(peridot, stack, camera, isLefty);
             GlStateManager.popMatrix();
         }

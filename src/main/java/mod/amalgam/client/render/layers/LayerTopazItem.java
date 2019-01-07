@@ -18,7 +18,8 @@ public class LayerTopazItem implements LayerRenderer<EntityLivingBase> {
     public LayerTopazItem(RenderTopaz renderTopaz) {
         this.livingEntityRenderer = renderTopaz;
     }
-    public void doRenderLayer(EntityLivingBase entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+    @Override
+	public void doRenderLayer(EntityLivingBase entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
         boolean flag = entity.getPrimaryHand() == EnumHandSide.RIGHT;
         ItemStack itemstack = flag ? entity.getHeldItemOffhand() : entity.getHeldItemMainhand();
         ItemStack itemstack1 = flag ? entity.getHeldItemMainhand() : entity.getHeldItemOffhand();
@@ -39,7 +40,7 @@ public class LayerTopazItem implements LayerRenderer<EntityLivingBase> {
             GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
             GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
             boolean flag = handSide == EnumHandSide.LEFT;
-            GlStateManager.translate((float)(flag ? -1 : 1) / 3.25F, 0.125F, -0.6F);
+            GlStateManager.translate((flag ? -1 : 1) / 3.25F, 0.125F, -0.6F);
             Minecraft.getMinecraft().getItemRenderer().renderItemSide(entity, stack, camera, flag);
             GlStateManager.popMatrix();
         }
@@ -47,7 +48,8 @@ public class LayerTopazItem implements LayerRenderer<EntityLivingBase> {
     protected void setSide(EnumHandSide side) {
         ((ModelBiped) this.livingEntityRenderer.getMainModel()).postRenderArm(0.0625F, side);
     }
-    public boolean shouldCombineTextures() {
+    @Override
+	public boolean shouldCombineTextures() {
         return false;
     }
 }

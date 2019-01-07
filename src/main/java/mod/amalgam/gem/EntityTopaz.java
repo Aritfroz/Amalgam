@@ -12,9 +12,8 @@ import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -41,75 +40,29 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
-public class EntityTopaz extends EntityAmalgam implements INpc {
-	public static final HashMap<IBlockState, Double> TOPAZ_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double TOPAZ_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double TOPAZ_DEPTH_THRESHOLD = 48;
-	
-	private static final int SKIN_COLOR_YELLOW = 0xF6E83E; 
-	private static final int SKIN_COLOR_BLUE = 0x5167fB; 
-	private static final int SKIN_COLOR_GREEN = 0x52FC75; 
-
-	private static final int HAIR_COLOR_YELLOW = 0xFFF564;
-	private static final int HAIR_COLOR_BLUE = 0xA6B5FE;
-	private static final int HAIR_COLOR_GREEN = 0xA5FEB4;
-	
-	private static final int NUM_HAIRSTYLES = 1;
-	
+public class EntityTopaz extends EntityAmalgamGem implements INpc {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
+	private static final int SKIN_COLOR = 0xF6E83E; 
+	private static final int HAIR_COLOR = 0xFFF564;
 	private static final DataParameter<Boolean> HOLDING = EntityDataManager.<Boolean>createKey(EntityAmethyst.class, DataSerializers.BOOLEAN);
 	private ArrayList<EntityLivingBase> heldEntities = new ArrayList<EntityLivingBase>();
-	
 	public EntityTopaz(World world) {
 		super(world);
 		this.setSize(0.9F, 2.3F);
 		this.isSoldier = true;
-		
-		//Define valid gem cuts and placements
-		this.setCutPlacement(GemCuts.DRUM, GemPlacements.BACK_OF_HEAD);
-		this.setCutPlacement(GemCuts.DRUM, GemPlacements.FOREHEAD);
-		this.setCutPlacement(GemCuts.DRUM, GemPlacements.LEFT_EYE);
-		this.setCutPlacement(GemCuts.DRUM, GemPlacements.RIGHT_EYE);
-		//Cheeks are actually the ear positions
-		this.setCutPlacement(GemCuts.DRUM, GemPlacements.LEFT_CHEEK);
-		this.setCutPlacement(GemCuts.DRUM, GemPlacements.RIGHT_CHEEK);
-		this.setCutPlacement(GemCuts.DRUM, GemPlacements.BACK);
-		this.setCutPlacement(GemCuts.DRUM, GemPlacements.CHEST);
-		this.setCutPlacement(GemCuts.DRUM, GemPlacements.BELLY);
-
-		// Apply entity AI.
-		this.stayAI = new EntityAIStay(this);
-		//this.tasks.addTask(1, new EntityAIAttackTopaz(this, 1.0D));
-		//this.tasks.addTask(2, new EntityAITopazFuse(this, 1.0D));
-        this.tasks.addTask(3, new EntityAIMoveTowardsTarget(this, 0.414D, 32.0F));
-        this.tasks.addTask(4, new EntityAIMoveTowardsRestriction(this, 1.0D));
-        this.tasks.addTask(5, new EntityAIFollowDiamond(this, 1.0D));
-        this.tasks.addTask(5, new EntityAICommandGems(this, 0.6D));
-        this.tasks.addTask(6, new EntityAISitStill(this, 1.0D));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 16.0F));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityMob.class, 16.0F));
-        this.tasks.addTask(8, new EntityAILookIdle(this));
-        
-        // Apply targetting.
-        //this.targetTasks.addTask(1, new EntityAITopazTarget(this));
-        this.targetTasks.addTask(2, new EntityAIDiamondHurtByTarget(this));
-        this.targetTasks.addTask(3, new EntityAIDiamondHurtTarget(this));
-        this.targetTasks.addTask(4, new EntityAIHurtByTarget(this, false, new Class[0]));
-        
-        // Apply entity attributes.
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
-        this.droppedGemItem = AmItems.TOPAZ_GEM;
-		this.droppedCrackedGemItem = AmItems.CRACKED_TOPAZ_GEM;
 		this.dataManager.register(HOLDING, false);
 	}
-
+	@Override
 	protected int generateGemColor() {
 		if (this.getSpecial() == 1) {
 			return 0x5D73FF;
@@ -132,6 +85,7 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
 	public void setColor(int color) {
 		this.setSpecial(color);
 	}
+	@Override
 	public void convertGems(int placement) {
     	this.setGemCut(GemCuts.DRUM.id);
     	switch (placement) {
@@ -147,18 +101,22 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
 	/*********************************************************
 	 * Methods related to entity loading.                    *
 	 *********************************************************/
+	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
     }
-    public void readEntityFromNBT(NBTTagCompound compound) {
+    @Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
     }
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
+    @Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
     	this.setSpecial(this.rand.nextInt(7) == 0 ? 1 : 0);
     	this.itemDataToGemData(this.getSpecial());
 		return super.onInitialSpawn(difficulty, livingdata);
     }
-    public void itemDataToGemData(int data) {
+    @Override
+	public void itemDataToGemData(int data) {
         this.setSpecial(data);
         this.setSkinColor(this.generateSkinColor());
 		this.setHairStyle(this.generateHairStyle());
@@ -243,6 +201,7 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
     /*********************************************************
 	 * Methods related to living.                            *
 	 *********************************************************/
+	@Override
 	public void onLivingUpdate() {
 		if (this.isFusion()) {
 			this.whenFused();
@@ -329,6 +288,7 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
 		}
 		super.onLivingUpdate();
 	}
+	@Override
 	protected void collideWithEntity(Entity entity) {
 		if (this.heldEntities.isEmpty()) {
 			super.collideWithEntity(entity);
@@ -345,6 +305,7 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
 		}
 		return false;
 	}
+	@Override
 	public boolean canFuse() {
 		return super.canFuse() && this.wantsToFuse && !this.isFusion();
 	}
@@ -396,6 +357,7 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
     	topaz.setSize(0.9F * topaz.getFusionCount(), 2.3F * topaz.getFusionCount());
 		return topaz;
 	}
+	@Override
 	public void unfuse() {
 		for (int i = 0; i < this.fusionMembers.size(); ++i) {
 			EntityTopaz topaz = new EntityTopaz(this.world);
@@ -416,49 +378,28 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
 	 *********************************************************/
 	@Override
 	protected int generateSkinColor() {
-		int color = this.getSpecial();
-		switch(color) {
-		case 0:
-			return EntityTopaz.SKIN_COLOR_YELLOW;
-		case 1:
-			return EntityTopaz.SKIN_COLOR_BLUE;
-		case 2:
-			return EntityTopaz.SKIN_COLOR_GREEN;
-		default:
-			return 0;
-		}
+		return 0;
 	}
 	
 	@Override
 	protected int generateHairStyle() {
-		return this.rand.nextInt(EntityTopaz.NUM_HAIRSTYLES);
+		return this.rand.nextInt(EntityTopaz.HAIRSTYLES.size());
 	}
 	
 	@Override
 	protected int generateHairColor() {
-		int color = this.getSpecial();
-		switch(color) {
-		case 0:
-			return EntityTopaz.HAIR_COLOR_YELLOW;
-		case 1:
-			return EntityTopaz.HAIR_COLOR_BLUE;
-		case 2:
-			return EntityTopaz.HAIR_COLOR_GREEN;
-		default:
-			return 0;
-		}
+		return 0;
 	}
 
 	@Override
 	public boolean hasUniformVariant(GemPlacements placement) {
 		switch(placement) {
-		//case BELLY:
-		//	return true;
+		case BELLY:
+			return true;
 		default:
 			return false;
 		}
 	}
-
 	@Override
 	public boolean hasHairVariant(GemPlacements placement) {
 		switch(placement) {
@@ -468,47 +409,8 @@ public class EntityTopaz extends EntityAmalgam implements INpc {
 			return false;
 		}
 	}
-	
-	/*********************************************************
-     * Methods related to entity combat.                     *
-     *********************************************************/
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-    	return super.attackEntityFrom(source, amount);
-	}
-	public boolean attackEntityAsMob(Entity entity) {
-		/*if (this.getServitude() == EntityGem.SERVE_HUMAN && this.getOwner() != null) {
-        	this.getOwner().addStat(ModAchievements.DO_IT_YOURSELF);
-        }*/
-		return false;//super.attackEntityAsMob(entity);
-	}
+	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
 		super.attackEntityWithRangedAttack(target, distanceFactor);
-	}
-	public void onDeath(DamageSource cause) {
-		if (this.getSpecial() == 1) {
-			this.droppedGemItem = AmItems.BLUE_TOPAZ_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_BLUE_TOPAZ_GEM;
-		}
-		else {
-			this.droppedGemItem = AmItems.TOPAZ_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_TOPAZ_GEM;
-		}
-		super.onDeath(cause);
-	}
-	
-	/*********************************************************
-	 * Methods related to sound.                             *
-	 *********************************************************/
-	protected void playStepSound(BlockPos pos, Block block) {
-        this.playSound(SoundEvents.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
-    }
-	protected SoundEvent getHurtSound(DamageSource source) {
-		return ModSounds.TOPAZ_STEP;
-	}
-	protected SoundEvent getObeySound() {
-		return ModSounds.TOPAZ_OBEY;
-	}
-	protected SoundEvent getDeathSound() {
-		return ModSounds.TOPAZ_DEATH;
 	}
 }

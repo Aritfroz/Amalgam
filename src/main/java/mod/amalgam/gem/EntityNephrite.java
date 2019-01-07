@@ -17,7 +17,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.EntityHessonite;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
 import mod.amalgam.entity.EntitySpitball;
 import mod.amalgam.gem.ai.EntityAICallForBackup;
 import mod.amalgam.gem.ai.EntityAIFollowLeaderGem;
@@ -54,16 +54,12 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class EntityNephrite extends EntityAmalgam implements IAnimals {
-	public static final HashMap<IBlockState, Double> NEPHRITE_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double NEPHRITE_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double NEPHRITE_DEPTH_THRESHOLD = 0;
+public class EntityNephrite extends EntityAmalgamGem implements IAnimals {
 	private static final int SKIN_COLOR_BEGIN = 0x316B26; 
 	private static final int SKIN_COLOR_MID = 0x5CA854; 
 	private static final int SKIN_COLOR_END = 0xC2E271; 
 	private static final int HAIR_COLOR_BEGIN = 0xFCFEED;
 	private static final int HAIR_COLOR_END = 0xE8FCCF;
-	
 	public EntityNephrite(World world) {
 		super(world);
 		this.setSize(0.6F, 1.9F);
@@ -155,15 +151,6 @@ public class EntityNephrite extends EntityAmalgam implements IAnimals {
 			}
 		}
 		super.onLivingUpdate();
-	}
-	
-	@Override
-	public void onDeath(DamageSource cause) {
-		if (this.getGemPlacement() == GemPlacements.BACK_OF_HEAD) {
-			this.droppedGemItem = AmItems.NEPHRITE_1_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_NEPHRITE_1_GEM;
-		}
-		super.onDeath(cause);
 	}
 	@Override
 	public int generateGemColor() {

@@ -191,14 +191,14 @@ public class EntityPalanquin extends EntityMachine implements IJumpingMount {
             if (this.jumpPower > 0.0F && this.onGround) {
                 this.motionY = this.jumpPower;
                 if (this.isPotionActive(MobEffects.JUMP_BOOST)) {
-                    this.motionY += (double)((float)(this.getActivePotionEffect(MobEffects.JUMP_BOOST).getAmplifier() + 1) * 0.1F);
+                    this.motionY += (this.getActivePotionEffect(MobEffects.JUMP_BOOST).getAmplifier() + 1) * 0.1F;
                 }
                 this.isAirBorne = true;
                 if (forward > 0.0F) {
                     float sin = MathHelper.sin(this.rotationYaw * 0.017453292F);
                     float cos = MathHelper.cos(this.rotationYaw * 0.017453292F);
-                    this.motionX += (double)(-0.4F * sin * this.jumpPower * 1.5F);
-                    this.motionZ += (double)(0.4F * cos * this.jumpPower * 1.5F);
+                    this.motionX += -0.4F * sin * this.jumpPower * 1.5F;
+                    this.motionZ += 0.4F * cos * this.jumpPower * 1.5F;
                     this.playSound(SoundEvents.BLOCK_ANVIL_LAND, 0.4F, 1.0F);
                 }
                 this.jumpPower = 0.0F;

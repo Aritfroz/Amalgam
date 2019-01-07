@@ -37,6 +37,7 @@ public class ModelRutile extends ModelBiped {
 		this.bipedLeftLeg.addBox(-3F, 0F, -1F, 2, 12, 2);
 		this.bipedLeftLeg.setRotationPoint(0F, 12F, 0F);
 	}
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 		this.bipedHead.render(scale);

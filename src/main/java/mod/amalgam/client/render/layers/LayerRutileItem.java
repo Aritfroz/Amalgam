@@ -34,7 +34,7 @@ public class LayerRutileItem implements LayerRenderer<EntityRutile> {
 	}
 	
 	private void renderHeldItem(EntityRutile entity, ItemStack stack, ItemCameraTransforms.TransformType camera, EnumHandSide handSide) {
-		if (((EntityRutile) entity).isDefective()) {
+		if (entity.isDefective()) {
 			if (!stack.isEmpty()) {
 				GlStateManager.pushMatrix();
 				if (entity.isSneaking()) {
@@ -44,7 +44,7 @@ public class LayerRutileItem implements LayerRenderer<EntityRutile> {
 				GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
 				GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
 				boolean flag = handSide == EnumHandSide.LEFT;
-				GlStateManager.translate((float)(flag ? -1 : 1) / 5.5F, 0.1F, -0.9F);
+				GlStateManager.translate((flag ? -1 : 1) / 5.5F, 0.1F, -0.9F);
 				Minecraft.getMinecraft().getItemRenderer().renderItemSide(entity, stack, camera, flag);
 				GlStateManager.popMatrix();
 			}
@@ -59,7 +59,7 @@ public class LayerRutileItem implements LayerRenderer<EntityRutile> {
 				GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
 				GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
 				boolean flag = handSide == EnumHandSide.LEFT;
-				GlStateManager.translate((float)(flag ? -1 : 1) / 16.0F, 0.125F, -0.75F);
+				GlStateManager.translate((flag ? -1 : 1) / 16.0F, 0.125F, -0.75F);
 				Minecraft.getMinecraft().getItemRenderer().renderItemSide(entity, stack, camera, flag);
 				GlStateManager.popMatrix();
 			}

@@ -19,6 +19,7 @@ public class LayerUniform implements LayerRenderer<EntityGem> {
 		this.gemModel = gemRenderer.getMainModel();
 	}
 	
+	@Override
 	public void doRenderLayer(EntityGem gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.gemRenderer.bindTexture(this.getTexture(gem));
 		float[] afloat = EntitySheep.getDyeRgb(EnumDyeColor.values()[gem.getUniformColor()]);
@@ -46,6 +47,7 @@ public class LayerUniform implements LayerRenderer<EntityGem> {
 		}
 	}
 	
+	@Override
 	public boolean shouldCombineTextures() {
 		return true;
 	}

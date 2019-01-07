@@ -1,7 +1,6 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import com.google.common.base.Predicate;
@@ -15,10 +14,9 @@ import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
-import mod.amalgam.entity.EntityAmalgam;
-import net.minecraft.block.state.IBlockState;
+import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.init.AmItems;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.INpc;
@@ -56,12 +54,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import net.minecraftforge.oredict.DyeUtils;
 
-public class EntityPearl extends EntityAmalgam implements IInventoryChangedListener, INpc {
-	public static final HashMap<IBlockState, Double> PEARL_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double PEARL_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double PEARL_DEPTH_THRESHOLD = 0;
-	public static final ArrayList<ResourceLocation> PEARL_HAIR_STYLES = new ArrayList<ResourceLocation>();
+public class EntityPearl extends EntityAmalgamGem implements IInventoryChangedListener, INpc {
 	public static final ArrayList<ResourceLocation> PEARL_DRESS_STYLES = new ArrayList<ResourceLocation>();
+	public static final ArrayList<ResourceLocation> PEARL_HAIR_STYLES = new ArrayList<ResourceLocation>();
 	private static final DataParameter<Integer> COLOR = EntityDataManager.<Integer>createKey(EntityPearl.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> HAIR_COLOR = EntityDataManager.<Integer>createKey(EntityPearl.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> VISOR_COLOR = EntityDataManager.<Integer>createKey(EntityPearl.class, DataSerializers.VARINT);
@@ -88,8 +83,9 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
 		// Apply entity AI.
 		this.stayAI = new EntityAIStay(this);
 		this.tasks.addTask(1, new EntityAIAvoidEntity<EntityCreeper>(this, EntityCreeper.class, new Predicate<EntityCreeper>() {
+			@Override
 			public boolean apply(EntityCreeper input) {
-				return ((EntityCreeper)input).getCreeperState() == 1;
+				return input.getCreeperState() == 1;
 			}
         }, 6.0F, 1.0D, 1.2D));
 		this.tasks.addTask(1, new EntityAIPickUpItems(this, 0.9D));
@@ -153,6 +149,7 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
     	}
 		return 0xFFFFFF;
     }
+	@Override
 	public int generateSkinColor() {
 		switch (this.getColor()) {
     	case 0:
@@ -190,6 +187,7 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
     	}
 		return 0xFFFFFF;
 	}
+	@Override
 	public int generateHairColor() {
 		switch (this.getHairColor()) {
     	case 0:
@@ -227,6 +225,7 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
     	}
 		return 0xFFFFFF;
 	}
+	@Override
 	public void convertGems(int placement) {
     	this.setGemCut(GemCuts.CABOCHON.id);
     	switch (placement) {
@@ -255,6 +254,7 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
 	/*********************************************************
 	 * Methods related to loading.                           *
 	 *********************************************************/
+	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
         compound.setInteger("color", this.getColor());
         compound.setInteger("hairColor", this.getHairColor());
@@ -273,7 +273,8 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
         compound.setTag("items", nbttaglist);
         super.writeEntityToNBT(compound);
 	}
-    public void readEntityFromNBT(NBTTagCompound compound) {
+    @Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
         this.setColor(compound.getInteger("color"));
         if (compound.hasKey("hairColor")) {
         	this.setHairColor(compound.getInteger("hairColor"));
@@ -301,7 +302,8 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
         }
         super.readEntityFromNBT(compound);
     }
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
+    @Override
+	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
     	livingdata = super.onInitialSpawn(difficulty, livingdata);
     	this.setGemCut(GemCuts.CABOCHON.id);
     	this.itemDataToGemData(this.getColor());
@@ -315,7 +317,8 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
     	this.nativeColor = this.getColor();
         return livingdata;
     }
-    public void itemDataToGemData(int data) {
+    @Override
+	public void itemDataToGemData(int data) {
 		this.setColor(data);
 		this.setHairColor(data);
 		this.setVisorColor(data);
@@ -324,13 +327,15 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
 		this.setGemColor(this.generateGemColor());
 		this.nativeColor = this.getColor();
 	}
-    protected int generateHairStyle() {
+    @Override
+	protected int generateHairStyle() {
     	return this.rand.nextInt(EntityPearl.PEARL_HAIR_STYLES.size());
     }
 
     /*********************************************************
 	 * Methods related to interaction.                       *
 	 *********************************************************/
+	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		if (!this.world.isRemote) {
 			if (hand == EnumHand.MAIN_HAND) {
@@ -441,6 +446,7 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
 		}
 		return super.processInteract(player, hand);
     }
+	@Override
 	public void onInventoryChanged(IInventory inventory) {
 		ItemStack firstItem = this.gemStorage.getStackInSlot(0);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, firstItem);
@@ -450,6 +456,7 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
             }
 		}*/
 	}
+	@Override
 	protected void updateEquipmentIfNeeded(EntityItem itementity) {
         ItemStack itemstack = itementity.getItem();
         ItemStack itemstack1 = this.gemStorage.addItem(itemstack);
@@ -460,16 +467,19 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
             itemstack.setCount(itemstack1.getCount());
         }
     }
+	@Override
 	public boolean canPickUpItem(Item item) {
 		return true;
 	}
+	@Override
 	public void setDefective(boolean defective) {
 		if (defective) {
 			this.targetTasks.addTask(1, new EntityAIDiamondHurtByTarget(this));
 	        this.targetTasks.addTask(2, new EntityAIDiamondHurtTarget(this));
 	        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false, new Class[0]));
 	        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<EntityLiving>(this, EntityLiving.class, 10, true, false, new Predicate<EntityLiving>() {
-	            public boolean apply(EntityLiving input) {
+	            @Override
+				public boolean apply(EntityLiving input) {
 	                return input != null && IMob.VISIBLE_MOB_SELECTOR.apply(input);
 	            }
 	        }));
@@ -546,6 +556,7 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
 	/*********************************************************
 	 * Methods related to living.                            *
 	 *********************************************************/
+	@Override
 	public void onLivingUpdate() {
 		if (!this.canPickUpLoot()) {
 			this.setCanPickUpLoot(this.isTamed());
@@ -562,89 +573,10 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
 		}
 		super.onLivingUpdate();
 	}
-	
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		return super.attackEntityFrom(source, amount);
 	}
-	
-	/*********************************************************
-     * Methods related to death.                             *
-     *********************************************************/
-    public void onDeath(DamageSource cause) {
-    	this.setCanPickUpLoot(false);
-    	switch (this.getColor()) {
-    	case 0:
-    		this.droppedGemItem = AmItems.WHITE_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_WHITE_PEARL_GEM;
-    		break;
-    	case 1:
-    		this.droppedGemItem = AmItems.ORANGE_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_ORANGE_PEARL_GEM;
-    		break;
-    	case 2:
-    		this.droppedGemItem = AmItems.MAGENTA_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_MAGENTA_PEARL_GEM;
-    		break;
-    	case 3:
-    		this.droppedGemItem = AmItems.LIGHT_BLUE_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_LIGHT_BLUE_PEARL_GEM;
-    		break;
-    	case 4:
-    		this.droppedGemItem = AmItems.YELLOW_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_YELLOW_PEARL_GEM;
-    		break;
-    	case 5:
-    		this.droppedGemItem = AmItems.LIME_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_LIME_PEARL_GEM;
-    		break;
-    	case 6:
-    		this.droppedGemItem = AmItems.PINK_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_PINK_PEARL_GEM;
-    		break;
-    	case 7:
-    		this.droppedGemItem = AmItems.GRAY_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_GRAY_PEARL_GEM;
-    		break;
-    	case 8:
-    		this.droppedGemItem = AmItems.LIGHT_GRAY_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_LIGHT_GRAY_PEARL_GEM;
-    		break;
-    	case 9:
-    		this.droppedGemItem = AmItems.CYAN_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_CYAN_PEARL_GEM;
-    		break;
-    	case 10:
-    		this.droppedGemItem = AmItems.PURPLE_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_PURPLE_PEARL_GEM;
-    		break;
-    	case 11:
-    		this.droppedGemItem = AmItems.BLUE_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_BLUE_PEARL_GEM;
-    		break;
-    	case 12:
-    		this.droppedGemItem = AmItems.BROWN_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_BROWN_PEARL_GEM;
-    		break;
-    	case 13:
-    		this.droppedGemItem = AmItems.GREEN_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_GREEN_PEARL_GEM;
-    		break;
-    	case 14:
-    		this.droppedGemItem = AmItems.RED_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_RED_PEARL_GEM;
-    		break;
-    	case 15:
-    		this.droppedGemItem = AmItems.BLACK_PEARL_GEM;
-    		this.droppedCrackedGemItem = AmItems.CRACKED_BLACK_PEARL_GEM;
-    		break;
-    	}
-    	super.onDeath(cause);
-    }
-	
-	/*********************************************************
-	 * Methods related to storage.                           *
-	 *********************************************************/
 	private void initGemStorage() {
         InventoryBasic gemstorage = this.gemStorage;
         this.gemStorage = new InventoryBasic("gemStorage", false, this.getMaxInventorySlots());
@@ -714,12 +646,15 @@ public class EntityPearl extends EntityAmalgam implements IInventoryChangedListe
 	/*********************************************************
 	 * Methods related to sounds.                            *
 	 *********************************************************/
+	@Override
 	protected SoundEvent getHurtSound(DamageSource source) {
 		return ModSounds.PEARL_HURT;
 	}
+	@Override
 	protected SoundEvent getObeySound() {
 		return ModSounds.PEARL_OBEY;
 	}
+	@Override
 	protected SoundEvent getDeathSound() {
 		return ModSounds.PEARL_DEATH;
 	}

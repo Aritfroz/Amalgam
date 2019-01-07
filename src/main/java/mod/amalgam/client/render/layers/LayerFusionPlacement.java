@@ -15,15 +15,16 @@ public class LayerFusionPlacement implements LayerRenderer<EntityGem> {
 		this.gemRenderer = gemRenderer;
 		this.gemModel = gemRenderer.getMainModel();
 	}
+	@Override
 	public void doRenderLayer(EntityGem gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (gem.isFusion()) {
 			String[] placements = gem.getFusionPlacements().split(" ");
 			for (String placement : placements) {
 				this.gemRenderer.bindTexture(this.getTexture(gem, placement));
 				int color = gem.getGemColor();
-				float r = (float) ((color & 16711680) >> 16) / 255f;
-		        float g = (float) ((color & 65280) >> 8) / 255f;
-		        float b = (float) ((color & 255) >> 0) / 255f;
+				float r = ((color & 16711680) >> 16) / 255f;
+		        float g = ((color & 65280) >> 8) / 255f;
+		        float b = ((color & 255) >> 0) / 255f;
 				GlStateManager.color(r, g, b);
 				this.gemModel.setModelAttributes(this.gemRenderer.getMainModel());
 		        this.gemModel.render(gem, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
@@ -43,6 +44,7 @@ public class LayerFusionPlacement implements LayerRenderer<EntityGem> {
 	        return loc.getResourcePath();
 		}
 	}
+	@Override
 	public boolean shouldCombineTextures() {
 		return true;
 	}

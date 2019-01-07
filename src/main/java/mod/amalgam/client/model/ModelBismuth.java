@@ -37,6 +37,7 @@ public class ModelBismuth extends ModelBiped {
 		this.bipedLeftLeg.addBox(3F, 0F, -2F, 4, 12, 4);
 		this.bipedLeftLeg.setRotationPoint(0F, 12F, 0F);
 	}
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 		this.bipedHead.render(scale);
@@ -47,6 +48,7 @@ public class ModelBismuth extends ModelBiped {
 		this.bipedRightLeg.render(scale);
 		this.bipedLeftLeg.render(scale);
 	}
+	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 	}

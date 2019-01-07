@@ -22,9 +22,9 @@ public class LayerJasperMark2 implements LayerRenderer<EntityJasper> {
 		if (jasper.hasSecondMarking()) {
 			this.gemRenderer.bindTexture(this.getMark2(jasper));
 			int mark2Color = jasper.getMark2Color();
-	        float r = (float) ((mark2Color & 16711680) >> 16) / 255f;
-	        float g = (float) ((mark2Color & 65280) >> 8) / 255f;
-	        float b = (float) ((mark2Color & 255) >> 0) / 255f;
+	        float r = ((mark2Color & 16711680) >> 16) / 255f;
+	        float g = ((mark2Color & 65280) >> 8) / 255f;
+	        float b = ((mark2Color & 255) >> 0) / 255f;
 			GlStateManager.color(r, g, b/*, 0.99f*/);
 			//GlStateManager.enableBlend();
 			//GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);

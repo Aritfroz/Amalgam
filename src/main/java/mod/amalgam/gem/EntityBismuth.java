@@ -11,15 +11,11 @@ import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
 import mod.akrivus.kagic.init.ModEnchantments;
-import mod.akrivus.kagic.init.AmItems;
-import mod.akrivus.kagic.init.ModSounds;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.init.AmItems;
 import mod.heimrarnadalr.kagic.util.Colors;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.INpc;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -41,26 +37,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class EntityBismuth extends EntityAmalgam implements IInventoryChangedListener, INpc {
-	public static final HashMap<IBlockState, Double> BISMUTH_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double BISMUTH_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double BISMUTH_DEPTH_THRESHOLD = 0;
+public class EntityBismuth extends EntityAmalgamGem implements IInventoryChangedListener, INpc {
 	public static final HashMap<Integer, ResourceLocation> BISMUTH_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
-
 	private static final int SKIN_COLOR_BEGIN = 0x91A8CF; 
 	private static final int SKIN_COLOR_END = 0x503243; 
-	
 	public InventoryBasic gemStorage;
 	public InvWrapper gemStorageHandler;
-	
 	public EntityBismuth(World world) {
 		super(world);
 		this.nativeColor = 7;
@@ -96,23 +84,11 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
         this.droppedGemItem = AmItems.BISMUTH_GEM;
 		this.droppedCrackedGemItem = AmItems.CRACKED_BISMUTH_GEM;
 	}
-
-
-	public void convertGems(int placement) {
-    	this.setGemCut(GemCuts.BISMUTH.id);
-    	switch (placement) {
-    	case 0:
-    		this.setGemPlacement(GemPlacements.CHEST.id);
-    		break;
-    	}
-    }
-	
-	/*********************************************************
-	 * Methods related to entity loading.                    *
-	 *********************************************************/
+	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
 		return super.onInitialSpawn(difficulty, livingdata);
     }
+	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
         NBTTagList nbttaglist = new NBTTagList();
         for (int i = 0; i < this.gemStorage.getSizeInventory(); ++i) {
@@ -125,7 +101,8 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
         compound.setTag("items", nbttaglist);
         super.writeEntityToNBT(compound);
 	}
-    public void readEntityFromNBT(NBTTagCompound compound) {
+    @Override
+	public void readEntityFromNBT(NBTTagCompound compound) {
         NBTTagList nbttaglist = compound.getTagList("items", 10);
         this.initGemStorage();
         for (int i = 0; i < nbttaglist.tagCount(); ++i) {
@@ -137,10 +114,6 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
         }
         super.readEntityFromNBT(compound);
     }
-	
-	/*********************************************************
-     * Methods related to entity interaction.                *
-     *********************************************************/
 	@Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
 		if (!this.world.isRemote) {
@@ -163,7 +136,7 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
 								if (!stack.isItemEnchanted() && stack.isItemEnchantable() && this.rand.nextInt(300) == 0) {
 									List<EnchantmentData> list = EnchantmentHelper.buildEnchantmentList(this.rand, stack, damage / 10, true);
 									for (int i = 0; i < list.size(); ++i) {
-				                        EnchantmentData data = (EnchantmentData) list.get(i);
+				                        EnchantmentData data = list.get(i);
 				                        stack.addEnchantment(data.enchantment, data.enchantmentLevel);
 				                    }
 									if (list.size() > 1) {
@@ -188,13 +161,9 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
 								else {
 									this.entityDropItem(result, 0.0F);
 								}
-								/*if (result.getItem() == AmItems.ACTIVATED_GEM_BASE) {
-									this.getOwner().addStat(ModAchievements.GEM_FORGER);
-								}*/
 								if (!player.capabilities.isCreativeMode) {
 									stack.shrink(1);
 								}
-								//this.getOwner().addStat(ModAchievements.TO_THE_FORGE);
 								return true;
 							}
 						}
@@ -204,15 +173,12 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
 		}
 		return super.processInteract(player, hand);
     }
+	@Override
 	public void onInventoryChanged(IInventory inventory) {
 		ItemStack firstItem = this.gemStorage.getStackInSlot(0);
 		this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, firstItem);
-		/*if (firstItem.getItem() instanceof ItemSword) {
-			if (this.getServitude() == EntityGem.SERVE_HUMAN && this.getOwner() != null) {
-            	this.getOwner().addStat(ModAchievements.RENEGADE_PEARL);
-            }
-		}*/
 	}
+	@Override
 	protected void updateEquipmentIfNeeded(EntityItem itementity) {
         ItemStack itemstack = itementity.getItem();
         ItemStack itemstack1 = this.gemStorage.addItem(itemstack);
@@ -223,13 +189,13 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
             itemstack.setCount(itemstack1.getCount());
         }
     }
+	@Override
 	public boolean canPickUpItem(Item item) {
 		return true;
 	}
 	public InventoryBasic getInventory() {
 		return this.gemStorage;
 	}
-	
 	public ItemStack smeltItem(ItemStack stack) {
 		ItemStack result = FurnaceRecipes.instance().getSmeltingResult(stack).copy();
 		return result;
@@ -254,50 +220,6 @@ public class EntityBismuth extends EntityAmalgam implements IInventoryChangedLis
             playerEntity.displayGUIChest(this.gemStorage);
         }
     }
-	
-	@Override
-	public void whenDefective() {
-		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
-		this.setSize(0.6F, 2.07F);
-	}
-
-	/*********************************************************
-     * Methods related to entity death.                      *
-     *********************************************************/
-	public void onDeath(DamageSource cause) {
-		if (!this.world.isRemote) {
-			if (cause.getTrueSource() instanceof EntityLivingBase) {
-				ItemStack heldItem = ((EntityLivingBase)cause.getTrueSource()).getHeldItemMainhand();
-				if (heldItem.isItemEnchanted()) {
-					NBTTagList enchantments = heldItem.getEnchantmentTagList();
-					for (int i = 0; i < enchantments.tagCount(); i++) {
-						if (enchantments.getCompoundTagAt(i).getInteger("id") == Enchantment.getEnchantmentID(ModEnchantments.BREAKING_POINT)) {
-							this.dropItem(AmItems.RECORD_THE_BREAKING_POINT, 1);
-						}
-					}
-				}
-			}
-		}
-		super.onDeath(cause);
-    }
-	
-	/*********************************************************
-     * Methods related to entity sounds.                     *
-     *********************************************************/
-	protected SoundEvent getHurtSound(DamageSource source) {
-		return ModSounds.BISMUTH_HURT;
-	}
-	protected SoundEvent getObeySound() {
-		return ModSounds.BISMUTH_OBEY;
-	}
-	protected SoundEvent getDeathSound() {
-		return ModSounds.BISMUTH_DEATH;
-	}
-
-	/*********************************************************
-	 * Methods related to rendering.                         *
-	 *********************************************************/
 	@Override
 	protected int generateSkinColor() {
 		ArrayList<Integer> skinColors = new ArrayList<Integer>();

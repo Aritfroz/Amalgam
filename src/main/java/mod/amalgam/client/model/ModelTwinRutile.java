@@ -51,6 +51,7 @@ public class ModelTwinRutile extends ModelBiped {
         this.bipedBody.addBox(-3.0F, 4.0F, -2.0F, 6, 2, 4);
         this.bipedBody.setRotationPoint(0.0F, 6.0F, 0.0F);
 	}
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 		this.bipedOtherHead.rotateAngleX = headPitch * 0.017453292F;

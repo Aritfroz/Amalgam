@@ -40,7 +40,7 @@ public class LayerPyriteItem implements LayerRenderer<EntityPyrite> {
             GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
             GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
             boolean flag = handSide == EnumHandSide.LEFT;
-            GlStateManager.translate((float)(flag ? -1 : 1) / 16F, 0.125F, -0.5F);
+            GlStateManager.translate((flag ? -1 : 1) / 16F, 0.125F, -0.5F);
             Minecraft.getMinecraft().getItemRenderer().renderItemSide(entity, stack, camera, flag);
             GlStateManager.popMatrix();
         }
@@ -48,7 +48,8 @@ public class LayerPyriteItem implements LayerRenderer<EntityPyrite> {
     protected void setSide(EnumHandSide side) {
         ((ModelBiped)(this.renderer.getMainModel())).postRenderArm(0.0625F, side);
     }
-    public boolean shouldCombineTextures() {
+    @Override
+	public boolean shouldCombineTextures() {
         return false;
     }
 }

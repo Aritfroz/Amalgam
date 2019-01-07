@@ -10,7 +10,6 @@ import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtTarget;
 import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
 import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -42,16 +41,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntityFusedTopaz extends EntityFusionGem implements IAnimals {
-	private static final int SKIN_COLOR_YELLOW = 0xF6E83E; 
-	private static final int SKIN_COLOR_BLUE = 0x5167fB; 
-	private static final int SKIN_COLOR_GREEN = 0x52FC75; 
-
-	private static final int HAIR_COLOR_YELLOW = 0xFFF564;
-	private static final int HAIR_COLOR_BLUE = 0xA6B5FE;
-	private static final int HAIR_COLOR_GREEN = 0xA5FEB4;
-	
-	private static final int NUM_HAIRSTYLES = 1;
-	
 	private static final DataParameter<Boolean> HOLDING = EntityDataManager.<Boolean>createKey(EntityFusedTopaz.class, DataSerializers.BOOLEAN);
 	private ArrayList<EntityLivingBase> heldEntities = new ArrayList<EntityLivingBase>();
 	
@@ -80,8 +69,6 @@ public class EntityFusedTopaz extends EntityFusionGem implements IAnimals {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(100.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(10.0D);
         this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
-        this.droppedGemItem = AmItems.TOPAZ_GEM;
-		this.droppedCrackedGemItem = AmItems.CRACKED_TOPAZ_GEM;
 		this.dataManager.register(HOLDING, false);
 	}
 	@Override
@@ -100,61 +87,6 @@ public class EntityFusedTopaz extends EntityFusionGem implements IAnimals {
 			}
 		}
 		return super.addGem(gem);
-	}
-	@Override
-	protected int generateGemColor() {
-		if (this.getSpecial() == 1) {
-			return 0x5D73FF;
-		}
-		else if (this.getSpecial() == 2) {
-			return 0x48DAA8;
-		}
-    	return 0xFAFF5D;
-    }
-	@Override
-	protected int generateSkinColor() {
-		int color = this.getSpecial();
-		switch(color) {
-		case 0:
-			return EntityFusedTopaz.SKIN_COLOR_YELLOW;
-		case 1:
-			return EntityFusedTopaz.SKIN_COLOR_BLUE;
-		case 2:
-			return EntityFusedTopaz.SKIN_COLOR_GREEN;
-		default:
-			return 0;
-		}
-	}
-	@Override
-	protected int generateHairStyle() {
-		return this.rand.nextInt(EntityFusedTopaz.NUM_HAIRSTYLES);
-	}
-	@Override
-	protected int generateHairColor() {
-		int color = this.getSpecial();
-		switch(color) {
-		case 0:
-			return EntityFusedTopaz.HAIR_COLOR_YELLOW;
-		case 1:
-			return EntityFusedTopaz.HAIR_COLOR_BLUE;
-		case 2:
-			return EntityFusedTopaz.HAIR_COLOR_GREEN;
-		default:
-			return 0;
-		}
-	}
-	public String getColor() {
-		switch (this.getSpecial()) {
-		case 1:
-			return "blue_";
-		case 2:
-			return "green_";
-		default:
-			return "";
-		}
-	}
-	public void setColor(int color) {
-		this.setSpecial(color);
 	}
     @Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
@@ -292,22 +224,6 @@ public class EntityFusedTopaz extends EntityFusionGem implements IAnimals {
 		if (this.heldEntities.isEmpty()) {
 			super.collideWithEntity(entity);
 		}
-	}
-	@Override
-	protected void playStepSound(BlockPos pos, Block block) {
-        this.playSound(SoundEvents.ENTITY_IRONGOLEM_STEP, 1.0F, 1.0F);
-    }
-	@Override
-	protected SoundEvent getHurtSound(DamageSource source) {
-		return ModSounds.TOPAZ_STEP;
-	}
-	@Override
-	protected SoundEvent getObeySound() {
-		return ModSounds.TOPAZ_OBEY;
-	}
-	@Override
-	protected SoundEvent getDeathSound() {
-		return ModSounds.TOPAZ_DEATH;
 	}
 	public static class AIAttackFusedTopaz extends EntityAIBase {
 		private final EntityFusedTopaz gem;

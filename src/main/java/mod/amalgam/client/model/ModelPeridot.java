@@ -86,6 +86,7 @@ public class ModelPeridot extends ModelBiped {
 	    this.bipedHead.addChild(this.squareHair);
 	}
 	
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (entity instanceof EntityPeridot) {
 			EntityPeridot peridot = (EntityPeridot) entity;
@@ -121,6 +122,7 @@ public class ModelPeridot extends ModelBiped {
 		this.bipedLeftLeg.render(scale);
 	}
 	
+	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 

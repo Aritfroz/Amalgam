@@ -16,6 +16,7 @@ public class LayerVisor implements LayerRenderer<EntityGem> {
 		this.gemRenderer = gemRenderer;
 		this.gemModel = gemRenderer.getMainModel();
 	}
+	@Override
 	public void doRenderLayer(EntityGem entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (entity.hasVisor()) {
 			GlStateManager.color(1.0F, 1.0F, 1.0F);
@@ -42,6 +43,7 @@ public class LayerVisor implements LayerRenderer<EntityGem> {
 	        return loc.getResourcePath();
 		}
 	}
+	@Override
 	public boolean shouldCombineTextures() {
 		return true;
 	}

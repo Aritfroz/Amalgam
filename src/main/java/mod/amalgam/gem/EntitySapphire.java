@@ -17,7 +17,7 @@ import mod.akrivus.kagic.entity.gem.EntityPadparadscha;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
 import mod.akrivus.kagic.init.ModSounds;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
 import mod.amalgam.init.AmItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
@@ -53,10 +53,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-public class EntitySapphire extends EntityAmalgam implements INpc {
-	public static final HashMap<IBlockState, Double> SAPPHIRE_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double SAPPHIRE_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double SAPPHIRE_DEPTH_THRESHOLD = 0;
+public class EntitySapphire extends EntityAmalgamGem implements INpc {
 	public static final HashMap<Integer, ResourceLocation> SAPPHIRE_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
 	private int luckTicks = 0;
 
@@ -92,8 +89,9 @@ public class EntitySapphire extends EntityAmalgam implements INpc {
 		// Apply entity AI.
 		this.stayAI = new EntityAIStay(this);
 		this.tasks.addTask(1, new EntityAIAvoidEntity<EntityCreeper>(this, EntityCreeper.class, new Predicate<EntityCreeper>() {
+			@Override
 			public boolean apply(EntityCreeper input) {
-				return ((EntityCreeper) input).getCreeperState() == 1;
+				return input.getCreeperState() == 1;
 			}
         }, 6.0F, 1.0D, 1.2D));
 		this.tasks.addTask(1, new EntityAIFollowDiamond(this, 1.0D));
@@ -118,7 +116,7 @@ public class EntitySapphire extends EntityAmalgam implements INpc {
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
 		livingdata = super.onInitialSpawn(difficulty, livingdata);
-		int color = this.SKIN_COLORS.get(this.rand.nextInt(this.SKIN_COLORS.size()));
+		int color = EntitySapphire.SKIN_COLORS.get(this.rand.nextInt(EntitySapphire.SKIN_COLORS.size()));
 		this.itemDataToGemData(color);
 		return livingdata;
 	}
@@ -256,11 +254,11 @@ public class EntitySapphire extends EntityAmalgam implements INpc {
 	                IBlockState iblockstate = this.world.getBlockState(blockpos);
 	                if (iblockstate.getMaterial() == Material.AIR) {
 	                    IBlockState iblockstate1 = this.world.getBlockState(blockpos1);
-	                    if (iblockstate1.getMaterial() == Material.WATER && !(iblockstate1.getBlock() instanceof BlockRoseTears) && ((Integer)iblockstate1.getValue(BlockLiquid.LEVEL)).intValue() == 0 && this.world.mayPlace(Blocks.FROSTED_ICE, blockpos1, false, EnumFacing.DOWN, null)) {
+	                    if (iblockstate1.getMaterial() == Material.WATER && !(iblockstate1.getBlock() instanceof BlockRoseTears) && iblockstate1.getValue(BlockLiquid.LEVEL).intValue() == 0 && this.world.mayPlace(Blocks.FROSTED_ICE, blockpos1, false, EnumFacing.DOWN, null)) {
 	                        this.world.setBlockState(blockpos1, Blocks.FROSTED_ICE.getDefaultState());
 	                        this.world.scheduleUpdate(blockpos1.toImmutable(), Blocks.FROSTED_ICE, this.rand.nextInt(60) + 60);
 	                    }
-	                    else if (iblockstate1.getMaterial() == Material.LAVA && ((Integer)iblockstate1.getValue(BlockLiquid.LEVEL)).intValue() == 0 && this.world.mayPlace(Blocks.COBBLESTONE, blockpos1, false, EnumFacing.DOWN, null)) {
+	                    else if (iblockstate1.getMaterial() == Material.LAVA && iblockstate1.getValue(BlockLiquid.LEVEL).intValue() == 0 && this.world.mayPlace(Blocks.COBBLESTONE, blockpos1, false, EnumFacing.DOWN, null)) {
 	                        this.world.setBlockState(blockpos1, Blocks.COBBLESTONE.getDefaultState());
 	                    }
 	                }
@@ -280,7 +278,7 @@ public class EntitySapphire extends EntityAmalgam implements INpc {
 	
 	private void futureVision() {
         if (!this.world.isRemote) {
-            AxisAlignedBB axisalignedbb = (new AxisAlignedBB(this.posX, this.posY, this.posZ, (this.posX + 1), (this.posY + 1), (this.posZ + 1))).grow(8.0, (double) this.world.getHeight(), 8.0);
+            AxisAlignedBB axisalignedbb = (new AxisAlignedBB(this.posX, this.posY, this.posZ, (this.posX + 1), (this.posY + 1), (this.posZ + 1))).grow(8.0, this.world.getHeight(), 8.0);
             List<EntityLivingBase> list = this.world.<EntityLivingBase>getEntitiesWithinAABB(EntityLivingBase.class, axisalignedbb);
             for (EntityLivingBase entity : list) {
             	if (!entity.isDead || entity.getHealth() > 0.0F) {
@@ -319,59 +317,6 @@ public class EntitySapphire extends EntityAmalgam implements INpc {
             }
         }
     }
-
-	/*********************************************************
-	 * Methods related to death.							 *
-	 *********************************************************/
-	@Override
-	public void onDeath(DamageSource cause) {
-		switch (this.getSpecial()) {
-		case 0:
-			this.droppedGemItem = AmItems.WHITE_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_WHITE_SAPPHIRE_GEM;
-			break;
-		case 1:
-			this.droppedGemItem = AmItems.ORANGE_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_ORANGE_SAPPHIRE_GEM;
-			break;
-		case 4:
-			this.droppedGemItem = AmItems.YELLOW_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_YELLOW_SAPPHIRE_GEM;
-			break;
-		case 6:
-			this.droppedGemItem = AmItems.PINK_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_PINK_SAPPHIRE_GEM;
-			break;
-		case 10:
-			this.droppedGemItem = AmItems.PURPLE_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_PURPLE_SAPPHIRE_GEM;
-			break;
-		case 11:
-			this.droppedGemItem = AmItems.BLUE_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_BLUE_SAPPHIRE_GEM;
-			break;
-		case 13:
-			this.droppedGemItem = AmItems.GREEN_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_GREEN_SAPPHIRE_GEM;
-			break;
-		case 15:
-			this.droppedGemItem = AmItems.BLACK_SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_BLACK_SAPPHIRE_GEM;
-			break;
-		case 16:
-			this.droppedGemItem = AmItems.PADPARADSCHA_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_PADPARADSCHA_GEM;
-			break;
-		default:
-			this.droppedGemItem = AmItems.SAPPHIRE_GEM;
-			this.droppedCrackedGemItem = AmItems.CRACKED_SAPPHIRE_GEM;
-		}
-		super.onDeath(cause);
-	}
-
-	/*********************************************************
-	 * Methods related to rendering.                         *
-	 *********************************************************/
 	@Override
 	protected int generateSkinColor() {
 		int colorIndex = this.getSpecial();
@@ -390,12 +335,10 @@ public class EntitySapphire extends EntityAmalgam implements INpc {
 		}
 		return colorValue;
 	}
-
 	@Override
 	protected int generateHairStyle() {
 		return this.rand.nextInt(EntitySapphire.NUM_HAIRSTYLES);
 	}
-
 	@Override
 	public boolean hasHairVariant(GemPlacements placement) {
 		switch(placement) {
@@ -407,7 +350,6 @@ public class EntitySapphire extends EntityAmalgam implements INpc {
 			return false;
 		}
 	}
-	
 	public static EntitySapphire convertFrom(EntityPadparadscha pad) {
 		EntitySapphire sapphire = new EntitySapphire(pad.world);
 		sapphire.setPosition(pad.posX, pad.posY, pad.posZ);

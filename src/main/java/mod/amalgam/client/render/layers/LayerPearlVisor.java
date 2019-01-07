@@ -17,6 +17,7 @@ public class LayerPearlVisor implements LayerRenderer<EntityPearl> {
 		this.pearlRenderer = pearlRenderer;
 		this.pearlModel = pearlRenderer.getMainModel();
 	}
+	@Override
 	public void doRenderLayer(EntityPearl entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (entity.hasVisor()) {
 			float[] afloat = EntitySheep.getDyeRgb(EnumDyeColor.values()[entity.getVisorColor()]);
@@ -34,6 +35,7 @@ public class LayerPearlVisor implements LayerRenderer<EntityPearl> {
 	public ResourceLocation getTexture(EntityPearl pearl) {
 		return new ResourceLocation("kagic:textures/entities/pearl/visor.png");
 	}
+	@Override
 	public boolean shouldCombineTextures() {
 		return true;
 	}

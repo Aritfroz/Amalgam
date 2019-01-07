@@ -35,12 +35,12 @@ public class LayerQuartzCape implements LayerRenderer<EntityGem> {
 			this.gemRenderer.bindTexture(this.getTexture(gem));
 			GlStateManager.pushMatrix();
 			GlStateManager.translate(0.0F, 0.0F, 0.125F);
-			double d0 = gem.prevChasingPosX + (gem.chasingPosX - gem.prevChasingPosX) * (double)partialTicks - (gem.prevPosX + (gem.posX - gem.prevPosX) * (double)partialTicks);
-			double d1 = gem.prevChasingPosY + (gem.chasingPosY - gem.prevChasingPosY) * (double)partialTicks - (gem.prevPosY + (gem.posY - gem.prevPosY) * (double)partialTicks);
-			double d2 = gem.prevChasingPosZ + (gem.chasingPosZ - gem.prevChasingPosZ) * (double)partialTicks - (gem.prevPosZ + (gem.posZ - gem.prevPosZ) * (double)partialTicks);
+			double d0 = gem.prevChasingPosX + (gem.chasingPosX - gem.prevChasingPosX) * partialTicks - (gem.prevPosX + (gem.posX - gem.prevPosX) * partialTicks);
+			double d1 = gem.prevChasingPosY + (gem.chasingPosY - gem.prevChasingPosY) * partialTicks - (gem.prevPosY + (gem.posY - gem.prevPosY) * partialTicks);
+			double d2 = gem.prevChasingPosZ + (gem.chasingPosZ - gem.prevChasingPosZ) * partialTicks - (gem.prevPosZ + (gem.posZ - gem.prevPosZ) * partialTicks);
 			float f = gem.prevRenderYawOffset + (gem.renderYawOffset - gem.prevRenderYawOffset) * partialTicks;
-			double d3 = (double)MathHelper.sin(f * 0.017453292F);
-			double d4 = (double)(-MathHelper.cos(f * 0.017453292F));
+			double d3 = MathHelper.sin(f * 0.017453292F);
+			double d4 = (-MathHelper.cos(f * 0.017453292F));
 			float f1 = (float)d1 * 10.0F;
 			f1 = MathHelper.clamp(f1, -6.0F, 32.0F);
 			float f2 = (float)(d0 * d3 + d2 * d4) * 100.0F;
@@ -90,6 +90,7 @@ public class LayerQuartzCape implements LayerRenderer<EntityGem> {
 		}
 	}
 	
+	@Override
 	public boolean shouldCombineTextures() {
 		return true;
 	}

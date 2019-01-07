@@ -14,6 +14,7 @@ public class LayerZirconHair implements LayerRenderer<EntityZircon> {
 	public LayerZirconHair(RenderZircon zirconRenderer) {
 		this.zirconRenderer = zirconRenderer;
 	}
+	@Override
 	public void doRenderLayer(EntityZircon gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (gem.getSpecialSkin().equals("0")) {
 			this.zirconRenderer.bindTexture(EntityZircon.ZIRCON_HAIR_STYLES.get(gem.getHairStyle()));
@@ -23,6 +24,7 @@ public class LayerZirconHair implements LayerRenderer<EntityZircon> {
 			this.zirconModel.render(gem, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 		}
 	}
+	@Override
 	public boolean shouldCombineTextures() {
 		return true;
 	}

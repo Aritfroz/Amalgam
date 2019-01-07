@@ -1,10 +1,7 @@
 package mod.amalgam.gem;
 
-import java.util.HashMap;
-
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.INpc;
@@ -23,9 +20,6 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.oredict.DyeUtils;
 
 public class EntityEnderPearl extends EntityPearl implements INpc {
-	public static final HashMap<IBlockState, Double> ENDER_PEARL_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double ENDER_PEARL_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double ENDER_PEARL_DEPTH_THRESHOLD = 0;
 	public EntityEnderPearl(World world) {
 		super(world);
 		this.droppedGemItem = AmItems.ENDER_PEARL_GEM;

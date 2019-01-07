@@ -10,7 +10,6 @@ import mod.akrivus.kagic.client.render.layers.LayerPearlHair;
 import mod.akrivus.kagic.client.render.layers.LayerPearlItem;
 import mod.akrivus.kagic.client.render.layers.LayerSantaHat;
 import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
-import mod.akrivus.kagic.init.Amalgic;
 import mod.amalgam.gem.EntityEnderPearl;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

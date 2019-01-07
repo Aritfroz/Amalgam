@@ -111,6 +111,7 @@ public class EntityMalachite extends EntityFusionGem {
 	/*********************************************************
 	 * Methods related to entity living.                     *
 	 *********************************************************/
+	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		/*

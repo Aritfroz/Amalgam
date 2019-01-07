@@ -28,9 +28,9 @@ public class RenderPearl extends RenderGemBase<EntityPearl> {
 	protected void preRenderCallback(EntityPearl gem, float partialTickTime) {
 		if (gem.getSpecialSkin().equals("_0")) {
 			int skin = gem.generateSkinColor();
-			float r = (float)((skin & 16711680) >> 16) / 255.0F;
-			float g = (float)((skin & 65280) >> 8) / 255.0F;
-			float b = (float)((skin & 255) >> 0) / 255.0F;
+			float r = ((skin & 16711680) >> 16) / 255.0F;
+			float g = ((skin & 65280) >> 8) / 255.0F;
+			float b = ((skin & 255) >> 0) / 255.0F;
 			GlStateManager.color(r, g, b, 1.0F);
 		}
 	}

@@ -9,7 +9,6 @@ import mod.akrivus.kagic.client.render.layers.LayerSantaHat;
 import mod.akrivus.kagic.client.render.layers.LayerSkin;
 import mod.akrivus.kagic.client.render.layers.LayerUniform;
 import mod.akrivus.kagic.client.render.layers.LayerWitchHat;
-import mod.akrivus.kagic.init.Amalgic;
 import mod.amalgam.client.model.ModelNephrite;
 import mod.amalgam.client.render.layers.LayerNephriteItem;
 import mod.amalgam.gem.EntityNephrite;

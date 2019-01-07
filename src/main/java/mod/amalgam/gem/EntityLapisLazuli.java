@@ -1,7 +1,6 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import com.google.common.base.Predicate;
@@ -12,15 +11,12 @@ import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.AmItems;
-import mod.akrivus.kagic.init.ModSounds;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
 import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.INpc;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -32,7 +28,6 @@ import net.minecraft.entity.ai.EntityAIOpenDoor;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
@@ -51,22 +46,20 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootTable;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChangedListener, INpc {
-	public static final HashMap<IBlockState, Double> LAPIS_LAZULI_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double LAPIS_LAZULI_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double LAPIS_LAZULI_DEPTH_THRESHOLD = 72;
-	public static final HashMap<Integer, ResourceLocation> LAPIS_LAZULI_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
+public class EntityLapisLazuli extends EntityAmalgamGem implements IInventoryChangedListener, INpc {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
 	public int ticksFlying = 0;
 	public boolean atWater = false;
 	public InventoryBasic harvest;
@@ -75,7 +68,6 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
 
 	private static final int SKIN_COLOR_BEGIN = 0x4FEEFB;
 	private static final int SKIN_COLOR_END = 0x5EC2FA;
-	private static final int NUM_HAIRSTYLES = 1;
 	private static final int HAIR_COLOR_BEGIN = 0x1B69D5;
 	private static final int HAIR_COLOR_END = 0x4D4CBA;
 	
@@ -99,8 +91,9 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
 		// Apply entity AI.
 		this.stayAI = new EntityAIStay(this);
 		this.tasks.addTask(1, new EntityAIAvoidEntity<EntityCreeper>(this, EntityCreeper.class, new Predicate<EntityCreeper>() {
+			@Override
 			public boolean apply(EntityCreeper input) {
-				return ((EntityCreeper)input).getCreeperState() == 1;
+				return input.getCreeperState() == 1;
 			}
         }, 6.0F, 1.0D, 1.2D));
 		this.tasks.addTask(1, new EntityAIFollowDiamond(this, 1.0D));
@@ -123,37 +116,10 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
-        this.droppedGemItem = AmItems.LAPIS_LAZULI_GEM;
-		this.droppedCrackedGemItem = AmItems.CRACKED_LAPIS_LAZULI_GEM;
 	}
-
 	@Override
 	protected int generateGemColor() {
     	return 0x1E8FF4;
-    }
-
-	@Override
-	public void convertGems(int placement) {
-    	this.setGemCut(GemCuts.TEARDROP.id);
-    	switch (placement) {
-    	case 0:
-    		this.setGemPlacement(GemPlacements.FOREHEAD.id);
-    		break;
-    	case 1:
-    		this.setGemPlacement(GemPlacements.CHEST.id);
-    		break;
-    	case 2:
-    		this.setGemPlacement(GemPlacements.BACK.id);
-    		break;
-    	}
-    }
-	
-	/*********************************************************
-	 * Methods related to loading.                           *
-	 *********************************************************/
-	@Override
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
-        return super.onInitialSpawn(difficulty, livingdata);
     }
 	@Override
 	public void writeEntityToNBT(NBTTagCompound compound) {
@@ -169,7 +135,6 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
 		compound.setInteger("harvestTimer", this.harvestTimer);
 		super.writeEntityToNBT(compound);
 	}
-	
 	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) {
 		this.initGemStorage();
@@ -184,10 +149,7 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
 		this.harvestTimer = compound.getInteger("harvestTimer");
 		super.readEntityFromNBT(compound);
 	}
-
-	/*********************************************************
-	 * Methods related to interaction.                       *
-	 *********************************************************/
+	@Override
 	public boolean alternateInteract(EntityPlayer player) {
 		if (!this.world.isRemote) {
 			if (this.isTamed()) {
@@ -328,9 +290,9 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
 	                }
 	                this.motionY = forward / 10;
 		            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
-		            this.motionX *= (double) f;
-		            this.motionY *= (double) f;
-		            this.motionZ *= (double) f;
+		            this.motionX *= f;
+		            this.motionY *= f;
+		            this.motionZ *= f;
                 }
 	        }
 	        else {
@@ -487,46 +449,10 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
 			}
 		}
 	}
-	
 	@Override
 	public boolean isOnLadder() {
         return false;
     }
-	
-	/*********************************************************
-	 * Methods related to death.                             *
-	 *********************************************************/
-	@Override
-	public void onDeath(DamageSource cause) {
-		if (!this.world.isRemote) {
-			if (cause.getTrueSource() instanceof EntitySkeleton) {
-				this.dropItem(AmItems.RECORD_LAPIS_FLIGHT, 1);
-			}
-		}
-		super.onDeath(cause);
-	}
-	
-	/*********************************************************
-	 * Methods related to sounds.                            *
-	 *********************************************************/
-	@Override
-	protected SoundEvent getHurtSound(DamageSource source) {
-		return ModSounds.LAPIS_LAZULI_HURT;
-	}
-
-	@Override
-	protected SoundEvent getObeySound() {
-		return ModSounds.LAPIS_LAZULI_OBEY;
-	}
-
-	@Override
-	protected SoundEvent getDeathSound() {
-		return ModSounds.LAPIS_LAZULI_DEATH;
-	}
-
-	/*********************************************************
-	 * Methods related to rendering.                         *
-	 *********************************************************/
 	@Override
 	protected int generateSkinColor() {
 		ArrayList<Integer> skinColors = new ArrayList<Integer>();
@@ -534,12 +460,10 @@ public class EntityLapisLazuli extends EntityAmalgam implements IInventoryChange
 		skinColors.add(EntityLapisLazuli.SKIN_COLOR_END);
 		return Colors.arbiLerp(skinColors);
 	}
-	
 	@Override
 	protected int generateHairStyle() {
-		return this.rand.nextInt(EntityLapisLazuli.NUM_HAIRSTYLES);
+		return this.rand.nextInt(EntityLapisLazuli.HAIRSTYLES.size());
 	}
-	
 	@Override
 	protected int generateHairColor() {
 		ArrayList<Integer> hairColors = new ArrayList<Integer>();

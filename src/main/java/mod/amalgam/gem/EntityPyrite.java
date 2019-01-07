@@ -1,7 +1,6 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.google.common.base.Predicate;
 
@@ -15,7 +14,7 @@ import mod.akrivus.kagic.entity.gem.EntityLapisLazuli;
 import mod.akrivus.kagic.entity.gem.EntityRuby;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
 import mod.amalgam.gem.ai.EntityAIFollowLeaderGem;
 import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
 import mod.amalgam.gem.fusion.EntityFusedPyrite;
@@ -24,7 +23,6 @@ import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
 import mod.amalgam.tweaks.ai.EntityAICrossFuse;
 import mod.heimrarnadalr.kagic.util.Colors;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -52,10 +50,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityPyrite extends EntityAmalgam implements IAnimals {
-	public static final HashMap<IBlockState, Double> PYRITE_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double PYRITE_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double PYRITE_DEPTH_THRESHOLD = 0;
+public class EntityPyrite extends EntityAmalgamGem implements IAnimals {
 	private static final int SKIN_COLOR_BEGIN = 0xFFEE7F; 
 	private static final int SKIN_COLOR_MID = 0xE3D571; 
 	private static final int SKIN_COLOR_END = 0xC6BE63; 

@@ -33,9 +33,9 @@ public class LayerHair implements LayerRenderer<EntityGem> {
 	public void doRenderLayer(EntityGem gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.gemRenderer.bindTexture(this.getHairStyle(gem, gem.getHairStyle()));
 		int hairColor = gem.getHairColor();
-        float r = (float) ((hairColor & 16711680) >> 16) / 255f;
-        float g = (float) ((hairColor & 65280) >> 8) / 255f;
-        float b = (float) ((hairColor & 255) >> 0) / 255f;
+        float r = ((hairColor & 16711680) >> 16) / 255f;
+        float g = ((hairColor & 65280) >> 8) / 255f;
+        float b = ((hairColor & 255) >> 0) / 255f;
 		GlStateManager.color(r + this.offset, g + this.offset, b + this.offset/*, 0.99f*/);
 		//GlStateManager.enableBlend();
 		//GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);

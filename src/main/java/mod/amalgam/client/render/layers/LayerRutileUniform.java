@@ -15,6 +15,7 @@ public class LayerRutileUniform implements LayerRenderer<EntityGem> {
 		this.gemRenderer = gemRenderer;
 	}
 	
+	@Override
 	public void doRenderLayer(EntityGem gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.gemRenderer.bindTexture(this.getTexture(gem));
 		float[] afloat = EntitySheep.getDyeRgb(EnumDyeColor.values()[gem.getUniformColor()]);
@@ -30,6 +31,7 @@ public class LayerRutileUniform implements LayerRenderer<EntityGem> {
 		return new ResourceLocation("kagic:textures/entities/rutile/uniform.png");
 	}
 	
+	@Override
 	public boolean shouldCombineTextures() {
 		return true;
 	}

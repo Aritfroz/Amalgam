@@ -14,9 +14,9 @@ import mod.akrivus.kagic.entity.ai.EntityAIPickUpItems;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.AmItems;
 import mod.akrivus.kagic.init.ModSounds;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.init.AmItems;
 import mod.amalgam.injection.InjectorResult;
 import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.block.state.IBlockState;
@@ -63,10 +63,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class EntityPeridot extends EntityAmalgam implements IInventoryChangedListener, INpc {
-	public static final HashMap<IBlockState, Double> PERIDOT_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double PERIDOT_DEFECTIVITY_MULTIPLIER = 1;
-	public static final double PERIDOT_DEPTH_THRESHOLD = 72;
+public class EntityPeridot extends EntityAmalgamGem implements IInventoryChangedListener, INpc {
 	public InventoryBasic gemStorage;
 	public InvWrapper gemStorageHandler;
 	public InventoryBasic harvest;
@@ -105,7 +102,7 @@ public class EntityPeridot extends EntityAmalgam implements IInventoryChangedLis
 		this.tasks.addTask(1, new EntityAIAvoidEntity<EntityCreeper>(this, EntityCreeper.class, new Predicate<EntityCreeper>() {
 			@Override
 			public boolean apply(EntityCreeper input) {
-				return ((EntityCreeper) input).getCreeperState() == 1;
+				return input.getCreeperState() == 1;
 			}
 		}, 6.0F, 1.0D, 1.2D));
 		this.tasks.addTask(1, new EntityAIFollowDiamond(this, 1.0D));
@@ -207,6 +204,7 @@ public class EntityPeridot extends EntityAmalgam implements IInventoryChangedLis
 		super.readEntityFromNBT(compound);
 	}
 	
+	@Override
 	public void whenDefective() {
 		this.setSize(0.7F, 1.7F);
 	}
@@ -214,6 +212,7 @@ public class EntityPeridot extends EntityAmalgam implements IInventoryChangedLis
 	/*********************************************************
 	 * Methods related to interaction.					   *
 	 *********************************************************/
+	@Override
 	public boolean alternateInteract(EntityPlayer player) {
 		if (!this.world.isRemote) {
 			if (this.isTamed()) {
@@ -433,19 +432,11 @@ public class EntityPeridot extends EntityAmalgam implements IInventoryChangedLis
 	public boolean isFarmer() {
 		return this.isTamed() && this.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemHoe;
 	}
-	
-	/*********************************************************
-	 * Methods related to combat.							*
-	 *********************************************************/
 	@Override
-	public void onStruckByLightning(EntityLightningBolt lightningBolt) {
-		if (!this.world.isRemote && !this.isDead) {
-			this.dropItem(AmItems.RECORD_LITTLE_PERIDOT, 1);
-		}
-	}
 	public boolean attackEntityFrom(DamageSource source, float amount) {
 		return super.attackEntityFrom(source, amount);
 	}
+	@Override
 	public boolean attackEntityAsMob(Entity entity) {
 		if (this.isTraitor() && entity instanceof EntityPlayer) {
 			this.sayClod();

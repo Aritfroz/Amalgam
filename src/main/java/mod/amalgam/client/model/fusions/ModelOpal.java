@@ -248,7 +248,7 @@ public class ModelOpal extends ModelBiped {
 			f1 = 1.0F - f1;
 			float f2 = MathHelper.sin(f1 * (float)Math.PI);
 			float f3 = MathHelper.sin(this.swingProgress * (float)Math.PI) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
-			mainArm.rotateAngleX = (float)((double)mainArm.rotateAngleX - ((double)f2 * 1.2D + (double)f3));
+			mainArm.rotateAngleX = (float)(mainArm.rotateAngleX - (f2 * 1.2D + f3));
 			mainArm.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
 			mainArm.rotateAngleZ += MathHelper.sin(this.swingProgress * (float)Math.PI) * -0.4F;
 		}

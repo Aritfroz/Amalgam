@@ -13,6 +13,7 @@ public class LayerRutileVisor implements LayerRenderer<EntityRutile> {
 	public LayerRutileVisor(RenderRutile gemRenderer) {
 		this.gemRenderer = gemRenderer;
 	}
+	@Override
 	public void doRenderLayer(EntityRutile gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (gem.hasVisor()) {
 			GlStateManager.color(1.0F, 1.0F, 1.0F);
@@ -29,6 +30,7 @@ public class LayerRutileVisor implements LayerRenderer<EntityRutile> {
 	public ResourceLocation getTexture(EntityGem gem) {
 		return new ResourceLocation("kagic:textures/entities/rutile/visor.png");
 	}
+	@Override
 	public boolean shouldCombineTextures() {
 		return true;
 	}

@@ -14,11 +14,10 @@ import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
 import mod.heimrarnadalr.kagic.util.Colors;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -35,19 +34,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class EntityEmerald extends EntityAmalgam implements IAnimals {
-	public static final HashMap<IBlockState, Double> EMERALD_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double EMERALD_DEFECTIVITY_MULTIPLIER = 2;
-	public static final double EMERALD_DEPTH_THRESHOLD = 64;
+public class EntityEmerald extends EntityAmalgamGem implements IAnimals {
 	public static final HashMap<Integer, ResourceLocation> EMERALD_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
-
 	public static final int SKIN_COLOR_BEGIN = 0xD7F6EE;
 	public static final int SKIN_COLOR_MID = 0xC0E195;
 	public static final int SKIN_COLOR_END = 0xC0E195;
 	public static final int HAIR_COLOR_BEGIN = 0x93F1B5;
 	public static final int HAIR_COLOR_END = 0x10532F;
 	private static final int NUM_HAIRSTYLES = 1;
-	
 	public EntityEmerald(World world) {
 		super(world);
 		this.isSoldier = true;

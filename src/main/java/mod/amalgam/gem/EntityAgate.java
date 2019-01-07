@@ -1,32 +1,15 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-
-import javax.annotation.Nullable;
 
 import mod.akrivus.kagic.entity.ai.EntityAIScareMobs;
 import mod.akrivus.kagic.entity.ai.EntityAISitStill;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.AmItems;
-import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.EntityQuartz;
 import mod.amalgam.init.AmGems;
-import net.minecraft.block.state.IBlockState;
+import mod.amalgam.init.AmItems;
 import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.IAnimals;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
@@ -61,17 +44,9 @@ public class EntityAgate extends EntityQuartz implements IAnimals {
 	
 	public EntityAgate(World world) {
 		super(world);
-
-		//Define valid gem cuts and placements
-		
-
-		// Apply entity AI.
+		this.chargedByTakingDamageNotDelivering = false;
 		this.tasks.addTask(2, new EntityAISitStill(this, 1.0D));
 		this.tasks.addTask(3, new EntityAIScareMobs(this));
-        
-        // Apply entity attributes.
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D);
-        
         this.droppedGemItem = AmItems.AGATE_GEM;
 		this.droppedCrackedGemItem = AmItems.CRACKED_AGATE_GEM;
 	}
@@ -80,22 +55,8 @@ public class EntityAgate extends EntityQuartz implements IAnimals {
 		return true;
 	}
     @Override
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
-    	boolean holly = this.rand.nextInt(9) == 0 || this.getSpecial() == 1;
-        this.itemDataToGemData(this.dataManager.get(COLOR));
-    	if (holly) {
-        	this.setCustomNameTag(new TextComponentTranslation("entity.kagic.agate_16.name").getUnformattedComponentText());
-        	this.setGemPlacement(GemPlacements.BACK_OF_HEAD.id);
-        	this.setGemCut(GemCuts.TEARDROP.id);
-        	this.nativeColor = 3;
-        	this.setSpecial(1);
-        } else {
-            //this.setHairStyle(this.rand.nextInt(EntityAgate.AGATE_HAIR_STYLES.size()));
-            //Amalgic.instance.chatInfoMessage("Set hairstyle to " + this.getHairStyle());
-        	this.setCustomNameTag(new TextComponentTranslation(String.format("entity.kagic.agate_%1$d.name", this.getColor())).getUnformattedComponentText());
-        	this.setUniformColor(this.dataManager.get(COLOR));
-    		this.nativeColor = this.getUniformColor();
-        }
+    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
+    	
         return super.onInitialSpawn(difficulty, livingdata);
     }
 	@Override

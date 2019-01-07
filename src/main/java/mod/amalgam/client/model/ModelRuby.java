@@ -43,6 +43,7 @@ public class ModelRuby extends ModelBiped {
 	    this.bipedLeftLeg.addBox(0F, 4F, -2F, 4, 8, 4);
 	    this.bipedLeftLeg.setRotationPoint(0F, 0F, 0F);
     }
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 		this.bipedHead.render(scale);
@@ -52,9 +53,11 @@ public class ModelRuby extends ModelBiped {
 		this.bipedRightLeg.render(scale);
 		this.bipedLeftLeg.render(scale);
 	}
+	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 	    super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 	}
+	@Override
 	public void setLivingAnimations(EntityLivingBase entity, float limbSwingAmount, float ageInTicks, float partialTickTime) {
 		this.rightArmPose = ModelBiped.ArmPose.EMPTY;
 		this.leftArmPose = ModelBiped.ArmPose.EMPTY;

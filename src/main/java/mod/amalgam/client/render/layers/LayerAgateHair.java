@@ -16,6 +16,7 @@ public class LayerAgateHair implements LayerRenderer<EntityAgate> {
 	public LayerAgateHair(RenderAgate agateRenderer) {
 		this.agateRenderer = agateRenderer;
 	}
+	@Override
 	public void doRenderLayer(EntityAgate gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (!gem.isHolly()) {
 			this.agateRenderer.bindTexture(EntityAgate.AGATE_HAIR_STYLES.get(gem.getHairStyle()));
@@ -25,6 +26,7 @@ public class LayerAgateHair implements LayerRenderer<EntityAgate> {
 			this.agateModel.render(gem, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 		}
 	}
+	@Override
 	public boolean shouldCombineTextures() {
 		return true;
 	}

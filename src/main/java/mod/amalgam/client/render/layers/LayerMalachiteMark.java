@@ -21,9 +21,9 @@ public class LayerMalachiteMark implements LayerRenderer<EntityMalachite> {
 	public void doRenderLayer(EntityMalachite malachite, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.gemRenderer.bindTexture(this.getMark(malachite));
 		int mark1Color = malachite.getMarkColor();
-        float r = (float) ((mark1Color & 16711680) >> 16) / 255f;
-        float g = (float) ((mark1Color & 65280) >> 8) / 255f;
-        float b = (float) ((mark1Color & 255) >> 0) / 255f;
+        float r = ((mark1Color & 16711680) >> 16) / 255f;
+        float g = ((mark1Color & 65280) >> 8) / 255f;
+        float b = ((mark1Color & 255) >> 0) / 255f;
 		GlStateManager.color(r, g, b/*, 0.99f*/);
 		//GlStateManager.enableBlend();
 		//GlStateManager.blendFunc(SourceFactor.SRC_ALPHA, DestFactor.ONE_MINUS_SRC_ALPHA);

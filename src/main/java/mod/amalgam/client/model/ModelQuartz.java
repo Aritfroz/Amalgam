@@ -39,6 +39,7 @@ public class ModelQuartz extends ModelBiped {
 		this.bipedCape.setTextureSize(64, 32);
 		this.bipedCape.addBox(-5.0F, -4.0F, -2.f, 10, 20, 1);
 	}
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 		this.bipedHead.render(scale);
@@ -50,9 +51,11 @@ public class ModelQuartz extends ModelBiped {
 		this.bipedLeftLeg.render(scale);
 		this.bipedCape.render(scale);
 	}
+	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 	}
+	@Override
 	public void setLivingAnimations(EntityLivingBase entity, float limbSwingAmount, float ageInTicks, float partialTickTime) {
 		this.rightArmPose = ModelBiped.ArmPose.EMPTY;
 		this.leftArmPose = ModelBiped.ArmPose.EMPTY;

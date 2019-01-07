@@ -57,6 +57,7 @@ public class ModelAquamarine extends ModelBiped {
 	    this.bipedLeftLeg.addBox(1F, 10F, -1F, 2, 4, 2);
 	    this.bipedLeftLeg.setRotationPoint(0F, 0F, 0F);
     }
+	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 		if (entity instanceof EntityAquamarine) {
@@ -75,6 +76,7 @@ public class ModelAquamarine extends ModelBiped {
 		this.bipedRightLeg.render(scale);
 		this.bipedLeftLeg.render(scale);
 	}
+	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
 		super.copyModelAngles(this.bipedBody, this.bipedSkirt);

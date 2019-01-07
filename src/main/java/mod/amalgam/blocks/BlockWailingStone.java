@@ -87,7 +87,7 @@ public class BlockWailingStone extends BlockFalling implements ITileEntityProvid
 			IBlockState south = world.getBlockState(pos.south());
 			IBlockState east = world.getBlockState(pos.west());
 			IBlockState west = world.getBlockState(pos.east());
-			EnumFacing facing = (EnumFacing)(state.getValue(FACING));
+			EnumFacing facing = (state.getValue(FACING));
 			if (facing == EnumFacing.NORTH && north.isFullBlock() && !south.isFullBlock()) {
 				facing = EnumFacing.SOUTH;
 			}
@@ -118,15 +118,15 @@ public class BlockWailingStone extends BlockFalling implements ITileEntityProvid
 	}
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return ((EnumFacing)state.getValue(FACING)).getIndex();
+		return state.getValue(FACING).getIndex();
 	}
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
-		return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+		return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
 	}
 	@Override
 	public IBlockState withMirror(IBlockState state, Mirror mirror) {
-		return state.withRotation(mirror.toRotation((EnumFacing)state.getValue(FACING)));
+		return state.withRotation(mirror.toRotation(state.getValue(FACING)));
 	}
 	@Override
 	protected BlockStateContainer createBlockState() {

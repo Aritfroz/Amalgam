@@ -22,9 +22,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemDestabilizer extends ItemSword {
+public class ItemGemDestabilizer extends ItemSword {
 	public int color;
-	public ItemDestabilizer(int index) {
+	public ItemGemDestabilizer(int index) {
 		super(ToolMaterial.GOLD);
 		this.setUnlocalizedName("destabilizer_" + index);
 		this.setMaxStackSize(1);
@@ -70,13 +70,14 @@ public class ItemDestabilizer extends ItemSword {
     }
 	@Override
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
-		if (repair.getItem() instanceof ItemShard) {
-			ItemShard shard = (ItemShard)(repair.getItem());
+		if (repair.getItem() instanceof ItemGemShard) {
+			ItemGemShard shard = (ItemGemShard)(repair.getItem());
 			return this.color == shard.color;
 		}
 		return false;
     }
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
     public boolean isFull3D() {
         return true;
     }

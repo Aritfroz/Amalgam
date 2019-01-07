@@ -13,7 +13,7 @@ import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
 import mod.heimrarnadalr.kagic.util.Colors;
@@ -47,21 +47,18 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
-public class EntityWatermelonTourmaline extends EntityAmalgam implements IAnimals {
-	public static final HashMap<IBlockState, Double> WTOURMALINE_YIELDS = new HashMap<IBlockState, Double>();
-	public static final double WTOURMALINE_DEFECTIVITY_MULTIPLIER = 2;
-	public static final double WTOURMALINE_DEPTH_THRESHOLD = 72;
-	public static final HashMap<Integer, ResourceLocation> WTOURMALINE_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
-	
+public class EntityWatermelonTourmaline extends EntityAmalgamGem implements IAnimals {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
 	private static final DataParameter<Integer> LOWER_COLOR = EntityDataManager.<Integer>createKey(EntityCitrine.class, DataSerializers.VARINT);
-	
 	public static final int LOWER_SKIN_COLOR_BEGIN = 0xFFC9E2; 
 	public static final int LOWER_SKIN_COLOR_END = 0xD9A3FF;
 	public static final int SKIN_COLOR_BEGIN = 0x45E79F; 
 	public static final int SKIN_COLOR_END = 0x45AE97;
 	public static final int HAIR_COLOR_BEGIN = 0xA0FFD6;
-	public static final int HAIR_COLOR_END = 0x537066; 
-	private static final int NUM_HAIRSTYLES = 1;
+	public static final int HAIR_COLOR_END = 0x537066;
 	
 	public EntityWatermelonTourmaline(World world) {
 		super(world);
@@ -83,8 +80,6 @@ public class EntityWatermelonTourmaline extends EntityAmalgam implements IAnimal
         this.tasks.addTask(5, new EntityAIStandGuard(this, 0.6D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 16.0F));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityMob.class, 16.0F));
-        
-        // Apply targeting.
         this.targetTasks.addTask(1, new EntityAIDiamondHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIDiamondHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, false, new Class[0]));
@@ -99,9 +94,6 @@ public class EntityWatermelonTourmaline extends EntityAmalgam implements IAnimal
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(12.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3D);
-        
-        this.droppedGemItem = AmItems.TOURMALINE_GEM;
-		this.droppedCrackedGemItem = AmItems.CRACKED_TOURMALINE_GEM;
         
         // Register entity data.
         this.dataManager.register(LOWER_COLOR, 0);
@@ -168,7 +160,7 @@ public class EntityWatermelonTourmaline extends EntityAmalgam implements IAnimal
 	}
 	@Override
 	protected int generateHairStyle() {
-		return this.rand.nextInt(EntityWatermelonTourmaline.NUM_HAIRSTYLES);
+		return this.rand.nextInt(EntityWatermelonTourmaline.HAIRSTYLES.size());
 	}
 	@Override
 	protected int generateHairColor() {

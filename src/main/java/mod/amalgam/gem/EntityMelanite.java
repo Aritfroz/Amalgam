@@ -1,7 +1,6 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 import com.google.common.base.Predicate;
@@ -18,12 +17,9 @@ import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.akrivus.kagic.entity.ai.EntityAIStay;
 import mod.akrivus.kagic.entity.gem.GemCuts;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.AmItems;
-import mod.akrivus.kagic.init.ModSounds;
+import mod.akrivus.kagic.init.ModItems;
 import mod.akrivus.kagic.items.ItemGem;
-import mod.amalgam.init.AmItems;
 import mod.heimrarnadalr.kagic.util.Colors;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -38,26 +34,15 @@ import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class EntityMelanite extends EntityGem implements IAnimals {
-    public static final HashMap<IBlockState, Double> MELANITE_YIELDS = new HashMap<IBlockState, Double>();
-    public static final double MELANITE_DEFECTIVITY_MULTIPLIER = 1;
-    public static final double MELANITE_DEPTH_THRESHOLD = 32;
-
     private static final int SKIN_COLOR_BEGIN = 0x2F2F2F;
     private static final int SKIN_COLOR_END = 0x404040;
-
     private static final int NUM_HAIRSTYLES = 1;
-
     private static final int HAIR_COLOR_BEGIN = 0x0F0F0F;
     private static final int HAIR_COLOR_END = 0x1F1F1F;
 
@@ -99,10 +84,7 @@ public class EntityMelanite extends EntityGem implements IAnimals {
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.4D);
         this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
-        this.droppedGemItem = AmItems.MELANITE_GEM;
-        this.droppedCrackedGemItem = AmItems.CRACKED_MELANITE_GEM;
     }
-
     @Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
         if (hand == EnumHand.MAIN_HAND && !this.world.isRemote) {
@@ -111,13 +93,13 @@ public class EntityMelanite extends EntityGem implements IAnimals {
                 if (stack.getItem() instanceof ItemGem) {
                     if (!((ItemGem) stack.getItem()).isCracked) {
                         Item gem = stack.getItem();
-                        ItemStack result = new ItemStack(AmItems.GEM_TABLE.get(gem));
+                        ItemStack result = new ItemStack(ModItems.GEM_TABLE.get(gem));
                         result.setTagCompound(stack.getTagCompound());
                         this.entityDropItem(result, 1);
                     }
                     else {
                         Random random = new Random();
-                        ItemStack result = new ItemStack(AmItems.ACTIVATED_GEM_SHARD, (random.nextInt(3) + 2));
+                        ItemStack result = new ItemStack(ModItems.ACTIVATED_GEM_SHARD, (random.nextInt(3) + 2));
                         this.entityDropItem(result, 1);
                     }
                     if (!player.capabilities.isCreativeMode) {
@@ -129,7 +111,6 @@ public class EntityMelanite extends EntityGem implements IAnimals {
         }
         return super.processInteract(player, hand);
     }
-
     @Override
     public boolean attackEntityAsMob(Entity entity) {
         if (super.attackEntityAsMob(entity)) {
@@ -148,58 +129,6 @@ public class EntityMelanite extends EntityGem implements IAnimals {
             return false;
         }
     }
-
-    @Override
-    public void whenDefective() {
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
-        this.setSize(0.72F, 1.61F);
-    }
-
-    @Override
-    protected boolean canEquipItem(ItemStack stack) {
-        Item weapon = stack.getItem();
-        if (weapon instanceof ItemSword || weapon instanceof ItemTool || weapon instanceof ItemBow) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    @Override
-    public boolean canPickUpLoot() {
-        return true;
-    }
-
-    @Override
-    public void onItemPickup(Entity item, int quantity) {
-        this.setAttackAI();
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        if (this.rand.nextInt(3) == 0) {
-            return ModSounds.HESSONITE_LIVING;
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return ModSounds.HESSONITE_DEATH;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.HESSONITE_HURT;
-    }
-
-    @Override
-    protected SoundEvent getObeySound() {
-        return ModSounds.HESSONITE_OBEY;
-    }
-
     @Override
     protected int generateSkinColor() {
         ArrayList<Integer> skinColors = new ArrayList<Integer>();
@@ -207,12 +136,10 @@ public class EntityMelanite extends EntityGem implements IAnimals {
         skinColors.add(EntityMelanite.SKIN_COLOR_END);
         return Colors.arbiLerp(skinColors);
     }
-
     @Override
     protected int generateHairStyle() {
         return this.rand.nextInt(EntityMelanite.NUM_HAIRSTYLES);
     }
-
     @Override
     protected int generateHairColor() {
         ArrayList<Integer> hairColors = new ArrayList<Integer>();
@@ -220,7 +147,6 @@ public class EntityMelanite extends EntityGem implements IAnimals {
         hairColors.add(EntityMelanite.HAIR_COLOR_END);
         return Colors.arbiLerp(hairColors);
     }
-
     @Override
     public boolean hasCape() {
         return true;

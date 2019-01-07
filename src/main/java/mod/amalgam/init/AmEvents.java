@@ -13,7 +13,7 @@ import mod.amalgam.entity.EntityBubble;
 import mod.amalgam.entity.EntityGemShard;
 import mod.amalgam.entity.EntityPalanquin;
 import mod.amalgam.human.EntitySteven;
-import mod.amalgam.items.ItemShard;
+import mod.amalgam.items.ItemGemShard;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.item.EntityItem;
@@ -114,7 +114,7 @@ public class AmEvents {
 	}
 	@SubscribeEvent
 	public void onAnvilRepair(AnvilRepairEvent e) {
-		if (e.getIngredientInput().getItem() instanceof ItemShard) {
+		if (e.getIngredientInput().getItem() instanceof ItemGemShard) {
 			ItemStack stack = e.getIngredientInput().copy();
 			stack.shrink(1);
 			boolean added = e.getEntityPlayer().addItemStackToInventory(stack);
@@ -139,9 +139,9 @@ public class AmEvents {
 	@SubscribeEvent
 	public void onAnvilUpdate(AnvilUpdateEvent e) {
 		Random rand = new Random(e.getRight().hashCode());
-		if (e.getRight().getItem() instanceof ItemShard) {
-			ItemShard gem = (ItemShard)(e.getRight().getItem());
-			if (e.getLeft().getItem() instanceof ItemShard) {
+		if (e.getRight().getItem() instanceof ItemGemShard) {
+			ItemGemShard gem = (ItemGemShard)(e.getRight().getItem());
+			if (e.getLeft().getItem() instanceof ItemGemShard) {
 				ItemGem[] SHARDS = new ItemGem[] {
 					ModItems.HANDBODY_GEM,
 					ModItems.FOOTARM_GEM,
@@ -201,7 +201,7 @@ public class AmEvents {
 							dyeColor = i;
 						}
 				    }
-				    e.setOutput(new ItemStack(ItemShard.SHARD_COLORS.get(dyeColor), 9));
+				    e.setOutput(new ItemStack(ItemGemShard.SHARD_COLORS.get(dyeColor), 9));
 				    if (!e.getOutput().isEmpty()) {
 						e.setResult(Result.ALLOW);
 						e.setCost(1);

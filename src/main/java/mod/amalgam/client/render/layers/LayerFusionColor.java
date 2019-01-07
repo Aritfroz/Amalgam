@@ -33,9 +33,9 @@ public class LayerFusionColor implements LayerRenderer<EntityFusionGem> {
 	public void doRenderLayer(EntityFusionGem gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		this.gemRenderer.bindTexture(this.getTexture(gem));
 		int fusionColor = gem.getFusionColor();
-		float r = (float) ((fusionColor & 16711680) >> 16) / 255f;
-		float g = (float) ((fusionColor & 65280) >> 8) / 255f;
-		float b = (float) ((fusionColor & 255) >> 0) / 255f;
+		float r = ((fusionColor & 16711680) >> 16) / 255f;
+		float g = ((fusionColor & 65280) >> 8) / 255f;
+		float b = ((fusionColor & 255) >> 0) / 255f;
 		//Amalgic.instance.chatInfoMessage("Skin color is " + r + " , " + g + " , " + b);
 		GlStateManager.color(r+ this.offset, g + this.offset, b + this.offset, 1f);
 		//GlStateManager.enableBlend();

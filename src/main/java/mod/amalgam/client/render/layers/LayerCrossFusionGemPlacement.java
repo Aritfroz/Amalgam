@@ -20,9 +20,9 @@ public class LayerCrossFusionGemPlacement implements LayerRenderer<EntityFusionG
 	@Override
 	public void doRenderLayer(EntityFusionGem gem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		int color = gem.getGemColor();
-		float r = (float) ((color & 16711680) >> 16) / 255f;
-        float g = (float) ((color & 65280) >> 8) / 255f;
-        float b = (float) ((color & 255) >> 0) / 255f;
+		float r = ((color & 16711680) >> 16) / 255f;
+        float g = ((color & 65280) >> 8) / 255f;
+        float b = ((color & 255) >> 0) / 255f;
 		GlStateManager.color(r, g, b);
 
 		String[] types = gem.getFusionTypes().split(" ");

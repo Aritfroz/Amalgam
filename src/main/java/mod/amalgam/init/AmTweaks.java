@@ -34,7 +34,7 @@ import mod.akrivus.kagic.entity.gem.fusion.EntityMalachite;
 import mod.akrivus.kagic.entity.gem.fusion.EntityOpal;
 import mod.akrivus.kagic.entity.gem.fusion.EntityRhodonite;
 import mod.akrivus.kagic.init.ModEntities;
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
 import mod.amalgam.gem.EntityBabyPearl;
 import mod.amalgam.gem.EntityPyrite;
 import mod.amalgam.gem.ai.EntityAIBubbleItems;
@@ -63,11 +63,11 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class AmTweaks {
 	public static void applyGemTweaks(EntityGem gem) {
-		if (gem instanceof EntityAmalgam) {
+		if (gem instanceof EntityAmalgamGem) {
 			System.out.println(gem.getName() + " is already overwritten.");
 		}
 		else {
-			EntityAmalgam overwrite = null;
+			EntityAmalgamGem overwrite = null;
 			if (gem instanceof EntityAquamarine) {
 				mod.amalgam.gem.EntityAquamarine conv = new mod.amalgam.gem.EntityAquamarine(gem.world);
 				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));

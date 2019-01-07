@@ -44,7 +44,7 @@ public class LayerOpalItem implements LayerRenderer<EntityGem> {
 			GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
 			GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
 			boolean lefty = handSide == EnumHandSide.LEFT;
-			GlStateManager.translate((float)(lefty ? -1 : 1) / 3F, 0.125F, -0.45F);
+			GlStateManager.translate((lefty ? -1 : 1) / 3F, 0.125F, -0.45F);
 			Minecraft.getMinecraft().getItemRenderer().renderItemSide(entity, stack, camera, lefty);
 			GlStateManager.popMatrix();
 		}

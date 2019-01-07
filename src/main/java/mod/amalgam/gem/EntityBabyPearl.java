@@ -1,7 +1,6 @@
 package mod.amalgam.gem;
 
 import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.gem.EntityPearl;
 import mod.akrivus.kagic.entity.gem.GemPlacements;
 import mod.amalgam.gem.ai.EntityAICallForBackup;
 import mod.amalgam.gem.ai.EntityAIFollowOtherGem;

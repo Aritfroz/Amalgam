@@ -1,15 +1,15 @@
 package mod.amalgam.items;
 
-import mod.amalgam.entity.EntityAmalgam;
+import mod.amalgam.entity.EntityAmalgamGem;
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class ItemColoredGem extends ItemGem implements IItemColor {
-	public ItemColoredGem(Class<? extends EntityAmalgam> gemClass, String name, boolean cracked) {
+public class ItemColoredAmalgamGem extends ItemAmalgamGem implements IItemColor {
+	public ItemColoredAmalgamGem(Class<? extends EntityAmalgamGem> gemClass, String name, boolean cracked) {
 		super(gemClass, name, cracked);
 	}
-	public ItemColoredGem(Class<? extends EntityAmalgam> gemClass, String name) {
+	public ItemColoredAmalgamGem(Class<? extends EntityAmalgamGem> gemClass, String name) {
 		super(gemClass, name);
 	}
 	@Override

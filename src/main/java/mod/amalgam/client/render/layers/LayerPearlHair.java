@@ -20,11 +20,11 @@ public class LayerPearlHair implements LayerRenderer<EntityPearl> {
 		if (gem.getSpecialSkin().equals("_0")) {
 			this.pearlRenderer.bindTexture(EntityPearl.PEARL_HAIR_STYLES.get(gem.getHairStyle()));
 			int hair = gem.generateHairColor();
-			float r = (float) ((hair & 16711680) >> 16) / 255f;
-			float g = (float) ((hair & 65280) >> 8) / 255f;
-			float b = (float) ((hair & 255) >> 0) / 255f;
+			float r = ((hair & 16711680) >> 16) / 255f;
+			float g = ((hair & 65280) >> 8) / 255f;
+			float b = ((hair & 255) >> 0) / 255f;
 			//Amalgic.instance.chatInfoMessage("Skin color is " + r + " , " + g + " , " + b);
-			GlStateManager.color(r + this.OFFSET, g + this.OFFSET, b + this.OFFSET, 1f);
+			GlStateManager.color(r + LayerPearlHair.OFFSET, g + LayerPearlHair.OFFSET, b + LayerPearlHair.OFFSET, 1f);
 			this.pearlModel.setModelAttributes(this.pearlRenderer.getMainModel());
 			this.pearlModel.render(gem, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 		}
