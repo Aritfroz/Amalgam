@@ -1,7 +1,5 @@
 package mod.amalgam.gem.fusion;
 
-import mod.akrivus.kagic.entity.EntityFusionGem;
-import mod.akrivus.kagic.entity.EntityGem;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.world.World;
 

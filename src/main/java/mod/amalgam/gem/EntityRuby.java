@@ -2,9 +2,7 @@ package mod.amalgam.gem;
 
 import java.util.ArrayList;
 
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgamGem;
-import mod.heimrarnadalr.kagic.util.Colors;
+import mod.amalgam.entity.EntityGem;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -34,7 +32,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityRuby extends EntityAmalgamGem implements IAnimals {
+public class EntityRuby extends EntityGem implements IAnimals {
 	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
 	static {
 		

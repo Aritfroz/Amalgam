@@ -2,8 +2,6 @@ package mod.amalgam.init;
 
 import java.util.ArrayList;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.init.ModEntities;
 import mod.amalgam.client.render.RenderAgate;
 import mod.amalgam.client.render.RenderAmethyst;
 import mod.amalgam.client.render.RenderAquaAuraQuartz;

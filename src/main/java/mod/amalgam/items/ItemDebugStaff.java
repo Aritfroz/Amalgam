@@ -1,8 +1,6 @@
 package mod.amalgam.items;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.init.ModCreativeTabs;
-import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,8 +32,8 @@ public class ItemDebugStaff extends Item {
 					}
 					else {
 						this.say(p, "%s (%s) is an %s.", gem.getName(), gem.getSpecificName(), gem.getClass().getSimpleName());
-						if (gem instanceof EntityAmalgamGem) {
-							EntityAmalgamGem amalgam = (EntityAmalgamGem)(gem);
+						if (gem instanceof EntityGem) {
+							EntityGem amalgam = (gem);
 							if (amalgam.isOverwritten()) {
 								this.say(p, "She originated outside of Amalgam but was overwritten.");
 							}

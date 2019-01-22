@@ -1,8 +1,9 @@
 package mod.amalgam.client.render;
 
 import mod.amalgam.client.model.ModelBismuth;
-import mod.amalgam.client.render.layers.LayerBismuthItem;
 import mod.amalgam.client.render.layers.LayerGemPlacement;
+import mod.amalgam.client.render.layers.LayerHair;
+import mod.amalgam.client.render.layers.LayerHeldItem;
 import mod.amalgam.client.render.layers.LayerInsignia;
 import mod.amalgam.client.render.layers.LayerNoDyeOverlay;
 import mod.amalgam.client.render.layers.LayerSkin;
@@ -13,11 +14,12 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderBismuth extends RenderGemBase<EntityBismuth> {
+public class RenderBismuth extends RenderAmalgamGem<EntityBismuth> {
 	public RenderBismuth(RenderManager manager) {
         super(manager, new ModelBismuth(), 0.25F);
-        this.addLayer(new LayerBismuthItem(this));
+        this.addLayer(new LayerHeldItem(this));
         this.addLayer(new LayerSkin(this));
+        this.addLayer(new LayerHair(this, EntityBismuth.HAIRSTYLES));
         this.addLayer(new LayerUniform(this));
         this.addLayer(new LayerNoDyeOverlay(this));
         this.addLayer(new LayerVisor(this));

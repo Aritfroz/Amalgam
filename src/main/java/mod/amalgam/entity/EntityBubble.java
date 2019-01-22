@@ -2,8 +2,6 @@ package mod.amalgam.entity;
 
 import java.util.List;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.items.ItemGem;
 import mod.amalgam.init.AmSounds;
 import mod.amalgam.items.ItemGemDestabilizer;
 import net.minecraft.entity.EntityLiving;

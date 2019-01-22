@@ -7,17 +7,7 @@ import java.util.List;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.blocks.BlockRoseTears;
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.EntityPadparadscha;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModSounds;
-import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
@@ -53,7 +43,11 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-public class EntitySapphire extends EntityAmalgamGem implements INpc {
+public class EntitySapphire extends EntityGem implements INpc {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
 	public static final HashMap<Integer, ResourceLocation> SAPPHIRE_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
 	private int luckTicks = 0;
 

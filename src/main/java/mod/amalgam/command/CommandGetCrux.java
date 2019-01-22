@@ -3,8 +3,6 @@ package mod.amalgam.command;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.init.ModEntities;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.command.CommandBase;

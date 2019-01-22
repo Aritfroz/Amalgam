@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import mod.amalgam.entity.EntityQuartz;
 import mod.amalgam.init.AmItems;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.nbt.NBTTagCompound;

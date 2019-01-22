@@ -1,23 +1,12 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtByTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAISitStill;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -34,8 +23,11 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class EntityEmerald extends EntityAmalgamGem implements IAnimals {
-	public static final HashMap<Integer, ResourceLocation> EMERALD_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
+public class EntityEmerald extends EntityGem implements IAnimals {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
 	public static final int SKIN_COLOR_BEGIN = 0xD7F6EE;
 	public static final int SKIN_COLOR_MID = 0xC0E195;
 	public static final int SKIN_COLOR_END = 0xC0E195;

@@ -1,10 +1,9 @@
 package mod.amalgam.gem;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.gem.ai.EntityAICallForBackup;
-import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmSounds;
+import mod.amalgam.tasks.EntityAICallForBackup;
+import mod.amalgam.tasks.EntityAIFollowOtherGem;
 import net.minecraft.entity.INpc;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAITempt;

@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.ai.EntityAIFollowGem;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowPlayer;
 import mod.amalgam.entity.ai.EntityAIProtectVillagers;
 import mod.amalgam.init.AmSounds;
 import net.minecraft.enchantment.EnchantmentHelper;

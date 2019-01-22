@@ -2,24 +2,24 @@ package mod.amalgam.client.render;
 
 import mod.amalgam.client.model.ModelPearl;
 import mod.amalgam.client.render.layers.LayerGemPlacement;
+import mod.amalgam.client.render.layers.LayerHair;
+import mod.amalgam.client.render.layers.LayerHeldItem;
 import mod.amalgam.client.render.layers.LayerInsignia;
 import mod.amalgam.client.render.layers.LayerNoDyeOverlay;
 import mod.amalgam.client.render.layers.LayerPearlDress;
-import mod.amalgam.client.render.layers.LayerPearlHair;
-import mod.amalgam.client.render.layers.LayerPearlItem;
 import mod.amalgam.client.render.layers.LayerPearlVisor;
 import mod.amalgam.gem.EntityPearl;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderPearl extends RenderGemBase<EntityPearl> {
+public class RenderPearl extends RenderAmalgamGem<EntityPearl> {
 	public RenderPearl(RenderManager manager) {
         super(manager, new ModelPearl(), 0.25F);
-        this.addLayer(new LayerPearlItem(this));
+		this.addLayer(new LayerHeldItem(this));
+        this.addLayer(new LayerHair(this, EntityPearl.HAIRSTYLES));
         this.addLayer(new LayerNoDyeOverlay(this));
         this.addLayer(new LayerInsignia(this));
-        this.addLayer(new LayerPearlHair(this));
         this.addLayer(new LayerPearlDress(this));
         this.addLayer(new LayerPearlVisor(this));
         this.addLayer(new LayerGemPlacement(this));

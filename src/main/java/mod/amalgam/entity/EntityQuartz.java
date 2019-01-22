@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.gem.GemPlacements;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAITarget;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -29,12 +29,18 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityQuartz extends EntityAmalgamGem {
+public class EntityQuartz extends EntityGem {
 	private static final DataParameter<Boolean> CHARGED = EntityDataManager.<Boolean>createKey(EntityQuartz.class, DataSerializers.BOOLEAN);
 	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
 	static {
 		
 	}
+	public EntityAITarget guardDogAttack = new EntityAINearestAttackableTarget<EntityLiving>(this, EntityLiving.class, 10, true, false, new Predicate<EntityLiving>() {
+        @Override
+		public boolean apply(EntityLiving input) {
+            return input != null && IMob.VISIBLE_MOB_SELECTOR.apply(input);
+        }
+    });
 	public boolean chargedByTakingDamageNotDelivering;
 	private int ticksCharged = 0;
 	private int hitCount = 0;
@@ -42,12 +48,6 @@ public class EntityQuartz extends EntityAmalgamGem {
 		super(world);
 		this.setSize(0.9F, 2.3F);
 		this.isSoldier = true;
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<EntityLiving>(this, EntityLiving.class, 10, true, false, new Predicate<EntityLiving>() {
-            @Override
-			public boolean apply(EntityLiving input) {
-                return input != null && IMob.VISIBLE_MOB_SELECTOR.apply(input);
-            }
-        }));
 		this.dataManager.register(CHARGED, false);
 		this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(1.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2D);
@@ -67,6 +67,14 @@ public class EntityQuartz extends EntityAmalgamGem {
     		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(60.0D);
     	}
         return super.onInitialSpawn(difficulty, livingdata);
+    }
+    @Override
+    public void setAttackAI() {
+    	super.setAttackAI();
+    	this.targetTasks.removeTask(this.guardDogAttack);
+    	if (this.chargedByTakingDamageNotDelivering) {
+            this.targetTasks.addTask(4, this.guardDogAttack);
+    	}
     }
     @Override
 	public boolean processInteract(EntityPlayer player, EnumHand hand) {
@@ -169,67 +177,20 @@ public class EntityQuartz extends EntityAmalgamGem {
 	public boolean isCharged() {
 		return this.dataManager.get(CHARGED);
 	}
-	public static class QuartzVariety {
-		private final int identifier;
-		private final String name;
-		private final int nativeColor;
-		private final int gemColor;
-		private final int[] skinColor;
-		private int[] bandColor;
-		private int[] markColor;
-		private int bandIndex;
-		private int[] bandRandom;
-		public QuartzVariety(int identifier, String name, int nativeColor, int gemColor, int...skinColor) {
-			this.identifier = identifier;
-			this.name = name;
-			this.nativeColor = nativeColor;
-			this.gemColor = gemColor;
-			this.skinColor = skinColor;
-		}
-		public QuartzVariety bands(int...bandColor) {
-			this.bandColor = bandColor;
-			return this;
-		}
-		public QuartzVariety marks(int...markColor) {
-			this.markColor = markColor;
-			return this;
-		}
-		public QuartzVariety type(int bandIndex, int...bandRandom) {
-			this.bandIndex = bandIndex;
-			if (bandRandom.length == 0) {
-				this.bandRandom = new int[] {0};
-			}
-			else {
-				this.bandRandom = bandRandom;
-			}
-			return this;
-		}
-		public int getID() {
-			return this.identifier;
-		}
-		public String getName() {
-			return this.name;
-		}
-		public int getNativeColor() {
-			return this.nativeColor;
-		}
-		public int getGemColor() {
-			return this.gemColor;
-		}
-		public int[] getSkinColor() {
-			return this.skinColor;
-		}
-		public int[] getBandColor() {
-			return this.bandColor;
-		}
-		public int[] getMarkColor() {
-			return this.markColor;
-		}
-		public int getBandIndex() {
-			return this.bandIndex;
-		}
-		public int[] getBandRandom() {
-			return this.bandRandom;
-		}
+	public static interface QuartzVariety extends GemVariety {
+		@Override
+		public int[] getSkinColor();
+		@Override
+		public int[] getHairColor();
+		@Override
+		public int[] getGemColor();
+		public int[] getBandColor();
+		public int[] getBandIndex();
+		public int[] getMarkColor();
+		public int[] getMarkIndex();
+		@Override
+		public String getName();
+		@Override
+		public int getDamage();
 	}
 }

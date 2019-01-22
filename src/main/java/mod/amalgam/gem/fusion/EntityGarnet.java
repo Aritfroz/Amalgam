@@ -2,11 +2,7 @@ package mod.amalgam.gem.fusion;
 
 import java.util.ArrayList;
 
-import mod.akrivus.kagic.entity.EntityFusionGem;
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.gem.EntitySapphire;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;

@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderTopaz extends RenderGemBase<EntityTopaz> {
+public class RenderTopaz extends RenderAmalgamGem<EntityTopaz> {
 	public RenderTopaz(RenderManager manager) {
         super(manager, new ModelTopaz(), 0.625F);
         this.addLayer(new LayerTopazItem(this));

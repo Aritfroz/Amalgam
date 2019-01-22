@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderRainbowQuartz extends RenderGemBase<EntityRainbowQuartz> {
+public class RenderRainbowQuartz extends RenderAmalgamGem<EntityRainbowQuartz> {
 
 	public RenderRainbowQuartz(RenderManager manager) {
 		super(manager, new ModelRainbowQuartz(), 0.75F);

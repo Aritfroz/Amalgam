@@ -4,21 +4,11 @@ import java.util.ArrayList;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.EntityFusionGem;
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtByTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.EntityLapisLazuli;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
+import mod.amalgam.gem.EntityLapisLazuli;
 import mod.amalgam.gem.EntityPyrite;
-import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
 import mod.amalgam.init.AmSounds;
-import mod.amalgam.tweaks.ai.EntityAICrossFuse;
-import mod.heimrarnadalr.kagic.util.Colors;
+import mod.amalgam.tasks.EntityAICrossFuse;
+import mod.amalgam.tasks.EntityAIFollowOtherGem;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;

@@ -2,16 +2,6 @@ package mod.amalgam.gem.fusion;
 
 import java.util.ArrayList;
 
-import mod.akrivus.kagic.entity.EntityFusionGem;
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtByTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAISitStill;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.init.ModSounds;
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -25,7 +15,6 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -36,8 +25,6 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.Path;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntityFusedTopaz extends EntityFusionGem implements IAnimals {

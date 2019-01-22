@@ -2,10 +2,7 @@ package mod.amalgam.gem;
 
 import java.util.ArrayList;
 
-import mod.akrivus.kagic.init.ModSounds;
-import mod.amalgam.entity.EntityAmalgamGem;
-import mod.heimrarnadalr.kagic.util.Colors;
-import mod.heimrarnadalr.kagic.util.GemPlayerLoot;
+import mod.amalgam.entity.EntityGem;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -22,7 +19,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class EntityHessonite extends EntityAmalgamGem implements IAnimals {
+public class EntityHessonite extends EntityGem implements IAnimals {
 	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
 	static {
 		

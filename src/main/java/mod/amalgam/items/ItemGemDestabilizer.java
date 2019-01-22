@@ -2,9 +2,6 @@ package mod.amalgam.items;
 
 import java.util.List;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.init.ModCreativeTabs;
-import mod.akrivus.kagic.util.PoofDamage;
 import mod.amalgam.entity.EntityBubble;
 import mod.amalgam.entity.EntityGemShard;
 import net.minecraft.block.state.IBlockState;

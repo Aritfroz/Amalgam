@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderOpal extends RenderGemBase<EntityOpal> {
+public class RenderOpal extends RenderAmalgamGem<EntityOpal> {
 	public RenderOpal(RenderManager manager) {
 		super(manager, new ModelOpal(), 1F);
 		this.addLayer(new LayerOpalItem(this));

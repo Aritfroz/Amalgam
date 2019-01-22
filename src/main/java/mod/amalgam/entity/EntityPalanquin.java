@@ -2,8 +2,6 @@ package mod.amalgam.entity;
 
 import java.util.List;
 
-import mod.akrivus.kagic.init.ModItems;
-import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.entity.ai.EntityAIMachineFollowPlayer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;

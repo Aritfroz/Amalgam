@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderGarnet extends RenderGemBase<EntityGarnet> {
+public class RenderGarnet extends RenderAmalgamGem<EntityGarnet> {
 
 	public RenderGarnet(RenderManager manager) {
 		super(manager, new ModelGarnet(), 0.5F);

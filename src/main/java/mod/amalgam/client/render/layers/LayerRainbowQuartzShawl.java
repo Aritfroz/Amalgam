@@ -1,6 +1,5 @@
 package mod.amalgam.client.render.layers;
 
-import mod.akrivus.kagic.entity.EntityGem;
 import mod.amalgam.gem.fusion.EntityRainbowQuartz;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;

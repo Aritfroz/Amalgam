@@ -2,7 +2,6 @@ package mod.amalgam.init;
 
 import java.util.Iterator;
 
-import mod.akrivus.kagic.util.injector.Injector;
 import mod.amalgam.command.CommandGetCrux;
 import mod.amalgam.proxies.CommonProxy;
 import net.minecraft.block.Block;
@@ -42,7 +41,7 @@ public class Amalgam {
     }
     @EventHandler
     public void init(FMLInitializationEvent event) {
-    	AmEvents.register();
+    	AmHandles.register();
     	AmTileEntities.register();
     	AmEntities.register(1);
     }

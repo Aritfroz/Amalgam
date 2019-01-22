@@ -1,7 +1,6 @@
 package mod.amalgam.client.render;
 
-import mod.akrivus.kagic.client.render.RenderPearl;
-import mod.akrivus.kagic.entity.gem.EntityPearl;
+import mod.amalgam.gem.EntityPearl;
 import net.minecraft.client.renderer.GlStateManager;
 
 public class RenderBabyPearl extends RenderPearl {

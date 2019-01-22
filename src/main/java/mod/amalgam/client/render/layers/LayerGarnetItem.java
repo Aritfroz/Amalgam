@@ -1,7 +1,6 @@
 package mod.amalgam.client.render.layers;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.amalgam.client.render.RenderGemBase;
+import mod.amalgam.client.render.RenderAmalgamGem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,9 +13,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class LayerGarnetItem implements LayerRenderer<EntityGem> {
-	protected final RenderGemBase<?> livingEntityRenderer;
+	protected final RenderAmalgamGem<?> livingEntityRenderer;
 	
-	public LayerGarnetItem(RenderGemBase<?> livingEntityRenderer) {
+	public LayerGarnetItem(RenderAmalgamGem<?> livingEntityRenderer) {
 		this.livingEntityRenderer = livingEntityRenderer;
 	}
 	

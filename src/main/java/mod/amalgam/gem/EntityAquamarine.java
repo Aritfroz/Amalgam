@@ -1,11 +1,9 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgamGem;
+
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmGems;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.ai.EntityFlyHelper;
 import net.minecraft.entity.ai.EntityMoveHelper;
@@ -17,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityAquamarine extends EntityAmalgamGem implements IAnimals {
+public class EntityAquamarine extends EntityGem implements IAnimals {
 	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
 	static {
 		

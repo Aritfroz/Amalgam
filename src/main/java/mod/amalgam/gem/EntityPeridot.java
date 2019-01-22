@@ -1,25 +1,12 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.EntitySlag;
-import mod.akrivus.kagic.entity.ai.EntityAIAlignGems;
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIPickUpItems;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModSounds;
-import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.injection.InjectorResult;
-import mod.heimrarnadalr.kagic.util.Colors;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.INpc;
@@ -33,7 +20,6 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
@@ -54,6 +40,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
@@ -63,7 +50,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class EntityPeridot extends EntityAmalgamGem implements IInventoryChangedListener, INpc {
+public class EntityPeridot extends EntityGem implements IInventoryChangedListener, INpc {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
 	public InventoryBasic gemStorage;
 	public InvWrapper gemStorageHandler;
 	public InventoryBasic harvest;

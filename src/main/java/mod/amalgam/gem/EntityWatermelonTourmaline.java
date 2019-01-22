@@ -1,22 +1,11 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtByTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgamGem;
-import mod.amalgam.init.AmItems;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmSounds;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -47,7 +36,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
-public class EntityWatermelonTourmaline extends EntityAmalgamGem implements IAnimals {
+public class EntityWatermelonTourmaline extends EntityGem implements IAnimals {
 	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
 	static {
 		

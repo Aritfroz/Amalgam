@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import mod.akrivus.kagic.init.ModCreativeTabs;
-import mod.akrivus.kagic.init.ModRecord;
 import mod.amalgam.init.AmSounds;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.item.EntityItem;

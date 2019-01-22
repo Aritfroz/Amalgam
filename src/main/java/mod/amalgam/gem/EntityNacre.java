@@ -5,16 +5,9 @@ import java.util.Iterator;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.init.ModBlocks;
-import mod.akrivus.kagic.init.ModItems;
-import mod.akrivus.kagic.init.ModSounds;
-import mod.akrivus.kagic.util.ShatterDamage;
-import mod.amalgam.gem.ai.EntityAIMoveGemToBlock;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
-import mod.heimrarnadalr.kagic.util.Colors;
+import mod.amalgam.tasks.EntityAIMoveGemToBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.material.Material;

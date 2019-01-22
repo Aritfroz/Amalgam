@@ -16,7 +16,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderRutile extends RenderGemBase<EntityRutile> {
+public class RenderRutile extends RenderAmalgamGem<EntityRutile> {
 	private ModelBiped normalRutile = new ModelRutile();
 	private ModelBiped twinRutile = new ModelTwinRutile();
 	public RenderRutile(RenderManager manager) {

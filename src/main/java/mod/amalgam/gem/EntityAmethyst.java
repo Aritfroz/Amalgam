@@ -6,7 +6,6 @@ import java.util.HashMap;
 import mod.amalgam.entity.EntityQuartz;
 import mod.amalgam.init.AmGems;
 import mod.amalgam.init.AmItems;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;

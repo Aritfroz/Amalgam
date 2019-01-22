@@ -2,12 +2,8 @@ package mod.amalgam.entity;
 
 import java.util.List;
 
-import mod.akrivus.kagic.init.ModBlocks;
-import mod.akrivus.kagic.init.ModItems;
-import mod.akrivus.kagic.init.ModSounds;
-import mod.akrivus.kagic.items.ItemActiveGemBase;
 import mod.amalgam.entity.ai.EntityAIMachineFollowPlayer;
-import mod.amalgam.gem.ai.EntityAIMoveGemToBlock;
+import mod.amalgam.tasks.EntityAIMoveGemToBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockStainedGlass;

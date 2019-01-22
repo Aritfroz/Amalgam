@@ -1,7 +1,7 @@
 package mod.amalgam.client.render.layers;
 
 import mod.amalgam.client.model.ModelPearl;
-import mod.amalgam.client.render.RenderGemBase;
+import mod.amalgam.client.render.RenderAmalgamGem;
 import mod.amalgam.gem.EntityPearl;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
@@ -9,10 +9,10 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.item.EnumDyeColor;
 
 public class LayerPearlDress implements LayerRenderer<EntityPearl> {
-	private final RenderGemBase pearlRenderer;
+	private final RenderAmalgamGem pearlRenderer;
 	private final ModelPearl pearlModel = new ModelPearl();
 	
-	public LayerPearlDress(RenderGemBase pearlRenderer) {
+	public LayerPearlDress(RenderAmalgamGem pearlRenderer) {
 		this.pearlRenderer = pearlRenderer;
 	}
 	

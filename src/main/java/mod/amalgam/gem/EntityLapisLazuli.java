@@ -5,14 +5,7 @@ import java.util.List;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgamGem;
-import mod.heimrarnadalr.kagic.util.Colors;
+import mod.amalgam.entity.EntityGem;
 import net.minecraft.block.BlockFarmland;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -55,7 +48,7 @@ import net.minecraft.world.storage.loot.LootTable;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class EntityLapisLazuli extends EntityAmalgamGem implements IInventoryChangedListener, INpc {
+public class EntityLapisLazuli extends EntityGem implements IInventoryChangedListener, INpc {
 	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
 	static {
 		

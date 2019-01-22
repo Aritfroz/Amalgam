@@ -1,7 +1,7 @@
 package mod.amalgam.client.render.layers;
 
-import mod.akrivus.kagic.entity.gem.fusion.EntityMalachite;
 import mod.amalgam.client.render.RenderMalachite;
+import mod.amalgam.gem.fusion.EntityMalachite;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;

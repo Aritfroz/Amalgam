@@ -3,8 +3,6 @@ package mod.amalgam.init;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.items.ItemGem;
 import mod.amalgam.injection.CruxEntry;
 import net.minecraft.util.ResourceLocation;
 

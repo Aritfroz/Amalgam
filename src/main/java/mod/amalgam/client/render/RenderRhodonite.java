@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderRhodonite extends RenderGemBase<EntityRhodonite> {
+public class RenderRhodonite extends RenderAmalgamGem<EntityRhodonite> {
 
 	public RenderRhodonite(RenderManager manager) {
 		super(manager, new ModelRhodonite(), 0.5F);

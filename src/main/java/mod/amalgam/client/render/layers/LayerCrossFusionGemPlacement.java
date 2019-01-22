@@ -1,7 +1,5 @@
 package mod.amalgam.client.render.layers;
 
-import mod.akrivus.kagic.entity.EntityFusionGem;
-import mod.akrivus.kagic.entity.EntityGem;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLivingBase;

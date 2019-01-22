@@ -3,11 +3,7 @@ package mod.amalgam.gem.fusion;
 import java.util.ArrayList;
 import java.util.List;
 
-import mod.akrivus.kagic.entity.EntityFusionGem;
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.init.ModSounds;
 import mod.amalgam.gem.EntityJasper;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.nbt.NBTTagCompound;

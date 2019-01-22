@@ -1,6 +1,5 @@
 package mod.amalgam.client.render.layers;
 
-import mod.akrivus.kagic.entity.EntityGem;
 import net.minecraft.client.renderer.entity.RenderLivingBase;
 import net.minecraft.entity.EntityList;
 import net.minecraft.util.ResourceLocation;

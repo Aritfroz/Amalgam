@@ -1,6 +1,5 @@
 package mod.amalgam.client.render.layers;
 
-import mod.akrivus.kagic.entity.EntityGem;
 import mod.amalgam.client.render.RenderRutile;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;

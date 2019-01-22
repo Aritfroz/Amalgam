@@ -2,7 +2,6 @@ package mod.amalgam.blocks;
 
 import java.util.Random;
 
-import mod.akrivus.kagic.init.ModCreativeTabs;
 import mod.amalgam.init.AmBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.EnumPushReaction;
@@ -26,7 +25,7 @@ public class BlockCarbonite extends Block {
         	this.setLightLevel(2);
         }
         else {
-        	this.setCreativeTab(ModCreativeTabs.CREATIVE_TAB_OTHER);
+        	this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
         	this.setResistance(30);
         	this.setHardness(2);
         }

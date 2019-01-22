@@ -5,54 +5,44 @@ import java.util.UUID;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.ai.EntityAIAlignGems;
-import mod.akrivus.kagic.entity.ai.EntityAIProtectionFuse;
-import mod.akrivus.kagic.entity.ai.EntityAIRubyFuse;
-import mod.akrivus.kagic.entity.ai.EntityAITopazFuse;
-import mod.akrivus.kagic.entity.gem.EntityAgate;
-import mod.akrivus.kagic.entity.gem.EntityAmethyst;
-import mod.akrivus.kagic.entity.gem.EntityAquamarine;
-import mod.akrivus.kagic.entity.gem.EntityBismuth;
-import mod.akrivus.kagic.entity.gem.EntityCarnelian;
-import mod.akrivus.kagic.entity.gem.EntityHessonite;
-import mod.akrivus.kagic.entity.gem.EntityJasper;
-import mod.akrivus.kagic.entity.gem.EntityLapisLazuli;
-import mod.akrivus.kagic.entity.gem.EntityPearl;
-import mod.akrivus.kagic.entity.gem.EntityPeridot;
-import mod.akrivus.kagic.entity.gem.EntityQuartzSoldier;
-import mod.akrivus.kagic.entity.gem.EntityRoseQuartz;
-import mod.akrivus.kagic.entity.gem.EntityRuby;
-import mod.akrivus.kagic.entity.gem.EntityRutile;
-import mod.akrivus.kagic.entity.gem.EntitySapphire;
-import mod.akrivus.kagic.entity.gem.EntityTopaz;
-import mod.akrivus.kagic.entity.gem.EntityZircon;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.entity.gem.fusion.EntityGarnet;
-import mod.akrivus.kagic.entity.gem.fusion.EntityMalachite;
-import mod.akrivus.kagic.entity.gem.fusion.EntityOpal;
-import mod.akrivus.kagic.entity.gem.fusion.EntityRhodonite;
-import mod.akrivus.kagic.init.ModEntities;
-import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.entity.EntityGem;
+import mod.amalgam.gem.EntityAgate;
+import mod.amalgam.gem.EntityAmethyst;
+import mod.amalgam.gem.EntityAquamarine;
 import mod.amalgam.gem.EntityBabyPearl;
+import mod.amalgam.gem.EntityBismuth;
+import mod.amalgam.gem.EntityCarnelian;
+import mod.amalgam.gem.EntityHessonite;
+import mod.amalgam.gem.EntityJasper;
+import mod.amalgam.gem.EntityLapisLazuli;
+import mod.amalgam.gem.EntityPearl;
+import mod.amalgam.gem.EntityPeridot;
 import mod.amalgam.gem.EntityPyrite;
-import mod.amalgam.gem.ai.EntityAIBubbleItems;
-import mod.amalgam.gem.ai.EntityAICallForBackup;
-import mod.amalgam.gem.ai.EntityAIFollowLeaderGem;
-import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
-import mod.amalgam.gem.ai.EntityAIStayWithinRadius;
+import mod.amalgam.gem.EntityRoseQuartz;
+import mod.amalgam.gem.EntityRuby;
+import mod.amalgam.gem.EntityRutile;
+import mod.amalgam.gem.EntitySapphire;
+import mod.amalgam.gem.EntityTopaz;
+import mod.amalgam.gem.EntityZircon;
 import mod.amalgam.gem.fusion.EntityFusedPyrite;
 import mod.amalgam.gem.fusion.EntityFusedRuby;
 import mod.amalgam.gem.fusion.EntityFusedTopaz;
-import mod.amalgam.tweaks.ai.EntityAICrossFuse;
-import mod.amalgam.tweaks.ai.EntityAIFixAnvils;
-import mod.amalgam.tweaks.ai.EntityAIFixInjectors;
-import mod.amalgam.tweaks.ai.EntityAIFixPalanquins;
-import mod.amalgam.tweaks.ai.EntityAIPeriAlignGems;
-import mod.amalgam.tweaks.ai.EntityAIPeriPartyBurnStuff;
-import mod.amalgam.tweaks.ai.EntityAIPeriPartyDance;
-import mod.amalgam.tweaks.ai.EntityAIPeriPartyFireworks;
+import mod.amalgam.gem.fusion.EntityMalachite;
+import mod.amalgam.gem.fusion.EntityOpal;
+import mod.amalgam.gem.fusion.EntityRhodonite;
+import mod.amalgam.tasks.EntityAIBubbleItems;
+import mod.amalgam.tasks.EntityAICallForBackup;
+import mod.amalgam.tasks.EntityAICrossFuse;
+import mod.amalgam.tasks.EntityAIFixAnvils;
+import mod.amalgam.tasks.EntityAIFixInjectors;
+import mod.amalgam.tasks.EntityAIFixPalanquins;
+import mod.amalgam.tasks.EntityAIFollowLeaderGem;
+import mod.amalgam.tasks.EntityAIFollowOtherGem;
+import mod.amalgam.tasks.EntityAIPeriAlignGems;
+import mod.amalgam.tasks.EntityAIPeriPartyBurnStuff;
+import mod.amalgam.tasks.EntityAIPeriPartyDance;
+import mod.amalgam.tasks.EntityAIPeriPartyFireworks;
+import mod.amalgam.tasks.EntityAIStayWithinRadius;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
@@ -63,11 +53,11 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class AmTweaks {
 	public static void applyGemTweaks(EntityGem gem) {
-		if (gem instanceof EntityAmalgamGem) {
+		if (gem instanceof EntityGem) {
 			System.out.println(gem.getName() + " is already overwritten.");
 		}
 		else {
-			EntityAmalgamGem overwrite = null;
+			EntityGem overwrite = null;
 			if (gem instanceof EntityAquamarine) {
 				mod.amalgam.gem.EntityAquamarine conv = new mod.amalgam.gem.EntityAquamarine(gem.world);
 				conv.readFromNBT(gem.writeToNBT(new NBTTagCompound()));

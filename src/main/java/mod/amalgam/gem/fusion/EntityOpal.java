@@ -2,10 +2,7 @@ package mod.amalgam.gem.fusion;
 
 import java.util.ArrayList;
 
-import mod.akrivus.kagic.entity.EntityFusionGem;
-import mod.akrivus.kagic.entity.EntityGem;
 import mod.amalgam.gem.EntityAmethyst;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.world.World;
 

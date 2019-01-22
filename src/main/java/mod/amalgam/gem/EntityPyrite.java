@@ -4,25 +4,14 @@ import java.util.ArrayList;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtByTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.EntityLapisLazuli;
-import mod.akrivus.kagic.entity.gem.EntityRuby;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.amalgam.entity.EntityAmalgamGem;
-import mod.amalgam.gem.ai.EntityAIFollowLeaderGem;
-import mod.amalgam.gem.ai.EntityAIFollowOtherGem;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.gem.fusion.EntityFusedPyrite;
 import mod.amalgam.gem.fusion.EntityFusedRuby;
 import mod.amalgam.init.AmItems;
 import mod.amalgam.init.AmSounds;
-import mod.amalgam.tweaks.ai.EntityAICrossFuse;
-import mod.heimrarnadalr.kagic.util.Colors;
+import mod.amalgam.tasks.EntityAICrossFuse;
+import mod.amalgam.tasks.EntityAIFollowLeaderGem;
+import mod.amalgam.tasks.EntityAIFollowOtherGem;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -45,12 +34,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityPyrite extends EntityAmalgamGem implements IAnimals {
+public class EntityPyrite extends EntityGem implements IAnimals {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
 	private static final int SKIN_COLOR_BEGIN = 0xFFEE7F; 
 	private static final int SKIN_COLOR_MID = 0xE3D571; 
 	private static final int SKIN_COLOR_END = 0xC6BE63; 

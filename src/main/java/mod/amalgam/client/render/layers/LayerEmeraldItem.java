@@ -1,6 +1,5 @@
 package mod.amalgam.client.render.layers;
 
-import mod.akrivus.kagic.client.render.RenderGemBase;
 import mod.amalgam.gem.EntityEmerald;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;

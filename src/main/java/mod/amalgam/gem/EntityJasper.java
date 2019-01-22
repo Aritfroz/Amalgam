@@ -1,26 +1,25 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import mod.amalgam.entity.EntityQuartz;
+import mod.amalgam.init.AmGems;
 import net.minecraft.entity.passive.IAnimals;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class EntityJasper extends EntityQuartz implements IAnimals {
-	public static final HashMap<Integer, ResourceLocation> JASPER_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
-	private static final DataParameter<Integer> MARK_1_COLOR = EntityDataManager.<Integer>createKey(EntityJasper.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> MARK_1 = EntityDataManager.<Integer>createKey(EntityJasper.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> MARK_2_COLOR = EntityDataManager.<Integer>createKey(EntityJasper.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> MARK_2 = EntityDataManager.<Integer>createKey(EntityJasper.class, DataSerializers.VARINT);
-	private static final int NUM_HAIRSTYLES = 5;
-	private static final Map<Integer, Integer> MARK1S = new LinkedHashMap<Integer, Integer>();
+	public static final ArrayList<QuartzVariety> VARIETIES = new ArrayList<QuartzVariety>();
+	static {
+		VARIETIES.add(new QuartzVariety(0, "Noreena", AmGems.BASIC_ORANGE, 0xff3f01, 0x9367f8));
+		VARIETIES.add(new QuartzVariety(1, "Ocean", AmGems.BASIC_CYAN, 0x58d3cf, 0x9f512b, 0xe76c1f).bands(0x5b3b2c, 0xc6b0a2).type(0, 0));
+		VARIETIES.add(new QuartzVariety(2, "Biggs", AmGems.BASIC_BROWN, 0xd48768, 0xdfa671, 0xd0ad9a).bands(0xfffbcf, 0xd7811e, 0x8a4b44).type(5, 0));
+		VARIETIES.add(new QuartzVariety(3, "Green", AmGems.BASIC_GREEN, 0xbad1b5, 0x073c70, 0x1d759b).bands(0x586a5c, 0x96baba, 0x7eabc2).type(8, 0));
+		VARIETIES.add(new QuartzVariety(4, "Bruneau", AmGems.BASIC_BROWN, 0xffc583, 0xd7d0a6, 0xd49838));
+		VARIETIES.add(new QuartzVariety(5, "Royal Plume", AmGems.BASIC_PURPLE, 0xd7a3e6, 0x0b3126, 0x255346).bands(0xc0dbd2, 0xfbfdf0, 0xb3ad73).type(5, 0));
+		VARIETIES.add(new QuartzVariety(6, "Flame", AmGems.BASIC_RED, 0xc78873, 0xc50248, 0xfd1680).bands(0xff53ac, 0xee94c8, 0x8d6d84).type(8, 0));
+		VARIETIES.add(new QuartzVariety(7, "Picture", AmGems.BASIC_SILVER, 0xf3f2f9, 0x3b2531, 0x573c33).bands(0x392f3a, 0x9aa1a9).type(6, 0));
+		VARIETIES.add(new QuartzVariety(8, "Zebra", AmGems.BASIC_WHITE, 0xb02e26, 0xafb0b5, 0x9097aa).bands(0x7d8496, 0xa5abbb).type(6, 0));
+	}
 	static {
 		MARK1S.put(0, 6);
 		MARK1S.put(1, 1);
@@ -32,8 +31,6 @@ public class EntityJasper extends EntityQuartz implements IAnimals {
 		MARK1S.put(7, 1);
 		MARK1S.put(8, 1);
 	}
-
-	private static final Map<Integer, Integer> MARK2S = new LinkedHashMap<Integer, Integer>();
 	static {
 		MARK2S.put(0, 0);
 		MARK2S.put(1, 1);
@@ -45,8 +42,6 @@ public class EntityJasper extends EntityQuartz implements IAnimals {
 		MARK2S.put(7, 1);
 		MARK2S.put(8, 2);
 	}
-
-	private static final Map<Integer, ArrayList<Integer>> SKIN_COLORS = new LinkedHashMap<Integer, ArrayList<Integer>>();
 	static {
 		ArrayList<Integer> normal = new ArrayList<Integer>();
 		normal.add(0xFFD69D);
@@ -90,8 +85,6 @@ public class EntityJasper extends EntityQuartz implements IAnimals {
 		candyCane.add(0xF9FFFE);
 		SKIN_COLORS.put(8, candyCane);
 	}
-	
-	private static final Map<Integer, ArrayList<Integer>> HAIR_COLORS = new LinkedHashMap<Integer, ArrayList<Integer>>();
 	static {
 		ArrayList<Integer> normal = new ArrayList<Integer>();
 		normal.add(0xFEFFEC);
@@ -133,8 +126,6 @@ public class EntityJasper extends EntityQuartz implements IAnimals {
 		candyCane.add(0xF9FFFE);
 		HAIR_COLORS.put(8, candyCane);
 	}
-	
-	private static final Map<Integer, ArrayList<Integer>> MARK_1_COLORS = new LinkedHashMap<Integer, ArrayList<Integer>>();
 	static {
 		ArrayList<Integer> normal = new ArrayList<Integer>();
 		normal.add(0xF58059);
@@ -179,8 +170,6 @@ public class EntityJasper extends EntityQuartz implements IAnimals {
 		candyCane.add(0xB02E26);
 		MARK_1_COLORS.put(8, candyCane);
 	}
-	
-	private static final Map<Integer, ArrayList<Integer>> MARK_2_COLORS = new LinkedHashMap<Integer, ArrayList<Integer>>();
 	static {
 		ArrayList<Integer> normal = new ArrayList<Integer>();
 		normal.add(0);
@@ -219,57 +208,8 @@ public class EntityJasper extends EntityQuartz implements IAnimals {
 		candyCane.add(0x5E7C16);
 		MARK_2_COLORS.put(8, candyCane);
 	}
+	
 	public EntityJasper(World world) {
 		super(world);
-		this.dataManager.register(MARK_1_COLOR, 0);
-		this.dataManager.register(MARK_1, 0);
-		this.dataManager.register(MARK_2_COLOR, 0);
-		this.dataManager.register(MARK_2, 0);
-	}
-	@Override
-	protected int generateGemColor() {
-		switch (this.getSpecial()) {
-		case 1:
-			return 0x58D3CF;
-		case 2:
-			return 0xD48768;
-		case 3:
-			return 0xBAD1B5;
-		case 4:
-			return 0xFFC583;
-		case 5:
-			return 0xD7A3E6;
-		case 6:
-			return 0xC78873;
-		case 7:
-			return 0xF3F2F9;
-		case 8:
-			return 0xB02E26;
-		default:
-			return 0xFF3F01;
-		}
-	}
-	public String getSpecialSkin() {
-		switch (this.getSpecial()) {
-		case 0:
-			return "";
-		case 1:
-			return "ocean_";
-		case 2:
-			return "biggs_";
-		case 3:
-			return "green_";
-		case 4:
-			return "bruneau_";
-		case 5:
-			return "purple_";
-		case 6:
-			return "flame_";
-		case 7:
-			return "picture_";
-		case 8:
-			return "candy_cane_";
-		}
-		return null;
 	}
 }

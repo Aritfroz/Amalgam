@@ -5,17 +5,7 @@ import java.util.Map;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModSounds;
-import mod.akrivus.kagic.items.ItemGem;
-import mod.akrivus.kagic.items.ItemGemStaff;
-import mod.akrivus.kagic.util.KAGICEnchantmentUtils;
-import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmItems;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -43,7 +33,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
-public class EntityZircon extends EntityAmalgamGem implements INpc {
+public class EntityZircon extends EntityGem implements INpc {
 	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
 	static {
 		

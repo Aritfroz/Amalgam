@@ -2,13 +2,12 @@ package mod.amalgam.gem;
 
 import java.util.ArrayList;
 
-import mod.amalgam.entity.EntityAmalgamGem;
-import mod.heimrarnadalr.kagic.util.Colors;
+import mod.amalgam.entity.EntityGem;
 import net.minecraft.entity.INpc;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class EntityRutile extends EntityAmalgamGem implements INpc {
+public class EntityRutile extends EntityGem implements INpc {
 	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
 	static {
 		

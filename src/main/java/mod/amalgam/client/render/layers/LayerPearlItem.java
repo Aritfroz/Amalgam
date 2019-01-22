@@ -1,6 +1,6 @@
 package mod.amalgam.client.render.layers;
 
-import mod.amalgam.client.render.RenderGemBase;
+import mod.amalgam.client.render.RenderAmalgamGem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,8 +14,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class LayerPearlItem implements LayerRenderer<EntityLivingBase> {
-	protected final RenderGemBase livingEntityRenderer;
-	public LayerPearlItem(RenderGemBase renderPearl) {
+	protected final RenderAmalgamGem livingEntityRenderer;
+	public LayerPearlItem(RenderAmalgamGem renderPearl) {
 		this.livingEntityRenderer = renderPearl;
 	}
 	@Override

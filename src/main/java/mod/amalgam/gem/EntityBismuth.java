@@ -1,19 +1,10 @@
 package mod.amalgam.gem;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIStandGuard;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModEnchantments;
-import mod.amalgam.entity.EntityAmalgamGem;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmItems;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.IEntityLivingData;
@@ -43,8 +34,11 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
-public class EntityBismuth extends EntityAmalgamGem implements IInventoryChangedListener, INpc {
-	public static final HashMap<Integer, ResourceLocation> BISMUTH_HAIR_STYLES = new HashMap<Integer, ResourceLocation>();
+public class EntityBismuth extends EntityGem implements IInventoryChangedListener, INpc {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
 	private static final int SKIN_COLOR_BEGIN = 0x91A8CF; 
 	private static final int SKIN_COLOR_END = 0x503243; 
 	public InventoryBasic gemStorage;

@@ -2,20 +2,39 @@ package mod.amalgam.gem;
 
 import java.util.ArrayList;
 
-import mod.akrivus.kagic.entity.ai.EntityAIScareMobs;
-import mod.akrivus.kagic.entity.ai.EntityAISitStill;
 import mod.amalgam.entity.EntityQuartz;
-import mod.amalgam.init.AmGems;
 import mod.amalgam.init.AmItems;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.IAnimals;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
 public class EntityAgate extends EntityQuartz implements IAnimals {
 	public static final ArrayList<QuartzVariety> VARIETIES = new ArrayList<QuartzVariety>();
 	static {
+		VARIETIES.add(new QuartzVariety() {
+			@Override
+			public int[] getSkinColor() { return null; }
+			@Override
+			public int[] getHairColor() { return null; }
+			@Override
+			public int[] getGemColor() 	{ return null; }
+			@Override
+			public int[] getBandColor() { return null; }
+			@Override
+			public int[] getBandIndex() { return null; }
+			@Override
+			public int[] getMarkColor() { return null; }
+			@Override
+			public int[] getMarkIndex() { return null; }
+			@Override
+			public String getName() 	{ return null; }
+			@Override
+			public int getDamage() 		{ return 0; }
+		});
+	}
+	/**
+	 * static {
 		VARIETIES.add(new QuartzVariety( 0, "White", AmGems.BASIC_WHITE, 0xffffff, 0x9367f8));
 		VARIETIES.add(new QuartzVariety( 1, "Apache", AmGems.BASIC_RED, 0xcb7226, 0x9f512b, 0xe76c1f).bands(0x5b3b2c, 0xc6b0a2).type(0, 0));
 		VARIETIES.add(new QuartzVariety( 2, "Crazy Lace", AmGems.BASIC_GRAY, 0xcea69e, 0xdfa671, 0xd0ad9a).bands(0xfffbcf, 0xd7811e, 0x8a4b44).type(5, 0));
@@ -39,12 +58,10 @@ public class EntityAgate extends EntityQuartz implements IAnimals {
 		VARIETIES.add(new QuartzVariety(20, "Luna", AmGems.BASIC_SILVER, 0x9899ab, 0x7a7f95, 0xa99ebe).bands(0xa5888c, 0xcfcde2).type(1, 0));
 		VARIETIES.add(new QuartzVariety(21, "Spider", AmGems.BASIC_SILVER, 0xcbbfa9, 0xf0e4d6).bands(0x3f3a34, 0x594739, 0x201f1a).type(1, 0));
 	}
-	public static final ArrayList<ResourceLocation> AGATE_HAIR_STYLES = new ArrayList<ResourceLocation>();
-	public static final ArrayList<ResourceLocation> AGATE_BAND_STYLES = new ArrayList<ResourceLocation>();
-	
+	 */
 	public EntityAgate(World world) {
 		super(world);
-		this.chargedByTakingDamageNotDelivering = false;
+		this.chargedByTakingDamageNotDelivering = true;
 		this.tasks.addTask(2, new EntityAISitStill(this, 1.0D));
 		this.tasks.addTask(3, new EntityAIScareMobs(this));
         this.droppedGemItem = AmItems.AGATE_GEM;
@@ -56,7 +73,6 @@ public class EntityAgate extends EntityQuartz implements IAnimals {
 	}
     @Override
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
-    	
         return super.onInitialSpawn(difficulty, livingdata);
     }
 	@Override

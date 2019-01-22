@@ -1,15 +1,14 @@
 package mod.amalgam.client.render;
 
-import mod.akrivus.kagic.client.render.RenderGemBase;
-import mod.akrivus.kagic.client.render.layers.LayerGemPlacement;
-import mod.akrivus.kagic.client.render.layers.LayerHair;
-import mod.akrivus.kagic.client.render.layers.LayerInsignia;
-import mod.akrivus.kagic.client.render.layers.LayerSkin;
-import mod.akrivus.kagic.client.render.layers.LayerUniform;
-import mod.akrivus.kagic.client.render.layers.LayerVisor;
 import mod.amalgam.client.model.ModelTourmaline;
+import mod.amalgam.client.render.layers.LayerGemPlacement;
+import mod.amalgam.client.render.layers.LayerHair;
+import mod.amalgam.client.render.layers.LayerInsignia;
+import mod.amalgam.client.render.layers.LayerSkin;
 import mod.amalgam.client.render.layers.LayerTourmalineHalf;
 import mod.amalgam.client.render.layers.LayerTourmalineItem;
+import mod.amalgam.client.render.layers.LayerUniform;
+import mod.amalgam.client.render.layers.LayerVisor;
 import mod.amalgam.gem.EntityWatermelonTourmaline;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

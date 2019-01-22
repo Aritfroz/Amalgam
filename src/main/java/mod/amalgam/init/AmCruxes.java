@@ -2,18 +2,7 @@ package mod.amalgam.init;
 
 import java.util.ArrayList;
 
-import mod.akrivus.kagic.init.ModEntities;
-import mod.amalgam.gem.EntityAquaAuraQuartz;
-import mod.amalgam.gem.EntityCitrine;
-import mod.amalgam.gem.EntityEmerald;
-import mod.amalgam.gem.EntityEnderPearl;
-import mod.amalgam.gem.EntityMelanite;
-import mod.amalgam.gem.EntityNacre;
-import mod.amalgam.gem.EntityNephrite;
-import mod.amalgam.gem.EntityPyrite;
-import mod.amalgam.gem.EntityWatermelonTourmaline;
 import mod.amalgam.injection.CruxEntry;
-import net.minecraft.init.Blocks;
 
 public class AmCruxes {
 	public static final ArrayList<CruxEntry> AGATE = new ArrayList<CruxEntry>();
@@ -113,6 +102,7 @@ public class AmCruxes {
 		if (AmConfigs.enableZircon) {
 			
 		}
+		/*
 		if (AmConfigs.enableCitrine) {
 			ModEntities.registerOreDictValue(EntityCitrine.CITRINE_YIELDS, 0.10, "stoneDiorite");
 			ModEntities.registerOreDictValue(EntityCitrine.CITRINE_YIELDS, 0.20, "stoneGranite");
@@ -210,5 +200,6 @@ public class AmCruxes {
 		AmTweaks.Sapphire.alterCruxes();
 		AmTweaks.Topaz.alterCruxes();
 		AmTweaks.Zircon.alterCruxes();
+		*/
 	}
 }

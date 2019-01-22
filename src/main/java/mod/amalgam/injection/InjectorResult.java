@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.event.DrainBlockEvent;
-import mod.akrivus.kagic.init.ModBlocks;
-import mod.akrivus.kagic.util.injector.ExitHole;
 import mod.amalgam.init.AmBlocks;
 import mod.amalgam.init.AmGems;
 import net.minecraft.block.Block;

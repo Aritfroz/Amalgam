@@ -5,21 +5,6 @@ import java.util.Random;
 
 import com.google.common.base.Predicate;
 
-import mod.akrivus.kagic.entity.EntityCorruptedGem;
-import mod.akrivus.kagic.entity.EntityFusionGem;
-import mod.akrivus.kagic.entity.EntityGem;
-import mod.akrivus.kagic.entity.ai.EntityAICommandGems;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtByTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIDiamondHurtTarget;
-import mod.akrivus.kagic.entity.ai.EntityAIFollowDiamond;
-import mod.akrivus.kagic.entity.ai.EntityAIScareMobs;
-import mod.akrivus.kagic.entity.ai.EntityAISitStill;
-import mod.akrivus.kagic.entity.ai.EntityAIStay;
-import mod.akrivus.kagic.entity.gem.GemCuts;
-import mod.akrivus.kagic.entity.gem.GemPlacements;
-import mod.akrivus.kagic.init.ModItems;
-import mod.akrivus.kagic.items.ItemGem;
-import mod.heimrarnadalr.kagic.util.Colors;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -37,9 +22,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class EntityMelanite extends EntityGem implements IAnimals {
+	public static final ArrayList<ResourceLocation> HAIRSTYLES = new ArrayList<ResourceLocation>();
+	static {
+		
+	}
     private static final int SKIN_COLOR_BEGIN = 0x2F2F2F;
     private static final int SKIN_COLOR_END = 0x404040;
     private static final int NUM_HAIRSTYLES = 1;

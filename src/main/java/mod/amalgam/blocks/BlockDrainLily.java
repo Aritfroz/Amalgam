@@ -2,8 +2,6 @@ package mod.amalgam.blocks;
 
 import java.util.Random;
 
-import mod.akrivus.kagic.init.ModBlocks;
-import mod.akrivus.kagic.init.ModCreativeTabs;
 import mod.amalgam.init.AmBlocks;
 import mod.amalgam.injection.InjectorResult;
 import net.minecraft.block.BlockBush;
@@ -35,7 +33,7 @@ public class BlockDrainLily extends BlockBush {
 		IBlockState down = world.getBlockState(pos.down());
 		if (down.isSideSolid(world, pos, EnumFacing.UP)) {
 			super.updateTick(world, pos, state, random);
-			if (down.getMaterial() == ModBlocks.DRAINED) {
+			if (down.getMaterial() == AmBlocks.DRAINED) {
 				BlockPos check = pos.add(world.rand.nextInt(3) - 1, 0, world.rand.nextInt(3) - 1);
 				if (world.isAirBlock(check) && world.isSideSolid(check.down(), EnumFacing.UP)) {
 					world.setBlockState(check, AmBlocks.DRAIN_LILY.getDefaultState());

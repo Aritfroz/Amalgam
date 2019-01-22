@@ -1,17 +1,17 @@
 package mod.amalgam.client.render.layers;
 
 import mod.amalgam.client.model.ModelPearl;
-import mod.amalgam.client.render.RenderGemBase;
+import mod.amalgam.client.render.RenderAmalgamGem;
 import mod.amalgam.gem.EntityPearl;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 
 public class LayerPearlHair implements LayerRenderer<EntityPearl> {
 	private static final float OFFSET = .0f;
-	private final RenderGemBase pearlRenderer;
+	private final RenderAmalgamGem pearlRenderer;
 	private final ModelPearl pearlModel = new ModelPearl();
 
-	public LayerPearlHair(RenderGemBase pearlRenderer) {
+	public LayerPearlHair(RenderAmalgamGem pearlRenderer) {
 		this.pearlRenderer = pearlRenderer;
 	}
 	

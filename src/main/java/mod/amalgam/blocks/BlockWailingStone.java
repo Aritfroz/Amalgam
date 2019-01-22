@@ -2,7 +2,6 @@ package mod.amalgam.blocks;
 
 import java.util.Random;
 
-import mod.akrivus.kagic.init.ModCreativeTabs;
 import mod.amalgam.init.AmBlocks;
 import mod.amalgam.tileentity.TileEntityWailingStone;
 import net.minecraft.block.BlockFalling;
