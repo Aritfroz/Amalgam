@@ -2,8 +2,11 @@ package mod.amalgam.items;
 
 import java.util.List;
 
-import mod.amalgam.entity.EntityBubble;
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.entity.EntityGemShard;
+import mod.amalgam.entity.machine.EntityBubble;
+import mod.amalgam.init.Amalgam;
+import mod.amalgam.util.DamagePoofed;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -26,7 +29,7 @@ public class ItemGemDestabilizer extends ItemSword {
 		this.setUnlocalizedName("destabilizer_" + index);
 		this.setMaxStackSize(1);
 		this.setMaxDamage(24);
-		this.setCreativeTab(ModCreativeTabs.CREATIVE_TAB_OTHER);
+		this.setCreativeTab(Amalgam.CREATIVE_TAB);
 		this.color = index;
 	}
 	@Override
@@ -53,8 +56,7 @@ public class ItemGemDestabilizer extends ItemSword {
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
         stack.damageItem(1, attacker);
         if (target instanceof EntityGem) {
-        	//target.world.playSound(null, target.getPosition(), AmSounds.DESTABILIZER, SoundCategory.HOSTILE, 1.0F, 1.0F);
-        	target.attackEntityFrom(new PoofDamage(), target.getMaxHealth());
+        	target.attackEntityFrom(new DamagePoofed(), target.getHealth());
         }
         return true;
     }

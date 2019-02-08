@@ -54,13 +54,13 @@ public class TileEntityWailingStone extends TileEntity implements ITickable {
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound){
 		super.writeToNBT(compound);
-		compound.setBoolean("wailing", this.wailing);
+		compound.setBoolean("Wailing", this.wailing);
 		return compound;
 	}
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
-		this.wailing = compound.getBoolean("wailing");
+		this.wailing = compound.getBoolean("Wailing");
 	}
 	public boolean isWailing() {
 		return (this.wailing || this.world.isBlockPowered(this.pos)) && this.world.isAirBlock(this.pos.up());

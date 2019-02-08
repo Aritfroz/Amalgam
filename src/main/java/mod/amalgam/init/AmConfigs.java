@@ -14,8 +14,8 @@ public class AmConfigs {
 	public static boolean enableAgate = true;
 	@Config.Name("Grow Amethysts?")
 	public static boolean enableAmethyst = true;
-	@Config.Name("Grow Aqua Aura Quartzes")
-	public static boolean enableAquaAuraQuartz = true;
+	@Config.Name("Grow Aqua Aura Quartzes? (By Azura)")
+	public static boolean enableAquaAuraQuartz = false;
 	@Config.Name("Grow Aquamarines?")
 	public static boolean enableAquamarine = true;
 	@Config.Name("Grow Bismuths?")
@@ -24,28 +24,42 @@ public class AmConfigs {
 	public static boolean enableCarnelian = true;
 	@Config.Name("Grow Citrines?")
 	public static boolean enableCitrine = true;
+	@Config.Name("Grow Coral?")
+	public static boolean enableCoral = true;
+	@Config.Name("Grow Demantoid?")
+	public static boolean enableDemantoid = true;
 	@Config.Name("Grow Emeralds?")
 	public static boolean enableEmerald = true;
 	@Config.Name("Grow Ender Pearls?")
 	public static boolean enableEnderPearl = true;
 	@Config.Name("Grow Hessonites?")
 	public static boolean enableHessonite = true;
+	@Config.Name("Grow Jades?")
+	public static boolean enableJade = true;
 	@Config.Name("Grow Jaspers?")
 	public static boolean enableJasper = true;
 	@Config.Name("Grow Lapis Lazulis?")
 	public static boolean enableLapisLazuli = true;
-	@Config.Name("Grow Melanites?")
-	public static boolean enableMelanite = true;
+	@Config.Name("Grow Larimar?")
+	public static boolean enableLarimar = true;
+	@Config.Name("Grow Melanites? (By Snappy)")
+	public static boolean enableMelanite = false;
+	@Config.Name("Grow Moonstone? (By Lenhi)")
+	public static boolean enableMoonstone = false;
 	@Config.Name("Grow Mother of Pearls?")
 	public static boolean enableNacre = true;
 	@Config.Name("Grow Nephrites?")
 	public static boolean enableNephrite = true;
+	@Config.Name("Grow Obsidian?")
+	public static boolean enableObsidian = true;
 	@Config.Name("Grow Pearls?")
 	public static boolean enablePearl = true;
 	@Config.Name("Grow Peridots?")
 	public static boolean enablePeridot = true;
-	@Config.Name("Grow Pyrites?")
-	public static boolean enablePyrite = true;
+	@Config.Name("Grow Pyrites? (By Akri)")
+	public static boolean enablePyrite = false;
+	@Config.Name("Grow Pyrope?")
+	public static boolean enablePyrope = true;
 	@Config.Name("Grow Rose Quartzes?")
 	public static boolean enableRoseQuartz = true;
 	@Config.Name("Grow Rubies?")
@@ -54,6 +68,8 @@ public class AmConfigs {
 	public static boolean enableRutile = true;
 	@Config.Name("Grow Sapphires?")
 	public static boolean enableSapphire = true;
+	@Config.Name("Grow Spodumene?")
+	public static boolean enableSpodumene = true;
 	@Config.Name("Grow Topazes?")
 	public static boolean enableTopaz = true;
 	@Config.Name("Grow Watermelon Tourmalines?")
@@ -81,8 +97,6 @@ public class AmConfigs {
 		}
 	}
 	public static void register() {
-    	ModConfigs.displayNames = AmConfigs.showDescriptors;
-    	ModConfigs.spawnMeteorRubies = false;
-    	ModConfigs.canRebel = false;
+    	
 	}
 }

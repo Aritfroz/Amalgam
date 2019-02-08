@@ -1,24 +1,30 @@
 package mod.amalgam.client.model;
 
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumHandSide;
 
-public class ModelQuartz extends ModelBiped {
+public class ModelQuartz extends ModelGem {
+	private ModelRenderer bipedTopBun;
+	private ModelRenderer bipedSideBuns;
+	private ModelRenderer bipedBackBun;
 	private final ModelRenderer bipedCape;
 	public ModelQuartz() {
-		super(0.0F, 0.0F, 64, 64);
+		super(0.0F, 0.0F, 64, 64, 4);
 		this.bipedHead = new ModelRenderer(this, 0, 0);
 		this.bipedHead.addBox(-4F, -12F, -4F, 8, 8, 8);
 		this.bipedHead.setRotationPoint(0F, 0F, 0F);
 		this.bipedHeadwear = new ModelRenderer(this, 32, 0);
 		this.bipedHeadwear.addBox(-4F, -12F, -4F, 8, 8, 8, 1.1F);
 		this.bipedHeadwear.setRotationPoint(0F, 0F, 0F);
+		this.bipedSideBuns = new ModelRenderer(this, 0, 56);
+		this.bipedSideBuns.addBox(-9F, -10F, -2F, 18, 4, 4);
+		this.bipedSideBuns.setRotationPoint(0F, 0F, 0F);
+		this.bipedTopBun = new ModelRenderer(this, 48, 54);
+		this.bipedTopBun.addBox(-2F, -17F, -2F, 4, 4, 4);
+		this.bipedTopBun.setRotationPoint(0F, 0F, 0F);
+		this.bipedBackBun = new ModelRenderer(this, 16, 38);
+		this.bipedBackBun.addBox(-2F, -10F, 5F, 4, 4, 4);
+		this.bipedBackBun.setRotationPoint(0F, 0F, 0F);
 		this.bipedBody = new ModelRenderer(this, 16, 16);
 		this.bipedBody.addBox(-5F, -4F, -3F, 10, 16, 6);
 		this.bipedBody.setRotationPoint(0F, 0F, 0F);
@@ -43,6 +49,9 @@ public class ModelQuartz extends ModelBiped {
 		this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entity);
 		this.bipedHead.render(scale);
 		this.bipedHeadwear.render(scale);
+		this.bipedSideBuns.render(scale);
+		this.bipedTopBun.render(scale);
+		this.bipedBackBun.render(scale);
 		this.bipedBody.render(scale);
 		this.bipedRightArm.render(scale);
 		this.bipedLeftArm.render(scale);
@@ -53,23 +62,8 @@ public class ModelQuartz extends ModelBiped {
 	@Override
 	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
 		super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
-	}
-	@Override
-	public void setLivingAnimations(EntityLivingBase entity, float limbSwingAmount, float ageInTicks, float partialTickTime) {
-		this.rightArmPose = ModelBiped.ArmPose.EMPTY;
-		this.leftArmPose = ModelBiped.ArmPose.EMPTY;
-		if (entity instanceof EntityGem) {
-			ItemStack itemstack = entity.getHeldItem(EnumHand.MAIN_HAND);
-			EntityGem gem = (EntityGem) entity;
-			if (itemstack != null && itemstack.getItem() == Items.BOW && gem.isSwingingArms()) {
-				if (entity.getPrimaryHand() == EnumHandSide.RIGHT) {
-					this.rightArmPose = ModelBiped.ArmPose.BOW_AND_ARROW;
-				}
-				else {
-					this.leftArmPose = ModelBiped.ArmPose.BOW_AND_ARROW;
-				}
-			}
-		}
-		super.setLivingAnimations(entity, limbSwingAmount, ageInTicks, partialTickTime);
+		super.copyModelAngles(this.bipedHead, this.bipedSideBuns);
+		super.copyModelAngles(this.bipedHead, this.bipedTopBun);
+		super.copyModelAngles(this.bipedHead, this.bipedBackBun);
 	}
 }

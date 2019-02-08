@@ -1,7 +1,0 @@
-{
-    "parent": "block/cross",
-    "textures": {
-        "particle": "amalgam:blocks/drain_lily",
-        "cross": "amalgam:blocks/drain_lily"
-    }
-}

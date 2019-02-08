@@ -2,7 +2,6 @@ package mod.amalgam.human;
 
 import com.google.common.base.Predicate;
 
-import mod.amalgam.entity.ai.EntityAIPickUpLoot;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
@@ -71,7 +70,7 @@ public class EntityHuman extends EntityCreature implements IInventoryChangedList
         this.tasks.addTask(3, new EntityAIMoveThroughVillage(this, 0.8D, true));
         this.tasks.addTask(5, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
-        this.tasks.addTask(6, new EntityAIPickUpLoot(this, 0.9D));
+        //this.tasks.addTask(6, new EntityAIPickUpLoot(this, 0.9D));
         this.tasks.addTask(7, new EntityAIWander(this, 0.6D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 16.0F));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityMob.class, 16.0F));
@@ -105,7 +104,7 @@ public class EntityHuman extends EntityCreature implements IInventoryChangedList
         this.setBackpack(compound.getBoolean("backpacked"));
 	}
 	@Override
-	public void onInventoryChanged(IInventory invBasic) {
+	public void onInventoryChanged(IInventory inventory) {
 		
 	}
 	public void initStorage() {

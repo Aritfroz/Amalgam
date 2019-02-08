@@ -1,0 +1,15 @@
+{
+	"parent": "minecraft:cube_column",
+	"textures": {
+		"side": "amalgam:blocks/silver_decorative_carbonite_side",
+		"end": "amalgam:blocks/silver_decorative_carbonite_top"
+	},
+	"variants": {
+		"inventory": {
+		    "model": "minecraft:cube_column"
+		},
+		"normal": {
+		    "model": "minecraft:cube_column"
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"parent": "minecraft:cube_column",
+	"textures": {
+		"side": "amalgam:blocks/dark_purple_drain_block_side",
+		"end": "amalgam:blocks/dark_purple_drain_block_top"
+	},
+	"variants": {
+		"inventory": {
+		    "model": "minecraft:cube_column"
+		},
+		"normal": {
+		    "model": "minecraft:cube_column"
+		}
+	}
+}

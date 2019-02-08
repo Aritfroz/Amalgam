@@ -1,9 +1,7 @@
 package mod.amalgam.client.model;
 
-import net.minecraft.client.model.ModelBiped;
-
-public class ModelNothing extends ModelBiped {
+public class ModelNothing extends ModelGem {
 	public ModelNothing() {
-		super(0, 0, 0, 0);
+		super(0, 0, 0, 0, 4);
 	}
 }

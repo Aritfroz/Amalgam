@@ -1,57 +1,7 @@
 package mod.amalgam.init;
 
-import java.util.Iterator;
-import java.util.UUID;
-
-import com.google.common.base.Predicate;
-
-import mod.amalgam.entity.EntityGem;
-import mod.amalgam.gem.EntityAgate;
-import mod.amalgam.gem.EntityAmethyst;
-import mod.amalgam.gem.EntityAquamarine;
-import mod.amalgam.gem.EntityBabyPearl;
-import mod.amalgam.gem.EntityBismuth;
-import mod.amalgam.gem.EntityCarnelian;
-import mod.amalgam.gem.EntityHessonite;
-import mod.amalgam.gem.EntityJasper;
-import mod.amalgam.gem.EntityLapisLazuli;
-import mod.amalgam.gem.EntityPearl;
-import mod.amalgam.gem.EntityPeridot;
-import mod.amalgam.gem.EntityPyrite;
-import mod.amalgam.gem.EntityRoseQuartz;
-import mod.amalgam.gem.EntityRuby;
-import mod.amalgam.gem.EntityRutile;
-import mod.amalgam.gem.EntitySapphire;
-import mod.amalgam.gem.EntityTopaz;
-import mod.amalgam.gem.EntityZircon;
-import mod.amalgam.gem.fusion.EntityFusedPyrite;
-import mod.amalgam.gem.fusion.EntityFusedRuby;
-import mod.amalgam.gem.fusion.EntityFusedTopaz;
-import mod.amalgam.gem.fusion.EntityMalachite;
-import mod.amalgam.gem.fusion.EntityOpal;
-import mod.amalgam.gem.fusion.EntityRhodonite;
-import mod.amalgam.tasks.EntityAIBubbleItems;
-import mod.amalgam.tasks.EntityAICallForBackup;
-import mod.amalgam.tasks.EntityAICrossFuse;
-import mod.amalgam.tasks.EntityAIFixAnvils;
-import mod.amalgam.tasks.EntityAIFixInjectors;
-import mod.amalgam.tasks.EntityAIFixPalanquins;
-import mod.amalgam.tasks.EntityAIFollowLeaderGem;
-import mod.amalgam.tasks.EntityAIFollowOtherGem;
-import mod.amalgam.tasks.EntityAIPeriAlignGems;
-import mod.amalgam.tasks.EntityAIPeriPartyBurnStuff;
-import mod.amalgam.tasks.EntityAIPeriPartyDance;
-import mod.amalgam.tasks.EntityAIPeriPartyFireworks;
-import mod.amalgam.tasks.EntityAIStayWithinRadius;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.init.Blocks;
-import net.minecraft.nbt.NBTTagCompound;
-
 public class AmTweaks {
+	/*
 	public static void applyGemTweaks(EntityGem gem) {
 		if (gem instanceof EntityGem) {
 			System.out.println(gem.getName() + " is already overwritten.");
@@ -623,4 +573,5 @@ public class AmTweaks {
 			}
 		}
 	}
+	*/
 }

@@ -3,7 +3,9 @@ package mod.amalgam.injection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.UUID;
 
+import mod.amalgam.entity.EntityGem;
 import mod.amalgam.init.AmBlocks;
 import mod.amalgam.init.AmGems;
 import net.minecraft.block.Block;
@@ -12,21 +14,19 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 
 public class InjectorResult {
+	private static final Block[] RED_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_RED_DRAIN_BLOCK, AmBlocks.BANDED_RED_DRAIN_BLOCK, AmBlocks.DARK_RED_DRAIN_BLOCK, AmBlocks.ERODED_RED_DRAIN_BLOCK };
+	private static final Block[] ORANGE_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_ORANGE_DRAIN_BLOCK, AmBlocks.BANDED_ORANGE_DRAIN_BLOCK, AmBlocks.DARK_ORANGE_DRAIN_BLOCK, AmBlocks.ERODED_ORANGE_DRAIN_BLOCK };
+	private static final Block[] PURPLE_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_PURPLE_DRAIN_BLOCK, AmBlocks.BANDED_PURPLE_DRAIN_BLOCK, AmBlocks.DARK_PURPLE_DRAIN_BLOCK, AmBlocks.ERODED_PURPLE_DRAIN_BLOCK };
+	private static final Block[] BLUE_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_BLUE_DRAIN_BLOCK, AmBlocks.BANDED_BLUE_DRAIN_BLOCK, AmBlocks.DARK_BLUE_DRAIN_BLOCK, AmBlocks.ERODED_BLUE_DRAIN_BLOCK };
 	private final EntityGem gem;
 	private final BlockPos position;
-	private final boolean isDefective;
-	private final boolean isPrimary;
 	private final ExitHole exitHole;
 	private final GemSpawnData data;
-	
-	public InjectorResult(EntityGem gem, BlockPos position, boolean isDefective, boolean isPrimary, ExitHole exitHole, GemSpawnData data) {
+	public InjectorResult(EntityGem gem, BlockPos position, ExitHole exitHole, GemSpawnData data) {
 		this.gem = gem;
 		this.position = position;
-		this.isDefective = isDefective;
-		this.isPrimary = isPrimary;
 		this.exitHole = exitHole;
 		this.data = data; 
 	}
@@ -39,27 +39,21 @@ public class InjectorResult {
 	public BlockPos getPosition() {
 		return this.position;
 	}
-	public boolean isPrimary() {
-		return this.isPrimary;
-	}
-	public boolean isDefective() {
-		return this.isDefective;
+	public GemSpawnData getData() {
+		return this.data;
 	}
 	public ExitHole getExitHole() {
 		return this.exitHole;
 	}
 	public void generate(World world) {
 		this.exitHole.emerge(world);
-		if (this.isDefective()) {
-			this.gem.setDefective(true);
-		}
-		if (this.isPrimary()) {
-			this.gem.setPrimary(true);
-		}
 		world.spawnEntity(this.gem);
-		this.gem.onInitialSpawn(world.getDifficultyForLocation(this.getPosition()), null);
+		this.gem.onInitialSpawn(world.getDifficultyForLocation(this.getPosition()), this.data);
 	}
 	public static InjectorResult create(World world, BlockPos pos, boolean generate) {
+		return InjectorResult.create(world, pos, generate, new UUID(0, 0), -1);
+	}
+	public static InjectorResult create(World world, BlockPos pos, boolean generate, UUID owner, int color) {
 		HashMap<ResourceLocation, ArrayList<CruxEntry>> cruxes = AmGems.CRUXES;
 		ArrayList<IBlockState> image = new ArrayList<IBlockState>();
 		for (int y = -2; y < 2; ++y) {
@@ -102,7 +96,7 @@ public class InjectorResult {
 		}
 		EntityGem gem = null;
 		try {
-			gem = (EntityGem)(AmGems.GEM_LIST.get(key).getConstructors()[0].newInstance(world));
+			gem = (EntityGem)(AmGems.GEM_REGISTRY.get(key).getConstructors()[0].newInstance(world));
 		} catch (Exception e) {
 			System.out.println("Gem called '" + key + "' failed to load!");
 			return null;
@@ -119,27 +113,42 @@ public class InjectorResult {
 				}
 			}
 		}
-		return new InjectorResult(gem, pos, random < (volume * 0.1), random > (volume * 0.8), exit, null);
+		GemSpawnData data = new GemSpawnData(owner, color, random < (volume * 0.1), random > (volume * 0.8));
+		return new InjectorResult(gem, pos, exit, data);
 	}
 	public static void drain(World world, BlockPos pos) {
+		Block[] blocks = PURPLE_DRAIN_BLOCKS;
+		if (world.provider.isNether()) {
+			blocks = RED_DRAIN_BLOCKS;
+		}
+		else {
+			float temp = world.getBiome(pos).getTemperature(pos);
+			if (world.canSnowAt(pos, false)) {
+				blocks = BLUE_DRAIN_BLOCKS;
+			}
+			else if (temp > 0.95) {
+				blocks = ORANGE_DRAIN_BLOCKS;
+			}
+			else {
+				blocks = PURPLE_DRAIN_BLOCKS;
+			}
+		}
 		IBlockState state = world.getBlockState(pos);
-		Block block = state.getBlock();
 		Material material = state.getMaterial();
-		if (MinecraftForge.EVENT_BUS.post(new DrainBlockEvent(world, pos, state, block))) return;
 		if (state.getBlockHardness(world, pos) >= 0) {
 			if (material == Material.ROCK || state.isFullCube()) {
 				if (pos.getY() % 6 == 0 || pos.getY() % 6 == 1) {
-					world.setBlockState(pos, ModBlocks.DRAINED_BLOCK_2.getDefaultState());
+					world.setBlockState(pos, blocks[0].getDefaultState());
 				}
 				else if (pos.getY() % 5 == 0) {
-					world.setBlockState(pos, ModBlocks.DRAINED_BANDS.getDefaultState());
+					world.setBlockState(pos, blocks[1].getDefaultState());
 				}
 				else {
-					world.setBlockState(pos, ModBlocks.DRAINED_BLOCK.getDefaultState());
+					world.setBlockState(pos, blocks[2].getDefaultState());
 				}
 			}
 			if (material == Material.SAND) {
-				world.setBlockState(pos, ModBlocks.DRAINED_GRAVEL.getDefaultState());
+				world.setBlockState(pos, blocks[3].getDefaultState());
 			}
 			if (material == Material.PLANTS) {
 				world.setBlockState(pos, AmBlocks.DRAIN_LILY.getDefaultState());

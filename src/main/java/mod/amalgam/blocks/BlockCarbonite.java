@@ -3,6 +3,8 @@ package mod.amalgam.blocks;
 import java.util.Random;
 
 import mod.amalgam.init.AmBlocks;
+import mod.amalgam.init.AmGems;
+import mod.amalgam.init.Amalgam;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.MapColor;
@@ -11,24 +13,39 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockCarbonite extends Block {
-	public boolean powered;
+	private boolean canBePowered = true;
+	private boolean powered;
+	private int color;
 	public BlockCarbonite(boolean powered, int color) {
-		super(Material.ROCK, MapColor.getBlockColor(EnumDyeColor.byDyeDamage(color)));
-		this.setUnlocalizedName("carbonite_" + color + "_" + (powered ? "on" : "off"));
+		super(Material.ROCK);
+        this.color = color; color = 15 - color;
+		String name = EnumDyeColor.byMetadata(color).toString().toLowerCase();
         this.powered = powered;
         if (this.powered) {
-        	this.setBlockUnbreakable();
+    		this.setUnlocalizedName(name + "_carbonite_on");
         	this.setResistance(6000000);
-        	this.setLightLevel(2);
+        	this.setHardness(-1);
         }
         else {
-        	this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+    		this.setUnlocalizedName(name + "_carbonite_off");
+        	this.setCreativeTab(Amalgam.CREATIVE_TAB);
         	this.setResistance(30);
         	this.setHardness(2);
         }
+	}
+	public BlockCarbonite(int color) {
+		super(Material.ROCK);
+		this.canBePowered = false;
+        this.color = color; color = 15 - color;
+		String name = EnumDyeColor.byMetadata(color).toString().toLowerCase();
+	    this.setUnlocalizedName(name + "_carbonite");
+    	this.setCreativeTab(Amalgam.CREATIVE_TAB);
+    	this.setResistance(30);
+    	this.setHardness(2);
 	}
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
@@ -46,6 +63,10 @@ public class BlockCarbonite extends Block {
 		this.activate(world, pos, null);
     }
 	@Override
+    public MapColor getMapColor(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return MapColor.getBlockColor(EnumDyeColor.byDyeDamage(this.color));
+    }
+	@Override
 	public EnumPushReaction getMobilityFlag(IBlockState state) {
 		return EnumPushReaction.BLOCK;
 	}
@@ -53,127 +74,106 @@ public class BlockCarbonite extends Block {
 	public Item getItemDropped(IBlockState state, Random random, int fortune){
 		return Item.getItemFromBlock(this);
 	}
-    public BlockCarbonite getPoweredVariety() {
-    	if (this == AmBlocks.WHITE_CARBONITE_OFF) {
-    		return AmBlocks.WHITE_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.ORANGE_CARBONITE_OFF) {
-    		return AmBlocks.ORANGE_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.MAGENTA_CARBONITE_OFF) {
-    		return AmBlocks.MAGENTA_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.LIGHT_BLUE_CARBONITE_OFF) {
-    		return AmBlocks.LIGHT_BLUE_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.YELLOW_CARBONITE_OFF) {
-    		return AmBlocks.YELLOW_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.LIME_CARBONITE_OFF) {
-    		return AmBlocks.LIME_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.PINK_CARBONITE_OFF) {
-    		return AmBlocks.PINK_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.GRAY_CARBONITE_OFF) {
-    		return AmBlocks.GRAY_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.SILVER_CARBONITE_OFF) {
-    		return AmBlocks.SILVER_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.CYAN_CARBONITE_OFF) {
-    		return AmBlocks.CYAN_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.PURPLE_CARBONITE_OFF) {
-    		return AmBlocks.PURPLE_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.BLUE_CARBONITE_OFF) {
-    		return AmBlocks.BLUE_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.BROWN_CARBONITE_OFF) {
-    		return AmBlocks.BROWN_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.GREEN_CARBONITE_OFF) {
-    		return AmBlocks.GREEN_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.RED_CARBONITE_OFF) {
-    		return AmBlocks.RED_CARBONITE_ON;
-    	}
-    	if (this == AmBlocks.BLACK_CARBONITE_OFF) {
-    		return AmBlocks.BLACK_CARBONITE_ON;
-    	}
-    	return AmBlocks.WHITE_CARBONITE_ON;
-    }
-    public BlockCarbonite getNormalVariety() {
-    	if (this == AmBlocks.WHITE_CARBONITE_ON) {
-    		return AmBlocks.WHITE_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.ORANGE_CARBONITE_ON) {
-    		return AmBlocks.ORANGE_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.MAGENTA_CARBONITE_ON) {
-    		return AmBlocks.MAGENTA_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.LIGHT_BLUE_CARBONITE_ON) {
-    		return AmBlocks.LIGHT_BLUE_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.YELLOW_CARBONITE_ON) {
-    		return AmBlocks.YELLOW_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.LIME_CARBONITE_ON) {
-    		return AmBlocks.LIME_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.PINK_CARBONITE_ON) {
-    		return AmBlocks.PINK_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.GRAY_CARBONITE_ON) {
-    		return AmBlocks.GRAY_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.SILVER_CARBONITE_ON) {
-    		return AmBlocks.SILVER_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.CYAN_CARBONITE_ON) {
-    		return AmBlocks.CYAN_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.PURPLE_CARBONITE_ON) {
-    		return AmBlocks.PURPLE_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.BLUE_CARBONITE_ON) {
-    		return AmBlocks.BLUE_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.BROWN_CARBONITE_ON) {
-    		return AmBlocks.BROWN_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.GREEN_CARBONITE_ON) {
-    		return AmBlocks.GREEN_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.RED_CARBONITE_ON) {
-    		return AmBlocks.RED_CARBONITE_OFF;
-    	}
-    	if (this == AmBlocks.BLACK_CARBONITE_ON) {
-    		return AmBlocks.BLACK_CARBONITE_OFF;
-    	}
-    	return AmBlocks.WHITE_CARBONITE_OFF;
-    }
     private void activate(World world, BlockPos pos, BlockPos fromPos) {
-		boolean powered = world.isBlockPowered(pos);
-		if (fromPos != null) {
-	    	IBlockState from = world.getBlockState(fromPos);
-			if (from.getBlock() instanceof BlockCarbonite) {
-				BlockCarbonite carbonite = (BlockCarbonite)(from.getBlock());
-				if (carbonite.powered) {
-					powered = true;
-				}
-				else if (powered) {
-					world.setBlockState(fromPos, carbonite.getPoweredVariety().getDefaultState());
+		if (this.canBePowered) {
+	    	boolean powered = world.isBlockPowered(pos);
+			if (fromPos != null) {
+		    	IBlockState from = world.getBlockState(fromPos);
+				if (from.getBlock() instanceof BlockCarbonite) {
+					BlockCarbonite carbonite = (BlockCarbonite)(from.getBlock());
+					if (carbonite.powered) {
+						powered = true;
+					}
+					else if (powered) {
+						world.setBlockState(fromPos, this.getPoweredState());
+					}
 				}
 			}
+			if (!this.powered && powered) {
+				world.setBlockState(pos, this.getPoweredState());
+			}
+			if (!powered && this.powered) {
+				world.setBlockState(pos, this.getUnpoweredState());
+			}
 		}
-		if (!this.powered && powered) {
-			world.setBlockState(pos, this.getPoweredVariety().getDefaultState());
-		}
-		if (!powered && this.powered) {
-			world.setBlockState(pos, this.getNormalVariety().getDefaultState());
-		}
+    }
+    public boolean isPowered() {
+    	return this.powered;
+    }
+    public IBlockState getUnpoweredState() {
+    	switch (this.color) {
+    	case AmGems.BASIC_WHITE:
+        	return AmBlocks.WHITE_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_ORANGE:
+        	return AmBlocks.ORANGE_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_MAGENTA:
+        	return AmBlocks.MAGENTA_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_LIGHT_BLUE:
+        	return AmBlocks.LIGHT_BLUE_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_YELLOW:
+        	return AmBlocks.YELLOW_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_LIME:
+        	return AmBlocks.LIME_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_PINK:
+        	return AmBlocks.PINK_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_GRAY:
+        	return AmBlocks.GRAY_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_SILVER:
+        	return AmBlocks.SILVER_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_CYAN:
+        	return AmBlocks.CYAN_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_PURPLE:
+        	return AmBlocks.PURPLE_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_BLUE:
+        	return AmBlocks.BLUE_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_BROWN:
+        	return AmBlocks.BROWN_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_GREEN:
+        	return AmBlocks.GREEN_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_RED:
+        	return AmBlocks.RED_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_BLACK:
+        	return AmBlocks.BLACK_CARBONITE_OFF.getDefaultState();
+        default:
+        	return AmBlocks.WHITE_CARBONITE_OFF.getDefaultState();
+    	}
+    }
+    public IBlockState getPoweredState() {
+    	switch (this.color) {
+    	case AmGems.BASIC_WHITE:
+        	return AmBlocks.WHITE_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_ORANGE:
+        	return AmBlocks.ORANGE_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_MAGENTA:
+        	return AmBlocks.MAGENTA_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_LIGHT_BLUE:
+        	return AmBlocks.LIGHT_BLUE_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_YELLOW:
+        	return AmBlocks.YELLOW_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_LIME:
+        	return AmBlocks.LIME_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_PINK:
+        	return AmBlocks.PINK_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_GRAY:
+        	return AmBlocks.GRAY_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_SILVER:
+        	return AmBlocks.SILVER_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_CYAN:
+        	return AmBlocks.CYAN_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_PURPLE:
+        	return AmBlocks.PURPLE_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_BLUE:
+        	return AmBlocks.BLUE_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_BROWN:
+        	return AmBlocks.BROWN_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_GREEN:
+        	return AmBlocks.GREEN_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_RED:
+        	return AmBlocks.RED_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_BLACK:
+        	return AmBlocks.BLACK_CARBONITE_ON.getDefaultState();
+        default:
+        	return AmBlocks.WHITE_CARBONITE_ON.getDefaultState();
+    	}
     }
 }

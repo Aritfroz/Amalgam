@@ -1,6 +1,7 @@
 package mod.amalgam.client.render.layers;
 
-import mod.amalgam.client.render.RenderAmalgamGem;
+import mod.amalgam.client.render.RenderGem;
+import mod.amalgam.entity.EntityGem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -13,12 +14,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class LayerHeldItem implements LayerRenderer<EntityGem> {
-    protected final RenderAmalgamGem<?> renderer;
+    protected final RenderGem<?> renderer;
     protected final float postRenderArm;
     protected final float offX;
     protected final float offY;
     protected final float offZ;
-    public LayerHeldItem(RenderAmalgamGem<?> renderer, float postRenderArm, float offX, float offY, float offZ) {
+    public LayerHeldItem(RenderGem<?> renderer, float postRenderArm, float offX, float offY, float offZ) {
         this.renderer = renderer;
         this.postRenderArm = postRenderArm;
         this.offX = offX;

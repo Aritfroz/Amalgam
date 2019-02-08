@@ -1,21 +1,13 @@
 package mod.amalgam.handles;
 
-import java.util.List;
-
-import mod.amalgam.entity.EntityBubble;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
 public class HandleCapturing {
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public void onEntityInteract(PlayerInteractEvent.EntityInteract e) {
 		if (!e.getWorld().isRemote) {
 			List<EntityItem> items = e.getEntityPlayer().world.<EntityItem>getEntitiesWithinAABB(EntityItem.class, new AxisAlignedBB(e.getPos()).grow(1, 1, 1));
 			for (EntityItem item : items) {
 				if (!item.isDead) {
-					if (e.getItemStack().getItem() == ModItems.GEM_STAFF || e.getItemStack().getItem() == ModItems.COMMANDER_STAFF) {
+					if (e.getItemStack().getItem() == AmItems.GEM_STAFF || e.getItemStack().getItem() == AmItems.COMMANDER_STAFF) {
 						List<EntityGem> list = e.getEntityPlayer().world.<EntityGem>getEntitiesWithinAABB(EntityGem.class, e.getEntityPlayer().getEntityBoundingBox().grow(4, 4, 4));
 						double distance = Double.MAX_VALUE;
 						EntityGem gem = null;
@@ -43,5 +35,5 @@ public class HandleCapturing {
 				}
 			}
 		}
-	}
+	}*/
 }

@@ -3,6 +3,7 @@ package mod.amalgam.blocks;
 import java.util.Random;
 
 import mod.amalgam.init.AmBlocks;
+import mod.amalgam.init.Amalgam;
 import mod.amalgam.tileentity.TileEntityWailingStone;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.BlockHorizontal;
@@ -37,11 +38,12 @@ public class BlockWailingStone extends BlockFalling implements ITileEntityProvid
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public BlockWailingStone() {
 		super(Material.ROCK);
-		this.setHarvestLevel("pickaxe", 0);
-		this.setHardness(2);
 		this.setUnlocalizedName("wailing_stone");
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		this.setCreativeTab(ModCreativeTabs.CREATIVE_TAB_OTHER);
+		this.setResistance(30);
+		this.setHardness(2);
+		this.setHarvestLevel("pickaxe", 0);
+		this.setCreativeTab(Amalgam.CREATIVE_TAB);
 	}
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
@@ -76,10 +78,6 @@ public class BlockWailingStone extends BlockFalling implements ITileEntityProvid
     public MapColor getMapColor(IBlockState state, IBlockAccess world, BlockPos pos) {
         return MapColor.GOLD;
     }
-	
-	/*********************************************************
-	 * Methods related to block states and direction.		*
-	 *********************************************************/
 	private void setDefaultFacing(World world, BlockPos pos, IBlockState state) {
 		if (!world.isRemote) {
 			IBlockState north = world.getBlockState(pos.north());
@@ -135,10 +133,6 @@ public class BlockWailingStone extends BlockFalling implements ITileEntityProvid
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityWailingStone();
 	}
-	
-	/*********************************************************
-	 * Methods related to block rendering.				   *
-	 *********************************************************/
 	@Override
 	@SideOnly(Side.CLIENT)
 	public BlockRenderLayer getBlockLayer() {

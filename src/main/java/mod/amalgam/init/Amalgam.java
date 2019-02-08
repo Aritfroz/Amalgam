@@ -1,14 +1,12 @@
 package mod.amalgam.init;
 
-import java.util.Iterator;
-
 import mod.amalgam.command.CommandGetCrux;
 import mod.amalgam.proxies.CommonProxy;
 import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -26,6 +24,46 @@ public class Amalgam {
     public static final String VERSION = "@version";
     public static final String MCVERSION = "1.12.2";
 	public static final String MODID = "amalgam";
+	public static final CreativeTabs CREATIVE_TAB = new CreativeTabs(CreativeTabs.getNextID(), Amalgam.MODID) {
+		@Override
+		public ItemStack getTabIconItem() {
+			int index = (int)(System.currentTimeMillis() / 1000L) % 16;
+			switch (index) {
+			case AmGems.BASIC_WHITE:
+				return new ItemStack(AmItems.WHITE_GEM_SHARD);
+			case AmGems.BASIC_ORANGE:
+				return new ItemStack(AmItems.ORANGE_GEM_SHARD);
+			case AmGems.BASIC_MAGENTA:
+				return new ItemStack(AmItems.MAGENTA_GEM_SHARD);
+			case AmGems.BASIC_LIGHT_BLUE:
+				return new ItemStack(AmItems.LIGHT_BLUE_GEM_SHARD);
+			case AmGems.BASIC_YELLOW:
+				return new ItemStack(AmItems.YELLOW_GEM_SHARD);
+			case AmGems.BASIC_LIME:
+				return new ItemStack(AmItems.LIME_GEM_SHARD);
+			case AmGems.BASIC_PINK:
+				return new ItemStack(AmItems.PINK_GEM_SHARD);
+			case AmGems.BASIC_GRAY:
+				return new ItemStack(AmItems.GRAY_GEM_SHARD);
+			case AmGems.BASIC_SILVER:
+				return new ItemStack(AmItems.SILVER_GEM_SHARD);
+			case AmGems.BASIC_CYAN:
+				return new ItemStack(AmItems.CYAN_GEM_SHARD);
+			case AmGems.BASIC_PURPLE:
+				return new ItemStack(AmItems.PURPLE_GEM_SHARD);
+			case AmGems.BASIC_BLUE:
+				return new ItemStack(AmItems.BLUE_GEM_SHARD);
+			case AmGems.BASIC_BROWN:
+				return new ItemStack(AmItems.BROWN_GEM_SHARD);
+			case AmGems.BASIC_GREEN:
+				return new ItemStack(AmItems.GREEN_GEM_SHARD);
+			case AmGems.BASIC_RED:
+				return new ItemStack(AmItems.RED_GEM_SHARD);
+			default:
+				return new ItemStack(AmItems.BLACK_GEM_SHARD);
+			}
+		}
+	};
 
 	@SidedProxy(clientSide = "mod.amalgam.proxies.ClientProxy", serverSide = "mod.amalgam.proxies.ServerProxy")
 	public static CommonProxy proxy;
@@ -58,19 +96,6 @@ public class Amalgam {
     
     @Mod.EventBusSubscriber(modid = Amalgam.MODID)
 	public static class RegistrationHandler {
-    	@SubscribeEvent
-    	public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-    		Iterator<IRecipe> it = event.getRegistry().iterator();
-    		while (it.hasNext()) {
-    			IRecipe recipe = it.next();
-    			if (recipe.getRecipeOutput().getItem() instanceof ItemBlock) {
-    				ItemBlock block = (ItemBlock)(recipe.getRecipeOutput().getItem());
-    				if (Injector.isInjectorBlock(block.getBlock())) {
-    					it.remove();
-    				}
-    			}
-    		}
-    	}
     	@SubscribeEvent
 		public static void registerEnchants(RegistryEvent.Register<Enchantment> event) {
 			AmEnchants.register(event);

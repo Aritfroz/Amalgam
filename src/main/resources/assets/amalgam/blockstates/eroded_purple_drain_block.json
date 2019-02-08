@@ -1,0 +1,14 @@
+{
+	"parent": "minecraft:cube_all",
+	"textures": {
+		"all": "amalgam:blocks/eroded_purple_drain_block"
+	},
+	"variants": {
+		"inventory": {
+		    "model": "minecraft:cube_all"
+		},
+		"normal": {
+		    "model": "minecraft:cube_all"
+		}
+	}
+}

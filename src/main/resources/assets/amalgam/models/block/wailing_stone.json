@@ -1,18 +1,11 @@
 {
 	"parent": "block/block",
 	"display": {
-        "gui": {
-            "rotation": [ 30, 270, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 0.625, 0.625, 0.625 ]
-        }
-    },
-	"textures": {
-		"top": "amalgam:blocks/wailing_stone_top",
-		"face": "amalgam:blocks/wailing_stone_face",
-		"side": "amalgam:blocks/wailing_stone_side",
-		"bottom": "amalgam:blocks/wailing_stone_bottom",
-		"particle": "amalgam:blocks/wailing_stone_bottom"
+		"gui": {
+			"rotation": [ 30, 270, 0 ],
+			"translation": [ 0, 0, 0 ],
+			"scale": [ 0.625, 0.625, 0.625 ]
+		}
 	},
 	"elements": [
 		{
