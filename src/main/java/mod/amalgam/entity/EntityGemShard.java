@@ -44,7 +44,7 @@ public class EntityGemShard extends EntityMob {
 		new ItemStack(AmItems.WHITE_GEM_SHARD),
 		new ItemStack(AmItems.ORANGE_GEM_SHARD),
 		new ItemStack(AmItems.MAGENTA_GEM_SHARD),
-		new ItemStack(AmItems.LIGHT_BLUE_GEM_SHARD),
+		new ItemStack(AmItems.LIGHTBLUE_GEM_SHARD),
 		new ItemStack(AmItems.YELLOW_GEM_SHARD),
 		new ItemStack(AmItems.LIME_GEM_SHARD),
 		new ItemStack(AmItems.PINK_GEM_SHARD),

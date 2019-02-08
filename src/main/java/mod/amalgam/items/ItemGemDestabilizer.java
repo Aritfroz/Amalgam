@@ -11,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.util.EnumActionResult;
@@ -26,7 +27,8 @@ public class ItemGemDestabilizer extends ItemSword {
 	public int color;
 	public ItemGemDestabilizer(int index) {
 		super(ToolMaterial.GOLD);
-		this.setUnlocalizedName("destabilizer_" + index);
+		String name = EnumDyeColor.byMetadata(index).toString().toLowerCase();
+		this.setUnlocalizedName(name + "_gem_destabilizer");
 		this.setMaxStackSize(1);
 		this.setMaxDamage(24);
 		this.setCreativeTab(Amalgam.CREATIVE_TAB);

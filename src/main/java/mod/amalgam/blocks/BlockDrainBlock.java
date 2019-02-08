@@ -33,12 +33,16 @@ public class BlockDrainBlock extends Block {
 		switch (level) {
 		case 0:
 			this.setUnlocalizedName("light_" + color + "_drain_block");
+			break;
 		case 1:
 			this.setUnlocalizedName("banded_" + color + "_drain_block");
+			break;
 		case 2:
 			this.setUnlocalizedName("dark_" + color + "_drain_block");
+			break;
 		case 3:
 			this.setUnlocalizedName("eroded_" + color + "_drain_block");
+			break;
 		}
 		this.canBeEnriched = canBeEnriched;
 		this.color = color;

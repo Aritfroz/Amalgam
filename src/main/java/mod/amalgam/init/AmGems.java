@@ -111,7 +111,7 @@ public class AmGems {
 	/** Dye damage is 2, block meta is 13. */
 	public static final int BASIC_MAGENTA = 2;
 	/** Dye damage is 3, block meta is 12. */
-	public static final int BASIC_LIGHT_BLUE = 3;
+	public static final int BASIC_LIGHTBLUE = 3;
 	/** Dye damage is 4, block meta is 11. */
 	public static final int BASIC_YELLOW = 4;
 	/** Dye damage is 5, block meta is 10. */
@@ -136,6 +136,39 @@ public class AmGems {
 	public static final int BASIC_RED = 14;
 	/** Dye damage is 15, block meta is 0. */
 	public static final int BASIC_BLACK = 15;
+	
+	/** Dye damage is 0, block meta is 15. */
+	public static final int BLOCK_WHITE = 15;
+	/** Dye damage is 1, block meta is 14. */
+	public static final int BLOCK_ORANGE = 14;
+	/** Dye damage is 2, block meta is 13. */
+	public static final int BLOCK_MAGENTA = 13;
+	/** Dye damage is 3, block meta is 12. */
+	public static final int BLOCK_LIGHTBLUE = 12;
+	/** Dye damage is 4, block meta is 11. */
+	public static final int BLOCK_YELLOW = 11;
+	/** Dye damage is 5, block meta is 10. */
+	public static final int BLOCK_LIME = 10;
+	/** Dye damage is 6, block meta is 9. */
+	public static final int BLOCK_PINK = 9;
+	/** Dye damage is 7, block meta is 8. */
+	public static final int BLOCK_GRAY = 8;
+	/** Dye damage is 8, block meta is 7. */
+	public static final int BLOCK_SILVER = 7;
+	/** Dye damage is 9, block meta is 6. */
+	public static final int BLOCK_CYAN = 6;
+	/** Dye damage is 10, block meta is 5. */
+	public static final int BLOCK_PURPLE = 5;
+	/** Dye damage is 11, block meta is 4. */
+	public static final int BLOCK_BLUE = 4;
+	/** Dye damage is 12, block meta is 3. */
+	public static final int BLOCK_BROWN = 3;
+	/** Dye damage is 13, block meta is 2. */
+	public static final int BLOCK_GREEN = 2;
+	/** Dye damage is 14, block meta is 1. */
+	public static final int BLOCK_RED = 1;
+	/** Dye damage is 15, block meta is 0. */
+	public static final int BLOCK_BLACK = 0;
 	
 	public static void registerGemEntity(ResourceLocation loc, Class<? extends EntityGem> entity, ArrayList<CruxEntry> cruxes) {
 		GEM_REGISTRY.put(loc, entity);

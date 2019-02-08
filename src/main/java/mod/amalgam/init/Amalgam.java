@@ -35,8 +35,8 @@ public class Amalgam {
 				return new ItemStack(AmItems.ORANGE_GEM_SHARD);
 			case AmGems.BASIC_MAGENTA:
 				return new ItemStack(AmItems.MAGENTA_GEM_SHARD);
-			case AmGems.BASIC_LIGHT_BLUE:
-				return new ItemStack(AmItems.LIGHT_BLUE_GEM_SHARD);
+			case AmGems.BASIC_LIGHTBLUE:
+				return new ItemStack(AmItems.LIGHTBLUE_GEM_SHARD);
 			case AmGems.BASIC_YELLOW:
 				return new ItemStack(AmItems.YELLOW_GEM_SHARD);
 			case AmGems.BASIC_LIME:

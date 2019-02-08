@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "amalgam:items/light_blue_gem_dust"
+		"layer0": "amalgam:items/lightblue_gem_shard"
 	}
 }

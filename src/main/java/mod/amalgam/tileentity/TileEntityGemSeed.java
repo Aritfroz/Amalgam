@@ -1,7 +1,5 @@
 package mod.amalgam.tileentity;
 
-import java.util.UUID;
-
 import mod.amalgam.injection.GemSpawnData;
 import mod.amalgam.injection.InjectorResult;
 import net.minecraft.nbt.NBTTagCompound;

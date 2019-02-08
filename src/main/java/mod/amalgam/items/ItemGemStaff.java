@@ -30,11 +30,6 @@ public class ItemGemStaff extends Item {
 	}
 	@Override
 	@SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack stack) {
-        return true;
-    }
-	@Override
-	@SideOnly(Side.CLIENT)
     public boolean isFull3D() {
         return true;
     }

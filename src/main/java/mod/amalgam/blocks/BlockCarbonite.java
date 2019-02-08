@@ -22,7 +22,7 @@ public class BlockCarbonite extends Block {
 	private int color;
 	public BlockCarbonite(boolean powered, int color) {
 		super(Material.ROCK);
-        this.color = color; color = 15 - color;
+        this.color = color;
 		String name = EnumDyeColor.byMetadata(color).toString().toLowerCase();
         this.powered = powered;
         if (this.powered) {
@@ -40,7 +40,7 @@ public class BlockCarbonite extends Block {
 	public BlockCarbonite(int color) {
 		super(Material.ROCK);
 		this.canBePowered = false;
-        this.color = color; color = 15 - color;
+        this.color = color;
 		String name = EnumDyeColor.byMetadata(color).toString().toLowerCase();
 	    this.setUnlocalizedName(name + "_carbonite");
     	this.setCreativeTab(Amalgam.CREATIVE_TAB);
@@ -85,7 +85,7 @@ public class BlockCarbonite extends Block {
 						powered = true;
 					}
 					else if (powered) {
-						world.setBlockState(fromPos, this.getPoweredState());
+						world.setBlockState(fromPos, carbonite.getPoweredState());
 					}
 				}
 			}
@@ -108,8 +108,8 @@ public class BlockCarbonite extends Block {
         	return AmBlocks.ORANGE_CARBONITE_OFF.getDefaultState();
     	case AmGems.BASIC_MAGENTA:
         	return AmBlocks.MAGENTA_CARBONITE_OFF.getDefaultState();
-    	case AmGems.BASIC_LIGHT_BLUE:
-        	return AmBlocks.LIGHT_BLUE_CARBONITE_OFF.getDefaultState();
+    	case AmGems.BASIC_LIGHTBLUE:
+        	return AmBlocks.LIGHTBLUE_CARBONITE_OFF.getDefaultState();
     	case AmGems.BASIC_YELLOW:
         	return AmBlocks.YELLOW_CARBONITE_OFF.getDefaultState();
     	case AmGems.BASIC_LIME:
@@ -146,8 +146,8 @@ public class BlockCarbonite extends Block {
         	return AmBlocks.ORANGE_CARBONITE_ON.getDefaultState();
     	case AmGems.BASIC_MAGENTA:
         	return AmBlocks.MAGENTA_CARBONITE_ON.getDefaultState();
-    	case AmGems.BASIC_LIGHT_BLUE:
-        	return AmBlocks.LIGHT_BLUE_CARBONITE_ON.getDefaultState();
+    	case AmGems.BASIC_LIGHTBLUE:
+        	return AmBlocks.LIGHTBLUE_CARBONITE_ON.getDefaultState();
     	case AmGems.BASIC_YELLOW:
         	return AmBlocks.YELLOW_CARBONITE_ON.getDefaultState();
     	case AmGems.BASIC_LIME:

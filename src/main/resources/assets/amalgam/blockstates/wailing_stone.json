@@ -1,11 +1,14 @@
 {
 	"forge_marker": 1,
-	"textures": {
-		"top": "amalgam:blocks/wailing_stone_top",
-		"face": "amalgam:blocks/wailing_stone_face",
-		"side": "amalgam:blocks/wailing_stone_side",
-		"bottom": "amalgam:blocks/wailing_stone_bottom",
-		"particle": "amalgam:blocks/wailing_stone_bottom"
+	"defaults": {
+		"model": "amalgam:wailing_stone",
+		"textures": {
+			"top": "amalgam:blocks/wailing_stone_top",
+			"face": "amalgam:blocks/wailing_stone_face",
+			"side": "amalgam:blocks/wailing_stone_side",
+			"bottom": "amalgam:blocks/wailing_stone_bottom",
+			"particle": "amalgam:blocks/wailing_stone_bottom"
+		}
 	},
 	"variants": {
 		"facing=down": {

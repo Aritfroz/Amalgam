@@ -1,8 +1,11 @@
 {
-	"parent": "minecraft:cube_column",
-	"textures": {
-		"side": "amalgam:blocks/light_blue_drain_block_side",
-		"end": "amalgam:blocks/light_blue_drain_block_top"
+	"forge_marker": 1,
+	"defaults": {
+		"model": "minecraft:cube_column",
+		"textures": {
+			"side": "amalgam:blocks/light_blue_drain_block_side",
+			"end": "amalgam:blocks/light_blue_drain_block_top"
+		}
 	},
 	"variants": {
 		"inventory": {

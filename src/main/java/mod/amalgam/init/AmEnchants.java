@@ -8,7 +8,7 @@ public class AmEnchants {
 	public static final EnchantShard WHITE_GEM_SHARD = new EnchantShard(0);
 	public static final EnchantShard ORANGE_GEM_SHARD = new EnchantShard(1);
 	public static final EnchantShard MAGENTA_GEM_SHARD = new EnchantShard(2);
-	public static final EnchantShard LIGHT_BLUE_GEM_SHARD = new EnchantShard(3);
+	public static final EnchantShard LIGHTBLUE_GEM_SHARD = new EnchantShard(3);
 	public static final EnchantShard YELLOW_GEM_SHARD = new EnchantShard(4);
 	public static final EnchantShard LIME_GEM_SHARD = new EnchantShard(5);
 	public static final EnchantShard PINK_GEM_SHARD = new EnchantShard(6);
@@ -26,7 +26,7 @@ public class AmEnchants {
 		registerEnchant(WHITE_GEM_SHARD, event);
 		registerEnchant(ORANGE_GEM_SHARD, event);
 		registerEnchant(MAGENTA_GEM_SHARD, event);
-		registerEnchant(LIGHT_BLUE_GEM_SHARD, event);
+		registerEnchant(LIGHTBLUE_GEM_SHARD, event);
 		registerEnchant(YELLOW_GEM_SHARD, event);
 		registerEnchant(LIME_GEM_SHARD, event);
 		registerEnchant(PINK_GEM_SHARD, event);

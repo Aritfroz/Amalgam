@@ -26,9 +26,9 @@ public class AmItems {
 	public static final ItemGemDestabilizer MAGENTA_GEM_DESTABILIZER = new ItemGemDestabilizer(AmGems.BASIC_MAGENTA);
 	public static final ItemGemShard MAGENTA_GEM_SHARD = new ItemGemShard(AmGems.BASIC_MAGENTA);
 	public static final ItemGemDust MAGENTA_GEM_DUST = new ItemGemDust(AmGems.BASIC_MAGENTA);
-	public static final ItemGemDestabilizer LIGHT_BLUE_GEM_DESTABILIZER = new ItemGemDestabilizer(AmGems.BASIC_LIGHT_BLUE);
-	public static final ItemGemShard LIGHT_BLUE_GEM_SHARD = new ItemGemShard(AmGems.BASIC_LIGHT_BLUE);
-	public static final ItemGemDust LIGHT_BLUE_GEM_DUST = new ItemGemDust(AmGems.BASIC_LIGHT_BLUE);
+	public static final ItemGemDestabilizer LIGHTBLUE_GEM_DESTABILIZER = new ItemGemDestabilizer(AmGems.BASIC_LIGHTBLUE);
+	public static final ItemGemShard LIGHTBLUE_GEM_SHARD = new ItemGemShard(AmGems.BASIC_LIGHTBLUE);
+	public static final ItemGemDust LIGHTBLUE_GEM_DUST = new ItemGemDust(AmGems.BASIC_LIGHTBLUE);
 	public static final ItemGemDestabilizer YELLOW_GEM_DESTABILIZER = new ItemGemDestabilizer(AmGems.BASIC_YELLOW);
 	public static final ItemGemShard YELLOW_GEM_SHARD = new ItemGemShard(AmGems.BASIC_YELLOW);
 	public static final ItemGemDust YELLOW_GEM_DUST = new ItemGemDust(AmGems.BASIC_YELLOW);
@@ -78,9 +78,9 @@ public class AmItems {
 		registerItem(MAGENTA_GEM_DESTABILIZER, new ResourceLocation("amalgam:magenta_gem_destabilizer"), event);
 		registerItem(MAGENTA_GEM_SHARD, new ResourceLocation("amalgam:magenta_gem_shard"), event);
 		registerItem(MAGENTA_GEM_DUST, new ResourceLocation("amalgam:magenta_gem_dust"), event);
-		registerItem(LIGHT_BLUE_GEM_DESTABILIZER, new ResourceLocation("amalgam:light_blue_gem_destabilizer"), event);
-		registerItem(LIGHT_BLUE_GEM_SHARD, new ResourceLocation("amalgam:light_blue_gem_shard"), event);
-		registerItem(LIGHT_BLUE_GEM_DUST, new ResourceLocation("amalgam:light_blue_gem_dust"), event);
+		registerItem(LIGHTBLUE_GEM_DESTABILIZER, new ResourceLocation("amalgam:lightblue_gem_destabilizer"), event);
+		registerItem(LIGHTBLUE_GEM_SHARD, new ResourceLocation("amalgam:lightblue_gem_shard"), event);
+		registerItem(LIGHTBLUE_GEM_DUST, new ResourceLocation("amalgam:lightblue_gem_dust"), event);
 		registerItem(YELLOW_GEM_DESTABILIZER, new ResourceLocation("amalgam:yellow_gem_destabilizer"), event);
 		registerItem(YELLOW_GEM_SHARD, new ResourceLocation("amalgam:yellow_gem_shard"), event);
 		registerItem(YELLOW_GEM_DUST, new ResourceLocation("amalgam:yellow_gem_dust"), event);
