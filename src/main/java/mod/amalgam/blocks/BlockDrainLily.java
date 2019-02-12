@@ -5,21 +5,25 @@ import java.util.Random;
 import mod.amalgam.init.AmBlocks;
 import mod.amalgam.init.Amalgam;
 import mod.amalgam.injection.InjectorResult;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockDrainLily extends BlockBush {
-	public BlockDrainLily() {
-		super(Material.PLANTS, MapColor.CYAN);
-		this.setUnlocalizedName("drain_lily");
+	private final String prefix;
+	public BlockDrainLily(String prefix) {
+		super(Material.PLANTS);
+		this.setUnlocalizedName(prefix + "_drain_lily");
 		this.setLightLevel(4.0F);
 		this.setTickRandomly(true);
 		this.setCreativeTab(Amalgam.CREATIVE_TAB);
+		this.prefix = prefix;
 	}
 	@Override
 	protected boolean canSustainBush(IBlockState state) {
@@ -37,15 +41,51 @@ public class BlockDrainLily extends BlockBush {
 			if (down.getMaterial() == BlockDrainBlock.DRAINED) {
 				BlockPos check = pos.add(world.rand.nextInt(3) - 1, 0, world.rand.nextInt(3) - 1);
 				if (world.isAirBlock(check) && world.isSideSolid(check.down(), EnumFacing.UP)) {
-					world.setBlockState(check, AmBlocks.DRAIN_LILY.getDefaultState());
+					IBlockState lily = AmBlocks.VALLEY_DRAIN_LILY.getDefaultState();
+					switch (this.prefix) {
+					case "desert":
+						lily = AmBlocks.DESERT_DRAIN_LILY.getDefaultState();
+						break;
+					case "alpine":
+						lily = AmBlocks.ALPINE_DRAIN_LILY.getDefaultState();
+						break;
+					case "nether":
+						lily = AmBlocks.NETHER_DRAIN_LILY.getDefaultState();
+						break;
+					}
+					world.setBlockState(check, lily);
 				}
 			}
 			else {
-				InjectorResult.drain(world, pos.down());
+				Block[] blocks = InjectorResult.PURPLE_DRAIN_BLOCKS;
+				switch (this.prefix) {
+				case "desert":
+					blocks = InjectorResult.ORANGE_DRAIN_BLOCKS;
+					break;
+				case "alpine":
+					blocks = InjectorResult.BLUE_DRAIN_BLOCKS;
+					break;
+				case "nether":
+					blocks = InjectorResult.RED_DRAIN_BLOCKS;
+					break;
+				}
+				InjectorResult.drain(world, pos.down(), blocks);
 			}
 		}
 		else {
 			world.destroyBlock(pos, true);
 		}
 	}
+	@Override
+    public MapColor getMapColor(IBlockState state, IBlockAccess world, BlockPos pos) {
+		switch (this.prefix) {
+		case "desert":
+			return MapColor.YELLOW;
+		case "alpine":
+			return MapColor.LIGHT_BLUE;
+		case "nether":
+			return MapColor.RED;
+		}
+		return MapColor.PURPLE;
+    }
 }

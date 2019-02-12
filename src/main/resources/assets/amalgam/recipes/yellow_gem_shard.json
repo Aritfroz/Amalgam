@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "amalgam:valley_drain_lily"
+		}
+	],
+	"result": {
+		"item": "amalgam:yellow_gem_shard"
+	}
+}

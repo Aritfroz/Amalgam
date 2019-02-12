@@ -129,14 +129,14 @@ public abstract class EntityGem extends EntityMob implements IGems, IInventoryCh
 		}
 		this.setOriginalPosition(this.getPosition());
 		this.setOriginalDimension(this.dimension);
-		this.setUniformColor(this.defaultUniformColor);
-		this.setSkinColor(this.generateSkinColor());
-		this.setHairColor(this.generateHairColor());
-		this.setGemstoneColor(this.generateGemstoneColor());
 		this.setInsigniaVariant(this.generateInsigniaVariant());
 		this.setUniformVariant(this.generateUniformVariant());
 		this.setHairVariant(this.generateHairVariant());
 		this.setSkinVariant(this.generateSkinVariant());
+		this.setUniformColor(this.defaultUniformColor);
+		this.setSkinColor(this.generateSkinColor());
+		this.setHairColor(this.generateHairColor());
+		this.setGemstoneColor(this.generateGemstoneColor());
 		this.setGemstonePosition(this.generateGemstonePosition());
 		this.setGemstoneCut(this.generateGemstoneCut());
 		this.setVisor(this.generateVisor());

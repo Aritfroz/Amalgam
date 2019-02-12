@@ -7,10 +7,10 @@
 		}
 	},
     "variants": {
-        "normal": {
-	    	"model": "minecraft:cube_all"
-        },
         "inventory": {
+	    	"model": "amalgam:items/gem_seed"
+        },
+        "normal": {
 	    	"model": "minecraft:cube_all"
         }
     }

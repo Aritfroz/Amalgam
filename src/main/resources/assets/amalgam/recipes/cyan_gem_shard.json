@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "amalgam:alpine_drain_lily"
+		}
+	],
+	"result": {
+		"item": "amalgam:cyan_gem_shard"
+	}
+}

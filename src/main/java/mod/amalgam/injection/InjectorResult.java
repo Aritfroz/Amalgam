@@ -11,15 +11,16 @@ import mod.amalgam.init.AmGems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class InjectorResult {
-	private static final Block[] RED_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_RED_DRAIN_BLOCK, AmBlocks.BANDED_RED_DRAIN_BLOCK, AmBlocks.DARK_RED_DRAIN_BLOCK, AmBlocks.ERODED_RED_DRAIN_BLOCK };
-	private static final Block[] ORANGE_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_ORANGE_DRAIN_BLOCK, AmBlocks.BANDED_ORANGE_DRAIN_BLOCK, AmBlocks.DARK_ORANGE_DRAIN_BLOCK, AmBlocks.ERODED_ORANGE_DRAIN_BLOCK };
-	private static final Block[] PURPLE_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_PURPLE_DRAIN_BLOCK, AmBlocks.BANDED_PURPLE_DRAIN_BLOCK, AmBlocks.DARK_PURPLE_DRAIN_BLOCK, AmBlocks.ERODED_PURPLE_DRAIN_BLOCK };
-	private static final Block[] BLUE_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_BLUE_DRAIN_BLOCK, AmBlocks.BANDED_BLUE_DRAIN_BLOCK, AmBlocks.DARK_BLUE_DRAIN_BLOCK, AmBlocks.ERODED_BLUE_DRAIN_BLOCK };
+	public static final Block[] RED_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_RED_DRAIN_BLOCK, AmBlocks.BANDED_RED_DRAIN_BLOCK, AmBlocks.DARK_RED_DRAIN_BLOCK, AmBlocks.ERODED_RED_DRAIN_BLOCK };
+	public static final Block[] ORANGE_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_ORANGE_DRAIN_BLOCK, AmBlocks.BANDED_ORANGE_DRAIN_BLOCK, AmBlocks.DARK_ORANGE_DRAIN_BLOCK, AmBlocks.ERODED_ORANGE_DRAIN_BLOCK };
+	public static final Block[] PURPLE_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_PURPLE_DRAIN_BLOCK, AmBlocks.BANDED_PURPLE_DRAIN_BLOCK, AmBlocks.DARK_PURPLE_DRAIN_BLOCK, AmBlocks.ERODED_PURPLE_DRAIN_BLOCK };
+	public static final Block[] BLUE_DRAIN_BLOCKS = new Block[] { AmBlocks.LIGHT_BLUE_DRAIN_BLOCK, AmBlocks.BANDED_BLUE_DRAIN_BLOCK, AmBlocks.DARK_BLUE_DRAIN_BLOCK, AmBlocks.ERODED_BLUE_DRAIN_BLOCK };
 	private final EntityGem gem;
 	private final BlockPos position;
 	private final ExitHole exitHole;
@@ -116,21 +117,23 @@ public class InjectorResult {
 		GemSpawnData data = new GemSpawnData(owner, color, random < (volume * 0.1), random > (volume * 0.8));
 		return new InjectorResult(gem, pos, exit, data);
 	}
-	public static void drain(World world, BlockPos pos) {
-		Block[] blocks = PURPLE_DRAIN_BLOCKS;
-		if (world.provider.isNether()) {
-			blocks = RED_DRAIN_BLOCKS;
-		}
-		else {
-			float temp = world.getBiome(pos).getTemperature(pos);
-			if (world.canSnowAt(pos, false)) {
-				blocks = BLUE_DRAIN_BLOCKS;
-			}
-			else if (temp > 0.95) {
-				blocks = ORANGE_DRAIN_BLOCKS;
+	public static void drain(World world, BlockPos pos, Block[] blocks) {
+		if (blocks == null) {
+			blocks = PURPLE_DRAIN_BLOCKS;
+			if (world.provider.isNether()) {
+				blocks = RED_DRAIN_BLOCKS;
 			}
 			else {
-				blocks = PURPLE_DRAIN_BLOCKS;
+				float temp = world.getBiome(pos).getTemperature(pos);
+				if (world.canSnowAt(pos, false)) {
+					blocks = BLUE_DRAIN_BLOCKS;
+				}
+				else if (temp > 0.95) {
+					blocks = ORANGE_DRAIN_BLOCKS;
+				}
+				else {
+					blocks = PURPLE_DRAIN_BLOCKS;
+				}
 			}
 		}
 		IBlockState state = world.getBlockState(pos);
@@ -151,8 +154,41 @@ public class InjectorResult {
 				world.setBlockState(pos, blocks[3].getDefaultState());
 			}
 			if (material == Material.PLANTS) {
-				world.setBlockState(pos, AmBlocks.DRAIN_LILY.getDefaultState());
+				if (world.getBlockState(pos).getBlock() == Blocks.WATERLILY) {
+					world.setBlockState(pos, AmBlocks.MOSS_ROSE.getDefaultState());
+					for (int x = -1; x <= 1; ++x) {
+						for (int z = -1; z <= 1; ++z) {
+							if (world.rand.nextBoolean()) {
+								BlockPos check = pos.add(x, -1, z);
+								if (world.getBlockState(check).getMaterial() == Material.WATER) {
+									world.setBlockState(check, AmBlocks.MAGIC_MOSS.getDefaultState());
+								}
+							}
+						}
+					}
+				}
+				else {
+					world.setBlockState(pos, InjectorResult.getDrainLily(world, pos));
+				}
 			}
 		}
+	}
+	public static void drain(World world, BlockPos pos) {
+		InjectorResult.drain(world, pos, null);
+	}
+	public static IBlockState getDrainLily(World world, BlockPos pos) {
+		if (world.provider.isNether()) {
+			return AmBlocks.NETHER_DRAIN_LILY.getDefaultState();
+		}
+		else {
+			float temp = world.getBiome(pos).getTemperature(pos);
+			if (world.canSnowAt(pos, false)) {
+				return AmBlocks.ALPINE_DRAIN_LILY.getDefaultState();
+			}
+			else if (temp > 0.95) {
+				return AmBlocks.DESERT_DRAIN_LILY.getDefaultState();
+			}
+		}
+		return AmBlocks.VALLEY_DRAIN_LILY.getDefaultState();
 	}
 }

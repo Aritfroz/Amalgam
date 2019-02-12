@@ -18,7 +18,7 @@ public class RenderBubble extends RenderLiving<EntityBubble> {
 	}
 	@Override
 	protected ResourceLocation getEntityTexture(EntityBubble entity) {
-		return new ResourceLocation("amalgam:textures/entities/white.png");
+		return new ResourceLocation("amalgam:textures/entities/bubble_clear.png");
 	}
 	public static class LayerBubbledItem implements LayerRenderer<EntityBubble> {
 		public final RenderBubble renderer;
@@ -47,7 +47,7 @@ public class RenderBubble extends RenderLiving<EntityBubble> {
 	        float b = ((color & 255) >> 0) / 255f;
 	        GlStateManager.enableBlend();
 	        GlStateManager.color(r, g, b, 0.3F);
-	        this.renderer.bindTexture(new ResourceLocation("amalgam:textures/entities/bubble.png"));
+	        this.renderer.bindTexture(new ResourceLocation("amalgam:textures/entities/bubble_color.png"));
 	        this.renderer.getMainModel().render(bubble, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 		}
 		@Override

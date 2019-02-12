@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import mod.amalgam.client.render.RenderBubble;
 import mod.amalgam.client.render.RenderGemShard;
+import mod.amalgam.client.render.RenderHandShip;
 import mod.amalgam.client.render.RenderInjector;
 import mod.amalgam.client.render.RenderPalanquin;
 import mod.amalgam.entity.EntityGem;
 import mod.amalgam.entity.EntityGemShard;
 import mod.amalgam.entity.machine.EntityBubble;
 import mod.amalgam.entity.machine.EntityInjector;
+import mod.amalgam.entity.vehicle.EntityHandShip;
 import mod.amalgam.entity.vehicle.EntityPalanquin;
 import mod.amalgam.injection.CruxEntry;
 import net.minecraft.entity.Entity;
@@ -28,6 +30,7 @@ public class AmEntities {
 		registerEntity("gem_shard", EntityGemShard.class, RenderGemShard::new, pass);
 		registerEntity("bubble", EntityBubble.class, RenderBubble::new, pass);
 		registerEntity("palanquin", EntityPalanquin.class, RenderPalanquin::new, pass);
+		registerEntity("hand_ship", EntityHandShip.class, RenderHandShip::new, pass);
 	}
 	public static <T extends EntityGem> void registerGem(String name, Class<T> entity, IRenderFactory<T> renderer, int back, int fore, ArrayList<CruxEntry> cruxes, int pass) {
 		AmEntities.registerMob(name, entity, renderer, back, fore, pass);

@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "amalgam:desert_drain_lily"
+		}
+	],
+	"result": {
+		"item": "amalgam:lightblue_gem_shard"
+	}
+}

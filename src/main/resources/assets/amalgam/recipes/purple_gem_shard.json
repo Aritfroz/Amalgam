@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "amalgam:nether_drain_lily"
+		}
+	],
+	"result": {
+		"item": "amalgam:purple_gem_shard"
+	}
+}

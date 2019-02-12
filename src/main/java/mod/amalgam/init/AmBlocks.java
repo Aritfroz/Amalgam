@@ -7,6 +7,8 @@ import mod.amalgam.blocks.BlockCarbonite;
 import mod.amalgam.blocks.BlockDrainBlock;
 import mod.amalgam.blocks.BlockDrainLily;
 import mod.amalgam.blocks.BlockGemSeed;
+import mod.amalgam.blocks.BlockMagicMoss;
+import mod.amalgam.blocks.BlockMossRose;
 import mod.amalgam.blocks.BlockWailingStone;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -22,7 +24,14 @@ public class AmBlocks {
 	
 	public static final BlockWailingStone WAILING_STONE = new BlockWailingStone();
 	public static final BlockGemSeed GEM_SEED = new BlockGemSeed();
-	public static final BlockDrainLily DRAIN_LILY = new BlockDrainLily();
+	
+	public static final BlockMagicMoss MAGIC_MOSS = new BlockMagicMoss();
+	public static final BlockMossRose MOSS_ROSE = new BlockMossRose();
+	
+	public static final BlockDrainLily VALLEY_DRAIN_LILY = new BlockDrainLily("valley");
+	public static final BlockDrainLily DESERT_DRAIN_LILY = new BlockDrainLily("desert");
+	public static final BlockDrainLily ALPINE_DRAIN_LILY = new BlockDrainLily("alpine");
+	public static final BlockDrainLily NETHER_DRAIN_LILY = new BlockDrainLily("nether");
 	
 	public static final BlockDrainBlock LIGHT_PURPLE_DRAIN_BLOCK = new BlockDrainBlock(false, "purple", 0);
 	public static final BlockDrainBlock BANDED_PURPLE_DRAIN_BLOCK = new BlockDrainBlock(false, "purple", 1);
@@ -109,7 +118,12 @@ public class AmBlocks {
 	public static void register(RegistryEvent.Register<Block> event) {
 		registerBlock(WAILING_STONE, new ResourceLocation("amalgam:wailing_stone"), event);
 		registerBlock(GEM_SEED, new ResourceLocation("amalgam:gem_seed"), event);
-		registerBlock(DRAIN_LILY, new ResourceLocation("amalgam:drain_lily"), event);
+		registerBlock(MAGIC_MOSS, new ResourceLocation("amalgam:magic_moss"), event);
+		registerBlock(MOSS_ROSE, new ResourceLocation("amalgam:moss_rose"), event);
+		registerBlock(VALLEY_DRAIN_LILY, new ResourceLocation("amalgam:valley_drain_lily"), event);
+		registerBlock(DESERT_DRAIN_LILY, new ResourceLocation("amalgam:desert_drain_lily"), event);
+		registerBlock(ALPINE_DRAIN_LILY, new ResourceLocation("amalgam:alpine_drain_lily"), event);
+		registerBlock(NETHER_DRAIN_LILY, new ResourceLocation("amalgam:nether_drain_lily"), event);
 		registerBlock(LIGHT_PURPLE_DRAIN_BLOCK, new ResourceLocation("amalgam:light_purple_drain_block"), event);
 		registerBlock(BANDED_PURPLE_DRAIN_BLOCK, new ResourceLocation("amalgam:banded_purple_drain_block"), event);
 		registerBlock(DARK_PURPLE_DRAIN_BLOCK, new ResourceLocation("amalgam:dark_purple_drain_block"), event);

@@ -59,7 +59,14 @@ item.black_gem_dust.name=Black Gem Dust
 
 tile.wailing_stone.name=Wailing Stone
 tile.gem_seed.name=Gem Seed
-tile.drain_lily.name=Drain Lily
+
+tile.magic_moss.name=Magic Moss
+tile.moss_rose.name=Moss Rose
+
+tile.valley_drain_lily.name=Valley Drain Lily
+tile.desert_drain_lily.name=Desert Drain Lily
+tile.alpine_drain_lily.name=Alpine Drain Lily
+tile.nether_drain_lily.name=Nether Drain Lily
 
 tile.light_purple_drain_block.name=Light Purple Drained Block
 tile.banded_purple_drain_block.name=Banded Purple Drained Block
@@ -69,7 +76,7 @@ tile.light_orange_drain_block.name=Light Orange Drained Block
 tile.banded_orange_drain_block.name=Banded Orange Drained Block
 tile.dark_orange_drain_block.name=Dark Orange Drained Block
 tile.eroded_orange_drain_block.name=Eroded Orange Drained Block
-tile.lightblue_drain_block.name=Light Blue Drained Block
+tile.light_blue_drain_block.name=Light Blue Drained Block
 tile.banded_blue_drain_block.name=Banded Blue Drained Block
 tile.dark_blue_drain_block.name=Dark Blue Drained Block
 tile.eroded_blue_drain_block.name=Eroded Blue Drained Block

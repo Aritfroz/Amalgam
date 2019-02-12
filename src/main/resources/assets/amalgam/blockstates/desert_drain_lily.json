@@ -3,13 +3,13 @@
 	"defaults": {
 		"model": "minecraft:cross",
 		"textures": {
-			"particle": "amalgam:blocks/drain_lily",
-			"cross": "amalgam:blocks/drain_lily"
+			"particle": "amalgam:blocks/desert_drain_lily",
+			"cross": "amalgam:blocks/desert_drain_lily"
 		}
 	},
 	"variants": {
 		"inventory": {
-			"model": "minecraft:cross"
+			"model": "amalgam:items/desert_drain_lily"
 		},
 		"normal": {
 			"model": "minecraft:cross"
