@@ -9,20 +9,15 @@ public class ModelPearl extends ModelGem {
     public ModelRenderer bipedHair;
     public ModelRenderer bipedLeftSleeve;
     public ModelRenderer bipedRightSleeve;
-    public ModelRenderer bipedLeftPant;
-    public ModelRenderer bipedRightPant;
     public ModelPearl() {
 		super(0.0F, 0.0F, 64, 64, 4);
-        this.bipedRightPant = new ModelRenderer(this, 49, 40);
-        this.bipedRightPant.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.bipedRightPant.addBox(-1.2F, 0.0F, -2.0F, 3, 16, 4, 0.0F);
         this.bipedLeftArm = new ModelRenderer(this, 40, 16);
         this.bipedLeftArm.setRotationPoint(4.0F, -6.0F, 0.0F);
         this.bipedLeftArm.addBox(-1.0F, 0.0F, -1.0F, 2, 16, 2, 0.0F);
         this.bipedHead = new ModelRenderer(this, 0, 0);
         this.bipedHead.setRotationPoint(0.0F, -6.0F, 0.0F);
         this.bipedHead.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F);
-        this.bipedLeftSleeve = new ModelRenderer(this, 48, 16);
+        this.bipedLeftSleeve = new ModelRenderer(this, 0, 42);
         this.bipedLeftSleeve.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.bipedLeftSleeve.addBox(-1.0F, -2.0F, -2.0F, 4, 20, 4, 0.0F);
         this.bipedRightArm = new ModelRenderer(this, 40, 16);
@@ -34,10 +29,10 @@ public class ModelPearl extends ModelGem {
         this.bipedBody = new ModelRenderer(this, 0, 16);
         this.bipedBody.setRotationPoint(0.0F, 6.0F, 0.0F);
         this.bipedBody.addBox(-3.0F, -6.0F, -2.0F, 6, 8, 4, 0.0F);
-        this.bipedSkirt = new ModelRenderer(this, 0, 40);
+        this.bipedSkirt = new ModelRenderer(this, 32, 42);
         this.bipedSkirt.setRotationPoint(0.0F, 2.0F, 0.0F);
         this.bipedSkirt.addBox(-4.0F, 0.0F, -4.0F, 8, 16, 8, 0.0F);
-        this.bipedRightSleeve = new ModelRenderer(this, 48, 16);
+        this.bipedRightSleeve = new ModelRenderer(this, 0, 42);
         this.bipedRightSleeve.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.bipedRightSleeve.addBox(-3.0F, -2.0F, -2.0F, 4, 20, 4, 0.0F);
         this.bipedLeftLeg = new ModelRenderer(this, 40, 34);
@@ -48,11 +43,7 @@ public class ModelPearl extends ModelGem {
         this.bipedRightLeg.addBox(-1.0F, 0.0F, -1.0F, 2, 16, 2, 0.0F);
         this.bipedHair = new ModelRenderer(this, 32, 0);
         this.bipedHair.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.bipedHair.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F);
-        this.bipedLeftPant = new ModelRenderer(this, 49, 40);
-        this.bipedLeftPant.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.bipedLeftPant.addBox(-1.8F, 0.0F, -2.0F, 3, 16, 4, 0.0F);
-        this.bipedRightLeg.addChild(this.bipedRightPant);
+        this.bipedHair.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 1.1F);
         this.bipedBody.addChild(this.bipedLeftArm);
         this.bipedBody.addChild(this.bipedHead);
         this.bipedLeftArm.addChild(this.bipedLeftSleeve);
@@ -62,8 +53,7 @@ public class ModelPearl extends ModelGem {
         this.bipedRightArm.addChild(this.bipedRightSleeve);
         this.bipedBody.addChild(this.bipedLeftLeg);
         this.bipedBody.addChild(this.bipedRightLeg);
-        this.bipedHead.addChild(this.bipedHair);
-        this.bipedLeftLeg.addChild(this.bipedLeftPant);
+        this.bipedHead.addChild(this.bipedHair);;
     }
 	@Override
 	public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {

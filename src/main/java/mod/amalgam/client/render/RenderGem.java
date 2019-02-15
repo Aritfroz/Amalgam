@@ -24,6 +24,7 @@ public class RenderGem<T extends EntityGem> extends RenderBiped<T> {
 	}
 	@Override
 	protected void preRenderCallback(T gem, float partialTickTime) {
+		GlStateManager.scale(0.925F, 0.925F, 0.925F);
 		if (gem.isDefective()) {
 			GlStateManager.scale(0.5F, 0.5F, 0.5F);
 		}
